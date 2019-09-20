@@ -437,21 +437,71 @@
 <p>它们的区别在于，<code>const</code>比<code>final</code>更加严格。<code>final</code>只是要求变量在初始化后值不变，但通过<code>final</code>，我们无法在编译时（运行之前）知道这个变量的值；而<code>const</code>所修饰的是编译时常量，我们在编译时就已经知道了它的值，显然，它的值也是不可改变的。</p>
 <p>下面先用简单的例子说明一下区别，再通过代码理解”<code>const</code>所修饰的是编译时常量”这句话：</p>
 <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p><strong>final</strong>：只能被设一次值，在声明处赋值，值和普通变量的设值一样，可以是对象、字符串、数字等，用于修饰值的表达式不变的变量；</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> name = <span class="string">'Bob'</span>;   </span><br><span class="line"><span class="comment">// name = 'job'; //运行出错，因为final修饰的变量不能调用其setter方法，即：不能设值</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="java">final name = &#39;Bob&#39;;   
+// name = &#39;job&#39;; //运行出错，因为final修饰的变量不能调用其setter方法，即：不能设值</code></pre>
 <p><strong>const</strong>：只能被设一次值，在声明处赋值，且值必须为编译时常量；用于修饰常量。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = <span class="number">1000000</span>;       <span class="comment">// 定义常量值</span></span><br><span class="line"><span class="comment">// bar =13;   // 出现异常，const修饰的变量不能调用setter方法，即：不能设值，只能在声明处设值</span></span><br><span class="line"><span class="keyword">const</span> atm = <span class="number">1.01325</span> * bar; <span class="comment">// 值的表达式中的变量必须是编译时常量（bar）;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = <span class="number">12</span>;        </span><br><span class="line"></span><br><span class="line"><span class="comment">//  atm = 1 * c;  //出错，因为c不是一个编译时常量，即：非const修饰的变量（只有const修饰的变量才是编译时常量）</span></span><br></pre></td></tr></table></figure>
+<pre><code class="java">const bar = 1000000;       // 定义常量值
+// bar =13;   // 出现异常，const修饰的变量不能调用setter方法，即：不能设值，只能在声明处设值
+const atm = 1.01325 * bar; // 值的表达式中的变量必须是编译时常量（bar）;
 
+var c = 12;        
+
+//  atm = 1 * c;  //出错，因为c不是一个编译时常量，即：非const修饰的变量（只有const修饰的变量才是编译时常量）</code></pre>
 <p><strong>const还可以用来声明常量值:</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// [] 创建一个空列表.</span></span><br><span class="line"><span class="comment">// const [] 创建一个空的不可变列表 (EIA).</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">const</span> [];   <span class="comment">// foo 目前是一个 EIA.</span></span><br><span class="line"><span class="keyword">final</span> bar = <span class="keyword">const</span> []; <span class="comment">// bar 永远是一个 EIA.</span></span><br><span class="line"><span class="keyword">const</span> baz = <span class="keyword">const</span> []; <span class="comment">// baz 是一个编译时常量 EIA.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//你可以改变 非final, 非const 修饰的变量,</span></span><br><span class="line"><span class="comment">// 即使它的值为编译时常量值.</span></span><br><span class="line">foo = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不能改变final和const修饰的变量的值.</span></span><br><span class="line"><span class="comment">// bar = []; // 未处理的异常.</span></span><br><span class="line"><span class="comment">// baz = []; // 未处理的异常.</span></span><br></pre></td></tr></table></figure>
+<pre><code class="java">// [] 创建一个空列表.
+// const [] 创建一个空的不可变列表 (EIA).
+var foo = const [];   // foo 目前是一个 EIA.
+final bar = const []; // bar 永远是一个 EIA.
+const baz = const []; // baz 是一个编译时常量 EIA.
 
+//你可以改变 非final, 非const 修饰的变量,
+// 即使它的值为编译时常量值.
+foo = [];
+
+// 不能改变final和const修饰的变量的值.
+// bar = []; // 未处理的异常.
+// baz = []; // 未处理的异常.</code></pre>
 <h2 id="高级使用"><a href="#高级使用" class="headerlink" title="高级使用"></a>高级使用</h2><p>当为final修饰的值赋一个包含成员变量或方法的对象时：</p>
 <ol>
 <li>对象成员值能被修改，对于能够添加成员的类（如List、Map）则可以添加或删除成员</li>
 <li>变量本身实例不能被修改</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span></span>&#123;</span><br><span class="line">  <span class="keyword">var</span> x,y;</span><br><span class="line">  Point(<span class="keyword">this</span>.x,<span class="keyword">this</span>.y)&#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line">   <span class="keyword">final</span>  p = <span class="keyword">new</span> Point(<span class="number">1</span>,<span class="number">2</span>); </span><br><span class="line">   <span class="comment">// p = new Point(3,4);   //出错，final修饰的变量不能调用setter方法；</span></span><br><span class="line">      p.x=<span class="number">2</span>;    <span class="comment">// 正常执行，修改的是变量的属性值，而不是变量引用的对象；</span></span><br><span class="line">      print(<span class="string">''</span>p.x);  <span class="comment">// 打印 2</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> foo = <span class="keyword">const</span> [];  </span><br><span class="line">    foo = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>];  </span><br><span class="line">    <span class="comment">/*此部分代码的重点在于var foo , 一个正常变量可以随意赋值或更改，重点不在const [],</span></span><br><span class="line"><span class="comment">      所以不要纠结const []是不可变的。[]和[1,2,1]是不同的对象*/</span></span><br><span class="line">    print(foo);   </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"> <span class="keyword">final</span> baz =  [<span class="number">1</span>];</span><br><span class="line"> <span class="comment">// baz=[1,2,3,4]; //出错 此调用修改了变量的实例 即：[1] 和[1,2,3,4]是不同的对象</span></span><br><span class="line">    baz[<span class="number">0</span>]=<span class="number">2</span>;     <span class="comment">//正常执行，只修改了变量引用对象的成员变量的值</span></span><br><span class="line">    print(baz); </span><br><span class="line"></span><br><span class="line"> <span class="keyword">final</span> bad =  [];   <span class="comment">//List&lt;int&gt;</span></span><br><span class="line">    bad.add(<span class="number">1</span>);    <span class="comment">//正常执行，向变量引用对象添加成员</span></span><br><span class="line">    bad.add(<span class="number">2</span>); </span><br><span class="line">    print(bad)</span><br><span class="line"></span><br><span class="line"> <span class="keyword">final</span> Map&lt;String, String&gt; cache = &lt;String, String&gt;&#123;&#125;;  <span class="comment">//Map</span></span><br><span class="line">   cache[<span class="string">'name1'</span>]=<span class="string">'1213'</span>;</span><br><span class="line">   cache[<span class="string">'name2'</span>]=<span class="string">'1313'</span>;</span><br><span class="line">   print(cache);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">class Point{
+  var x,y;
+  Point(this.x,this.y){
 
+  }
+}
+
+main() {
+   final  p = new Point(1,2); 
+   // p = new Point(3,4);   //出错，final修饰的变量不能调用setter方法；
+      p.x=2;    // 正常执行，修改的是变量的属性值，而不是变量引用的对象；
+      print(&#39;&#39;p.x);  // 打印 2
+
+
+  var foo = const [];  
+    foo = [1,2,1];  
+    /*此部分代码的重点在于var foo , 一个正常变量可以随意赋值或更改，重点不在const [],
+      所以不要纠结const []是不可变的。[]和[1,2,1]是不同的对象*/
+    print(foo);   
+
+
+ final baz =  [1];
+ // baz=[1,2,3,4]; //出错 此调用修改了变量的实例 即：[1] 和[1,2,3,4]是不同的对象
+    baz[0]=2;     //正常执行，只修改了变量引用对象的成员变量的值
+    print(baz); 
+
+ final bad =  [];   //List&lt;int&gt;
+    bad.add(1);    //正常执行，向变量引用对象添加成员
+    bad.add(2); 
+    print(bad)
+
+ final Map&lt;String, String&gt; cache = &lt;String, String&gt;{};  //Map
+   cache[&#39;name1&#39;]=&#39;1213&#39;;
+   cache[&#39;name2&#39;]=&#39;1313&#39;;
+   print(cache);
+}</code></pre>
 <h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ol>
 <li><a href="http://www.voidcn.com/article/p-eqqxibed-bqr.html" target="_blank" rel="noopener">http://www.voidcn.com/article/p-eqqxibed-bqr.html</a></li>
 <li><a href="https://my.oschina.net/jthmath/blog/419232" target="_blank" rel="noopener">https://my.oschina.net/jthmath/blog/419232</a></li>
