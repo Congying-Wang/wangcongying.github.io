@@ -5,9 +5,8 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Dart 中 final 和 const 区别, 王聪颖的博客">
-    <meta name="description" content="@[toc]
-用final修饰的变量，必须在定义时将其初始化，其值在初始化后不可改变；const用来定义常量。
-它们的区别在于，const比final更加严格。final只是要求变量在初始化后值不变，但通过final，我们无法在编译时（运行">
+    <meta name="description" content="用final修饰的变量，必须在定义时将其初始化，其值在初始化后不可改变；const用来定义常量。
+它们的区别在于，const比final更加严格。final只是要求变量在初始化后值不变，但通过final，我们无法在编译时（运行之前）知道这个">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -410,6 +409,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Dart-Flutter/" class="post-category">
+                                Dart, Flutter
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -432,8 +440,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>@[toc]</p>
-<p>用<code>final</code>修饰的变量，必须在定义时将其初始化，其值在初始化后不可改变；<br><code>const</code>用来定义常量。</p>
+                <p>用<code>final</code>修饰的变量，必须在定义时将其初始化，其值在初始化后不可改变；<br><code>const</code>用来定义常量。</p>
 <p>它们的区别在于，<code>const</code>比<code>final</code>更加严格。<code>final</code>只是要求变量在初始化后值不变，但通过<code>final</code>，我们无法在编译时（运行之前）知道这个变量的值；而<code>const</code>所修饰的是编译时常量，我们在编译时就已经知道了它的值，显然，它的值也是不可改变的。</p>
 <p>下面先用简单的例子说明一下区别，再通过代码理解”<code>const</code>所修饰的是编译时常量”这句话：</p>
 <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p><strong>final</strong>：只能被设一次值，在声明处赋值，值和普通变量的设值一样，可以是对象、字符串、数字等，用于修饰值的表达式不变的变量；</p>
@@ -750,9 +757,8 @@ main() {
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            @[toc]
-用final修饰的变量，必须在定义时将其初始化，其值在初始化后不可改变；const用来定义常量。
-它们的区别在于，const比final更加严格。final只是要求变量在初始化后值不变，但通过final，我们无法在编译时（运行
+                            用final修饰的变量，必须在定义时将其初始化，其值在初始化后不可改变；const用来定义常量。
+它们的区别在于，const比final更加严格。final只是要求变量在初始化后值不变，但通过final，我们无法在编译时（运行之前）知道这个
                         
                     </div>
                     <div class="publish-info">
@@ -761,8 +767,12 @@ main() {
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            王聪颖
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Dart-Flutter/" class="post-category">
+                                    Dart, Flutter
+                                </a>
+                            
                             
                         </span>
                     </div>
