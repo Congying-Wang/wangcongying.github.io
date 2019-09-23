@@ -424,8 +424,8 @@ sudo yum update
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/SRE/" class="post-category">
-                                SRE
+                            <a href="/categories/SRE运维/" class="post-category">
+                                SRE运维
                             </a>
                         
                     </div>
@@ -493,6 +493,8 @@ systemctl disable redis.service    # 开机禁用redis服务器</code></pre>
 <h2 id="5-常见问题"><a href="#5-常见问题" class="headerlink" title="5 常见问题"></a>5 常见问题</h2><p><strong>Q1</strong>: 使用其他局域网内机器访问不了？<br><strong>A1</strong>: 一般是防火墙问题，现把<code>6379</code>端口开放，然后重启防火墙即可，操作命令个如下</p>
 <pre><code class="bash">firewall-cmd --permanent --add-port=6379/tcp
 firewall-cmd --reload</code></pre>
+<p><strong>Q2</strong>: 局域网内其他机器访问<br><strong>A2</strong>: 使用<code>redis-cli</code> 命令</p>
+<pre><code class="bash">redis-cli -h [host] -p [port] -a [password]</code></pre>
 
             </div>
             <hr/>
@@ -752,8 +754,8 @@ sudo yum update
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/SRE/" class="post-category">
-                                    SRE
+                            <a href="/categories/SRE运维/" class="post-category">
+                                    SRE运维
                                 </a>
                             
                             
