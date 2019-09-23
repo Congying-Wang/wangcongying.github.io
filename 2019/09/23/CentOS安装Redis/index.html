@@ -4,8 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 王聪颖的博客">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="CentOS安装Redis, 王聪颖的博客">
+    <meta name="description" content="1 更新yum源sudo yum install epel-release
+sudo yum update
+
+注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险
+
+2 安装Redis数据库并重启sudo yum -">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | 王聪颖的博客</title>
+    <title>CentOS安装Redis | 王聪颖的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -285,13 +290,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        CentOS安装Redis
                     </div>
                 </div>
             </div>
@@ -401,12 +406,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Redis-安装/">
+                                <span class="chip bg-color">Redis 安装</span>
+                            </a>
+                        
+                            <a href="/tags/Redis-开放连接/">
+                                <span class="chip bg-color">Redis 开放连接</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/SRE/" class="post-category">
+                                SRE
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -414,7 +436,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-19
+                    2019-09-23
                 </div>
 
                 
@@ -430,15 +452,47 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h2 id="1-更新yum源"><a href="#1-更新yum源" class="headerlink" title="1 更新yum源"></a>1 更新yum源</h2><pre><code class="bash">sudo yum install epel-release
+sudo yum update</code></pre>
+<blockquote>
+<p>注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险</p>
+</blockquote>
+<h2 id="2-安装Redis数据库并重启"><a href="#2-安装Redis数据库并重启" class="headerlink" title="2 安装Redis数据库并重启"></a>2 安装Redis数据库并重启</h2><pre><code class="bash">sudo yum -y install redis
+sudo systemctl start redis</code></pre>
+<p>此时就可以通过 <code>redis-cli</code> 进入命令行模式客户端了</p>
+<h2 id="3-配置远程访问"><a href="#3-配置远程访问" class="headerlink" title="3 配置远程访问"></a>3 配置远程访问</h2><p>首先修改配置文件<code>/etc/redis.conf</code>，注意这里需要使用<code>root</code>权限</p>
+<ol>
+<li><p>修改连接端口<br>修改前：</p>
+<pre><code class="txt">bind 127.0.0.1</code></pre>
+<p>修改后</p>
+<pre><code class="txt"># bind 127.0.0.1
+bind 0.0.0.0</code></pre>
+<blockquote>
+<p>注：这里有两种方式，一可以直接注释<code>bind 127.0.0.1</code>, 也可以改成<code>bind 0.0.0.0</code></p>
+</blockquote>
+</li>
+<li><p>配置连接密码<br>修改前：</p>
+<pre><code class="txt">#requirepass foobared</code></pre>
+<p>修改后</p>
+<pre><code class="txt">requirepass [你的密码]</code></pre>
+</li>
+</ol>
+<p>然后保存，重启redis 服务</p>
+<pre><code class="bash">sudo systemctl restart redis</code></pre>
+<h2 id="4-常见Redis服务命令"><a href="#4-常见Redis服务命令" class="headerlink" title="4 常见Redis服务命令"></a>4 常见Redis服务命令</h2><pre><code class="bash">systemctl start redis.service     # 启动redis服务器
+
+systemctl stop redis.service     # 停止redis服务器
+
+systemctl restart redis.service    # 重新启动redis服务器
+
+systemctl status redis.service     # 获取redis服务器的运行状态
+
+systemctl enable redis.service    # 开机启动redis服务器
+
+systemctl disable redis.service    # 开机禁用redis服务器</code></pre>
+<h2 id="5-常见问题"><a href="#5-常见问题" class="headerlink" title="5 常见问题"></a>5 常见问题</h2><p><strong>Q1</strong>: 使用其他局域网内机器访问不了？<br><strong>A1</strong>: 一般是防火墙问题，现把<code>6379</code>端口开放，然后重启防火墙即可，操作命令个如下</p>
+<pre><code class="bash">firewall-cmd --permanent --add-port=6379/tcp
+firewall-cmd --reload</code></pre>
 
             </div>
             <hr/>
@@ -601,9 +655,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Hello World》
+                    《CentOS安装Redis》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/19/hello-world/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/23/CentOS安装Redis/" property="cc:attributionName"
                rel="cc:attributionURL">
                 王聪颖
             </a> 采用
@@ -644,7 +698,7 @@
         repo: 'wangcongying.github.io',
         owner: 'Congying-Wang',
         admin: "Congying-Wang",
-        id: '2019-09-19T17-27-50',
+        id: '2019-09-23T17-43-25',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -665,9 +719,69 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2019/09/23/CentOS安装Redis/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="CentOS安装Redis">
+                        
+                        <span class="card-title">CentOS安装Redis</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1 更新yum源sudo yum install epel-release
+sudo yum update
+
+注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险
+
+2 安装Redis数据库并重启sudo yum -
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SRE/" class="post-category">
+                                    SRE
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Redis-安装/">
+                        <span class="chip bg-color">Redis 安装</span>
+                    </a>
+                    
+                    <a href="/tags/Redis-开放连接/">
+                        <span class="chip bg-color">Redis 开放连接</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2019/09/20/Dart-中-final-和-const-区别/">
                     <div class="card-image">
@@ -686,9 +800,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -713,44 +827,6 @@
                     </a>
                     
                 </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/09/19/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-19
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            王聪颖
-                            
-                        </span>
-                    </div>
-                </div>
-
                 
             </div>
         </div>
@@ -897,6 +973,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
     <footer class="page-footer bg-color">
