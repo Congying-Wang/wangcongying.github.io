@@ -490,11 +490,25 @@ sudo yum isntall gcc-c++</code></pre>
 <li><p>然后使用下面命令让环境变量生效</p>
 <pre><code>source ~/.bashrc</code></pre></li>
 </ol>
-<h2 id="2-测试"><a href="#2-测试" class="headerlink" title="2 测试"></a>2 测试</h2><p>现在<code>mpich</code>已经部署好了，可以直接用了，官方给出了测试程序，在解压缩下的<code>examples</code> 目录</p>
+<h2 id="2-测试"><a href="#2-测试" class="headerlink" title="2 测试"></a>2 测试</h2><ol>
+<li><p>现在<code>mpich</code>已经部署好了，可以直接用了，官方给出了测试程序，在解压缩下的<code>examples</code> 目录</p>
 <pre><code class="bash">cd ./examples
 mpiexec -n 8 ./cpi</code></pre>
 <p>输出结果：<br><img src="/blog_img/installMpichOnCentOS/mpichInstallRes.png" alt="mpichInstallRes"></p>
-
+</li>
+<li><p>自测程序<br>编辑<code>hello.c</code>文件</p>
+<pre><code class="c">#include &lt;mpi.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+</code></pre>
+</li>
+</ol>
+<p>int main (int argc, char **argv)<br>{<br>int myid, numprocs;<br>int namelen;<br>char processor_name[MPI_MAX_PROCESSOR_NAME];</p>
+<p>MPI_Init (&amp;argc, &amp;argv);<br>MPI_Comm_rank (MPI_COMM_WORLD, &amp;myid);<br>MPI_Comm_size (MPI_COMM_WORLD, &amp;numprocs);<br>MPI_Get_processor_name (processor_name, &amp;namelen);<br>fprintf (stderr, “Hello World! Process %d of %d on %s\n”, myid, numprocs, processor_name);<br>MPI_Finalize ();<br>return 0;<br>}</p>
+<pre><code>使用以下命令运行
+```bash
+mpicc -o hello hello.c        # 编译 如果`c++`使用`mpicxx`
+mpirun -np 4 ./hello</code></pre>
             </div>
             <hr/>
 
