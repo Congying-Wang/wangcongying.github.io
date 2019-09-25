@@ -451,67 +451,64 @@
 <p>OS: CentOS 7<br>MPI: MPICH 3.2</p>
 </blockquote>
 <h2 id="1-安装过程"><a href="#1-安装过程" class="headerlink" title="1 安装过程"></a>1 安装过程</h2><h3 id="1-1-编译器升级"><a href="#1-1-编译器升级" class="headerlink" title="1.1 编译器升级"></a>1.1 编译器升级</h3><p>首先需要安装<code>编译器</code>，推荐使用<code>yum</code>进行安装</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install make                           </span><br><span class="line">sudo yum install gcc                                 </span><br><span class="line">sudo yum isntall gcc-c++</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">sudo yum install make                           
+sudo yum install gcc                                 
+sudo yum isntall gcc-c++</code></pre>
 <h3 id="1-2-下载安装包并解压"><a href="#1-2-下载安装包并解压" class="headerlink" title="1.2 下载安装包并解压"></a>1.2 下载安装包并解压</h3><ol>
 <li>从<a href="https://www.mpich.org/downloads/" target="_blank" rel="noopener">官网</a>上找到要下载的安装包，我这边用的是<code>mpich-3.2.1 (stable release)</code></li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1.tar.gz</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">wget http://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1.tar.gz</code></pre>
 <ol start="2">
 <li><p>解压</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar xzf mpich-3.2.1.tar.gz</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">tar xzf mpich-3.2.1.tar.gz</code></pre>
 </li>
 <li><p>创建安装目录<br>官方建议在<code>/home/[USERNAME 用户名]/</code>（即 <code>~/</code>目录）下创建 <code>mpich-install</code>目录，如下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir ~/mpich-install</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">mkdir ~/mpich-install</code></pre>
 </li>
 </ol>
 <h3 id="1-3-配置安装"><a href="#1-3-配置安装" class="headerlink" title="1.3 配置安装"></a>1.3 配置安装</h3><ol>
-<li>进入下载mpich解压的目录, <strong>注意：以下操作均在下载目录下进行，并非上一步创建的安装路径</strong></li>
-<li>运行<code>configure</code> 命令进行安装<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./configure --prefix=~/mpich-install 2&gt;&amp;1 | tee c.txt</span><br></pre></td></tr></table></figure>
-
+<li><p>进入下载mpich解压的目录, <strong>注意：以下操作均在下载目录下进行，并非上一步创建的安装路径</strong></p>
 </li>
-</ol>
+<li><p>运行<code>configure</code> 命令进行安装</p>
+<pre><code class="bash">./configure --prefix=~/mpich-install 2&gt;&amp;1 | tee c.txt</code></pre>
 <p><a href="https://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1-README.txt" target="_blank" rel="noopener">官方文档</a> 中给出了出错的解决方法，报错建议当第一手资料参考</p>
-<ol start="3">
-<li>make 生成<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make 2&gt;&amp;1 | tee m.txt</span><br></pre></td></tr></table></figure>
-
 </li>
-</ol>
+<li><p>make 生成</p>
+<pre><code class="bash">make 2&gt;&amp;1 | tee m.txt</code></pre>
 <p>这时间应该比较长</p>
-<ol start="4">
-<li>install 安装<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make install 2&gt;&amp;1 | tee mi.txt</span><br></pre></td></tr></table></figure>
-
+</li>
+<li><p>install 安装</p>
+<pre><code class="bash">make install 2&gt;&amp;1 | tee mi.txt</code></pre>
 </li>
 </ol>
 <h3 id="1-4-环境变量配置"><a href="#1-4-环境变量配置" class="headerlink" title="1.4 环境变量配置"></a>1.4 环境变量配置</h3><p>到这一步基本上已经安装好了，但是会发现<code>mpicc</code>、<code>mpiexec</code>等指令依旧无法使用，那是因为没有配置环境变量</p>
 <ol>
-<li>打开<code>~/.bashrc</code>环境变量文件，加入下面变量<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/home/[USERNAME]/mpich-install/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
+<li><p>打开<code>~/.bashrc</code>环境变量文件，加入下面变量</p>
+<pre><code class="bash">export PATH=/home/[USERNAME]/mpich-install/bin:$PATH</code></pre>
 <p>注意：这里的路径是<strong>安装路径</strong></p>
-<ol start="2">
-<li>然后使用下面命令让环境变量生效<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
-
 </li>
+<li><p>然后使用下面命令让环境变量生效</p>
+<pre><code>source ~/.bashrc</code></pre></li>
 </ol>
 <h2 id="2-测试"><a href="#2-测试" class="headerlink" title="2 测试"></a>2 测试</h2><ol>
-<li>现在<code>mpich</code>已经部署好了，可以直接用了，官方给出了测试程序，在解压缩下的<code>examples</code> 目录<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ./examples</span><br><span class="line">mpiexec -n 8 ./cpi</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
+<li><p>现在<code>mpich</code>已经部署好了，可以直接用了，官方给出了测试程序，在解压缩下的<code>examples</code> 目录</p>
+<pre><code class="bash">cd ./examples
+mpiexec -n 8 ./cpi</code></pre>
 <p>输出结果：<br><img src="/blog_img/installMpichOnCentOS/mpichInstallRes.png" alt="mpichInstallRes"></p>
-<ol start="2">
-<li>自测程序<br>编辑<code>hello.c</code>文件<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mpi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> myid, numprocs;</span><br><span class="line"><span class="keyword">int</span> namelen;</span><br><span class="line"><span class="keyword">char</span> processor_name[MPI_MAX_PROCESSOR_NAME];</span><br><span class="line"> </span><br><span class="line">MPI_Init (&amp;argc, &amp;argv);</span><br><span class="line">MPI_Comm_rank (MPI_COMM_WORLD, &amp;myid);</span><br><span class="line">MPI_Comm_size (MPI_COMM_WORLD, &amp;numprocs);</span><br><span class="line">MPI_Get_processor_name (processor_name, &amp;namelen);</span><br><span class="line"><span class="built_in">fprintf</span> (<span class="built_in">stderr</span>, <span class="string">"Hello World! Process %d of %d on %s\n"</span>, myid, numprocs, processor_name);</span><br><span class="line">MPI_Finalize ();</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+</li>
+<li><p>自测程序<br>编辑<code>hello.c</code>文件</p>
+<pre><code class="c">#include &lt;mpi.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+</code></pre>
 </li>
 </ol>
-<p>使用以下命令运行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mpicc -o hello hello.c		<span class="comment"># 编译 如果`c++`使用`mpicxx`</span></span><br><span class="line">mpirun -np 4 ./hello</span><br></pre></td></tr></table></figure>
-
-
+<p>int main (int argc, char **argv)<br>{<br>int myid, numprocs;<br>int namelen;<br>char processor_name[MPI_MAX_PROCESSOR_NAME];</p>
+<p>MPI_Init (&amp;argc, &amp;argv);<br>MPI_Comm_rank (MPI_COMM_WORLD, &amp;myid);<br>MPI_Comm_size (MPI_COMM_WORLD, &amp;numprocs);<br>MPI_Get_processor_name (processor_name, &amp;namelen);<br>fprintf (stderr, “Hello World! Process %d of %d on %s\n”, myid, numprocs, processor_name);<br>MPI_Finalize ();<br>return 0;<br>}</p>
+<pre><code>使用以下命令运行
+```bash
+mpicc -o hello hello.c        # 编译 如果`c++`使用`mpicxx`
+mpirun -np 4 ./hello</code></pre>
             </div>
             <hr/>
 
@@ -805,8 +802,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1 更新yum源sudo yum install epel-releasesudo yum update
-
+                            1 更新yum源sudo yum install epel-release
+sudo yum update
 
 注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险
 

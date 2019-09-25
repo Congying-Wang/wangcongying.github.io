@@ -5,8 +5,8 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="CentOS安装Redis, 王聪颖的博客">
-    <meta name="description" content="1 更新yum源sudo yum install epel-releasesudo yum update
-
+    <meta name="description" content="1 更新yum源sudo yum install epel-release
+sudo yum update
 
 注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险
 
@@ -452,45 +452,49 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-更新yum源"><a href="#1-更新yum源" class="headerlink" title="1 更新yum源"></a>1 更新yum源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install epel-release</span><br><span class="line">sudo yum update</span><br></pre></td></tr></table></figure>
-
+                <h2 id="1-更新yum源"><a href="#1-更新yum源" class="headerlink" title="1 更新yum源"></a>1 更新yum源</h2><pre><code class="bash">sudo yum install epel-release
+sudo yum update</code></pre>
 <blockquote>
 <p>注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险</p>
 </blockquote>
-<h2 id="2-安装Redis数据库并重启"><a href="#2-安装Redis数据库并重启" class="headerlink" title="2 安装Redis数据库并重启"></a>2 安装Redis数据库并重启</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum -y install redis</span><br><span class="line">sudo systemctl start redis</span><br></pre></td></tr></table></figure>
-
+<h2 id="2-安装Redis数据库并重启"><a href="#2-安装Redis数据库并重启" class="headerlink" title="2 安装Redis数据库并重启"></a>2 安装Redis数据库并重启</h2><pre><code class="bash">sudo yum -y install redis
+sudo systemctl start redis</code></pre>
 <p>此时就可以通过 <code>redis-cli</code> 进入命令行模式客户端了</p>
 <h2 id="3-配置远程访问"><a href="#3-配置远程访问" class="headerlink" title="3 配置远程访问"></a>3 配置远程访问</h2><p>首先修改配置文件<code>/etc/redis.conf</code>，注意这里需要使用<code>root</code>权限</p>
 <ol>
-<li>修改连接端口<br>修改前：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bind 127.0.0.1</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
+<li><p>修改连接端口<br>修改前：</p>
+<pre><code class="txt">bind 127.0.0.1</code></pre>
 <p>修改后</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># bind 127.0.0.1</span><br><span class="line">bind 0.0.0.0</span><br></pre></td></tr></table></figure>
-
+<pre><code class="txt"># bind 127.0.0.1
+bind 0.0.0.0</code></pre>
 <blockquote>
 <p>注：这里有两种方式，一可以直接注释<code>bind 127.0.0.1</code>, 也可以改成<code>bind 0.0.0.0</code></p>
 </blockquote>
-<ol start="2">
-<li>配置连接密码<br>修改前：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#requirepass foobared</span><br></pre></td></tr></table></figure>
-
+</li>
+<li><p>配置连接密码<br>修改前：</p>
+<pre><code class="txt">#requirepass foobared</code></pre>
+<p>修改后</p>
+<pre><code class="txt">requirepass [你的密码]</code></pre>
 </li>
 </ol>
-<p>修改后</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">requirepass [你的密码]</span><br></pre></td></tr></table></figure>
-
 <p>然后保存，重启redis 服务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl restart redis</span><br></pre></td></tr></table></figure>
+<pre><code class="bash">sudo systemctl restart redis</code></pre>
+<h2 id="4-常见Redis服务命令"><a href="#4-常见Redis服务命令" class="headerlink" title="4 常见Redis服务命令"></a>4 常见Redis服务命令</h2><pre><code class="bash">systemctl start redis.service     # 启动redis服务器
 
-<h2 id="4-常见Redis服务命令"><a href="#4-常见Redis服务命令" class="headerlink" title="4 常见Redis服务命令"></a>4 常见Redis服务命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start redis.service 	<span class="comment"># 启动redis服务器</span></span><br><span class="line"></span><br><span class="line">systemctl stop redis.service 	<span class="comment"># 停止redis服务器</span></span><br><span class="line"></span><br><span class="line">systemctl restart redis.service	<span class="comment"># 重新启动redis服务器</span></span><br><span class="line"></span><br><span class="line">systemctl status redis.service 	<span class="comment"># 获取redis服务器的运行状态</span></span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">enable</span> redis.service	<span class="comment"># 开机启动redis服务器</span></span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">disable</span> redis.service	<span class="comment"># 开机禁用redis服务器</span></span><br></pre></td></tr></table></figure>
+systemctl stop redis.service     # 停止redis服务器
 
+systemctl restart redis.service    # 重新启动redis服务器
+
+systemctl status redis.service     # 获取redis服务器的运行状态
+
+systemctl enable redis.service    # 开机启动redis服务器
+
+systemctl disable redis.service    # 开机禁用redis服务器</code></pre>
 <h2 id="5-常见问题"><a href="#5-常见问题" class="headerlink" title="5 常见问题"></a>5 常见问题</h2><p><strong>Q1</strong>: 使用其他局域网内机器访问不了？<br><strong>A1</strong>: 一般是防火墙问题，现把<code>6379</code>端口开放，然后重启防火墙即可，操作命令个如下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=6379/tcp</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">firewall-cmd --permanent --add-port=6379/tcp
+firewall-cmd --reload</code></pre>
 <p><strong>Q2</strong>: 局域网内其他机器访问<br><strong>A2</strong>: 使用<code>redis-cli</code> 命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">redis-cli -h [host] -p [port] -a [password]</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">redis-cli -h [host] -p [port] -a [password]</code></pre>
 
             </div>
             <hr/>
