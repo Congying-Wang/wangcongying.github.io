@@ -4,9 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Dart 中 final 和 const 区别, 王聪颖的博客">
-    <meta name="description" content="用final修饰的变量，必须在定义时将其初始化，其值在初始化后不可改变；const用来定义常量。
-它们的区别在于，const比final更加严格。final只是要求变量在初始化后值不变，但通过final，我们无法在编译时（运行之前）知道这个">
+    <meta name="keywords" content="CentOS安装Redis, 王聪颖的博客">
+    <meta name="description" content="1 更新yum源sudo yum install epel-release
+sudo yum update
+
+注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险
+
+2 安装Redis数据库并重启sudo yum -">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Dart 中 final 和 const 区别 | 王聪颖的博客</title>
+    <title>CentOS安装Redis | 王聪颖的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -286,13 +290,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Dart 中 final 和 const 区别
+                        CentOS安装Redis
                     </div>
                 </div>
             </div>
@@ -404,12 +408,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Dart/">
-                                <span class="chip bg-color">Dart</span>
+                            <a href="/tags/Redis-安装/">
+                                <span class="chip bg-color">Redis 安装</span>
                             </a>
                         
-                            <a href="/tags/Flutter/">
-                                <span class="chip bg-color">Flutter</span>
+                            <a href="/tags/Redis-开放连接/">
+                                <span class="chip bg-color">Redis 开放连接</span>
                             </a>
                         
                     </div>
@@ -420,8 +424,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Flutter-开发/" class="post-category">
-                                Flutter 开发
+                            <a href="/categories/SRE运维/" class="post-category">
+                                SRE运维
                             </a>
                         
                     </div>
@@ -432,7 +436,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-20
+                    2019-09-23
                 </div>
 
                 
@@ -448,80 +452,49 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>用<code>final</code>修饰的变量，必须在定义时将其初始化，其值在初始化后不可改变；<br><code>const</code>用来定义常量。</p>
-<p>它们的区别在于，<code>const</code>比<code>final</code>更加严格。<code>final</code>只是要求变量在初始化后值不变，但通过<code>final</code>，我们无法在编译时（运行之前）知道这个变量的值；而<code>const</code>所修饰的是编译时常量，我们在编译时就已经知道了它的值，显然，它的值也是不可改变的。</p>
-<p>下面先用简单的例子说明一下区别，再通过代码理解”<code>const</code>所修饰的是编译时常量”这句话：</p>
-<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p><strong>final</strong>：只能被设一次值，在声明处赋值，值和普通变量的设值一样，可以是对象、字符串、数字等，用于修饰值的表达式不变的变量；</p>
-<pre><code class="java">final name = &#39;Bob&#39;;   
-// name = &#39;job&#39;; //运行出错，因为final修饰的变量不能调用其setter方法，即：不能设值</code></pre>
-<p><strong>const</strong>：只能被设一次值，在声明处赋值，且值必须为编译时常量；用于修饰常量。</p>
-<pre><code class="java">const bar = 1000000;       // 定义常量值
-// bar =13;   // 出现异常，const修饰的变量不能调用setter方法，即：不能设值，只能在声明处设值
-const atm = 1.01325 * bar; // 值的表达式中的变量必须是编译时常量（bar）;
-
-var c = 12;        
-
-//  atm = 1 * c;  //出错，因为c不是一个编译时常量，即：非const修饰的变量（只有const修饰的变量才是编译时常量）</code></pre>
-<p><strong>const还可以用来声明常量值:</strong></p>
-<pre><code class="java">// [] 创建一个空列表.
-// const [] 创建一个空的不可变列表 (EIA).
-var foo = const [];   // foo 目前是一个 EIA.
-final bar = const []; // bar 永远是一个 EIA.
-const baz = const []; // baz 是一个编译时常量 EIA.
-
-//你可以改变 非final, 非const 修饰的变量,
-// 即使它的值为编译时常量值.
-foo = [];
-
-// 不能改变final和const修饰的变量的值.
-// bar = []; // 未处理的异常.
-// baz = []; // 未处理的异常.</code></pre>
-<h2 id="高级使用"><a href="#高级使用" class="headerlink" title="高级使用"></a>高级使用</h2><p>当为final修饰的值赋一个包含成员变量或方法的对象时：</p>
+                <h2 id="1-更新yum源"><a href="#1-更新yum源" class="headerlink" title="1 更新yum源"></a>1 更新yum源</h2><pre><code class="bash">sudo yum install epel-release
+sudo yum update</code></pre>
+<blockquote>
+<p>注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险</p>
+</blockquote>
+<h2 id="2-安装Redis数据库并重启"><a href="#2-安装Redis数据库并重启" class="headerlink" title="2 安装Redis数据库并重启"></a>2 安装Redis数据库并重启</h2><pre><code class="bash">sudo yum -y install redis
+sudo systemctl start redis</code></pre>
+<p>此时就可以通过 <code>redis-cli</code> 进入命令行模式客户端了</p>
+<h2 id="3-配置远程访问"><a href="#3-配置远程访问" class="headerlink" title="3 配置远程访问"></a>3 配置远程访问</h2><p>首先修改配置文件<code>/etc/redis.conf</code>，注意这里需要使用<code>root</code>权限</p>
 <ol>
-<li>对象成员值能被修改，对于能够添加成员的类（如List、Map）则可以添加或删除成员</li>
-<li>变量本身实例不能被修改</li>
+<li><p>修改连接端口<br>修改前：</p>
+<pre><code class="txt">bind 127.0.0.1</code></pre>
+<p>修改后</p>
+<pre><code class="txt"># bind 127.0.0.1
+bind 0.0.0.0</code></pre>
+<blockquote>
+<p>注：这里有两种方式，一可以直接注释<code>bind 127.0.0.1</code>, 也可以改成<code>bind 0.0.0.0</code></p>
+</blockquote>
+</li>
+<li><p>配置连接密码<br>修改前：</p>
+<pre><code class="txt">#requirepass foobared</code></pre>
+<p>修改后</p>
+<pre><code class="txt">requirepass [你的密码]</code></pre>
+</li>
 </ol>
-<pre><code class="java">class Point{
-  var x,y;
-  Point(this.x,this.y){
+<p>然后保存，重启redis 服务</p>
+<pre><code class="bash">sudo systemctl restart redis</code></pre>
+<h2 id="4-常见Redis服务命令"><a href="#4-常见Redis服务命令" class="headerlink" title="4 常见Redis服务命令"></a>4 常见Redis服务命令</h2><pre><code class="bash">systemctl start redis.service     # 启动redis服务器
 
-  }
-}
+systemctl stop redis.service     # 停止redis服务器
 
-main() {
-   final  p = new Point(1,2); 
-   // p = new Point(3,4);   //出错，final修饰的变量不能调用setter方法；
-      p.x=2;    // 正常执行，修改的是变量的属性值，而不是变量引用的对象；
-      print(&#39;&#39;p.x);  // 打印 2
+systemctl restart redis.service    # 重新启动redis服务器
 
+systemctl status redis.service     # 获取redis服务器的运行状态
 
-  var foo = const [];  
-    foo = [1,2,1];  
-    /*此部分代码的重点在于var foo , 一个正常变量可以随意赋值或更改，重点不在const [],
-      所以不要纠结const []是不可变的。[]和[1,2,1]是不同的对象*/
-    print(foo);   
+systemctl enable redis.service    # 开机启动redis服务器
 
-
- final baz =  [1];
- // baz=[1,2,3,4]; //出错 此调用修改了变量的实例 即：[1] 和[1,2,3,4]是不同的对象
-    baz[0]=2;     //正常执行，只修改了变量引用对象的成员变量的值
-    print(baz); 
-
- final bad =  [];   //List&lt;int&gt;
-    bad.add(1);    //正常执行，向变量引用对象添加成员
-    bad.add(2); 
-    print(bad)
-
- final Map&lt;String, String&gt; cache = &lt;String, String&gt;{};  //Map
-   cache[&#39;name1&#39;]=&#39;1213&#39;;
-   cache[&#39;name2&#39;]=&#39;1313&#39;;
-   print(cache);
-}</code></pre>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ol>
-<li><a href="http://www.voidcn.com/article/p-eqqxibed-bqr.html" target="_blank" rel="noopener">http://www.voidcn.com/article/p-eqqxibed-bqr.html</a></li>
-<li><a href="https://my.oschina.net/jthmath/blog/419232" target="_blank" rel="noopener">https://my.oschina.net/jthmath/blog/419232</a></li>
-<li><a href="http://dart.goodev.org/guides/language/language-tour" target="_blank" rel="noopener">http://dart.goodev.org/guides/language/language-tour</a></li>
-</ol>
+systemctl disable redis.service    # 开机禁用redis服务器</code></pre>
+<h2 id="5-常见问题"><a href="#5-常见问题" class="headerlink" title="5 常见问题"></a>5 常见问题</h2><p><strong>Q1</strong>: 使用其他局域网内机器访问不了？<br><strong>A1</strong>: 一般是防火墙问题，现把<code>6379</code>端口开放，然后重启防火墙即可，操作命令个如下</p>
+<pre><code class="bash">firewall-cmd --permanent --add-port=6379/tcp
+firewall-cmd --reload</code></pre>
+<p><strong>Q2</strong>: 局域网内其他机器访问<br><strong>A2</strong>: 使用<code>redis-cli</code> 命令</p>
+<pre><code class="bash">redis-cli -h [host] -p [port] -a [password]</code></pre>
 
             </div>
             <hr/>
@@ -684,9 +657,9 @@ main() {
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Dart 中 final 和 const 区别》
+                    《CentOS安装Redis》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/20/Dart-中-final-和-const-区别/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/23/installRedisOnCentOS/" property="cc:attributionName"
                rel="cc:attributionURL">
                 王聪颖
             </a> 采用
@@ -727,7 +700,7 @@ main() {
         repo: 'wangcongying.github.io',
         owner: 'wangcongying',
         admin: "wangcongying",
-        id: '2019-09-20T18-42-23',
+        id: '2019-09-23T17-43-25',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -748,11 +721,12 @@ main() {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/09/23/CentOS安装Redis/">
+                <a href="/2019/09/23/installRedisOnCentOS/">
                     <div class="card-image">
                         
                         
@@ -773,9 +747,9 @@ sudo yum update
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -788,6 +762,7 @@ sudo yum update
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -807,10 +782,10 @@ sudo yum update
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/20/Dart-中-final-和-const-区别/">
+                <a href="/2019/09/20/distinguishBetweenFinalAndConstOnDart/">
                     <div class="card-image">
                         
                         
@@ -842,7 +817,6 @@ sudo yum update
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
