@@ -34,7 +34,7 @@ sudo yum update
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
     
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -452,49 +452,49 @@ sudo yum update
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-更新yum源"><a href="#1-更新yum源" class="headerlink" title="1 更新yum源"></a>1 更新yum源</h2><pre><code class="bash">sudo yum install epel-release
-sudo yum update</code></pre>
+                <h2 id="1-更新yum源"><a href="#1-更新yum源" class="headerlink" title="1 更新yum源"></a>1 更新yum源</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> epel-release
+<span class="token function">sudo</span> yum update</code></pre>
 <blockquote>
 <p>注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险</p>
 </blockquote>
-<h2 id="2-安装Redis数据库并重启"><a href="#2-安装Redis数据库并重启" class="headerlink" title="2 安装Redis数据库并重启"></a>2 安装Redis数据库并重启</h2><pre><code class="bash">sudo yum -y install redis
-sudo systemctl start redis</code></pre>
+<h2 id="2-安装Redis数据库并重启"><a href="#2-安装Redis数据库并重启" class="headerlink" title="2 安装Redis数据库并重启"></a>2 安装Redis数据库并重启</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> yum -y <span class="token function">install</span> redis
+<span class="token function">sudo</span> systemctl start redis</code></pre>
 <p>此时就可以通过 <code>redis-cli</code> 进入命令行模式客户端了</p>
 <h2 id="3-配置远程访问"><a href="#3-配置远程访问" class="headerlink" title="3 配置远程访问"></a>3 配置远程访问</h2><p>首先修改配置文件<code>/etc/redis.conf</code>，注意这里需要使用<code>root</code>权限</p>
 <ol>
 <li><p>修改连接端口<br>修改前：</p>
-<pre><code class="txt">bind 127.0.0.1</code></pre>
+<pre class=" language-txt"><code class="language-txt">bind 127.0.0.1</code></pre>
 <p>修改后</p>
-<pre><code class="txt"># bind 127.0.0.1
+<pre class=" language-txt"><code class="language-txt"># bind 127.0.0.1
 bind 0.0.0.0</code></pre>
 <blockquote>
 <p>注：这里有两种方式，一可以直接注释<code>bind 127.0.0.1</code>, 也可以改成<code>bind 0.0.0.0</code></p>
 </blockquote>
 </li>
 <li><p>配置连接密码<br>修改前：</p>
-<pre><code class="txt">#requirepass foobared</code></pre>
+<pre class=" language-txt"><code class="language-txt">#requirepass foobared</code></pre>
 <p>修改后</p>
-<pre><code class="txt">requirepass [你的密码]</code></pre>
+<pre class=" language-txt"><code class="language-txt">requirepass [你的密码]</code></pre>
 </li>
 </ol>
 <p>然后保存，重启redis 服务</p>
-<pre><code class="bash">sudo systemctl restart redis</code></pre>
-<h2 id="4-常见Redis服务命令"><a href="#4-常见Redis服务命令" class="headerlink" title="4 常见Redis服务命令"></a>4 常见Redis服务命令</h2><pre><code class="bash">systemctl start redis.service     # 启动redis服务器
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> systemctl restart redis</code></pre>
+<h2 id="4-常见Redis服务命令"><a href="#4-常见Redis服务命令" class="headerlink" title="4 常见Redis服务命令"></a>4 常见Redis服务命令</h2><pre class=" language-bash"><code class="language-bash">systemctl start redis.service     <span class="token comment" spellcheck="true"># 启动redis服务器</span>
 
-systemctl stop redis.service     # 停止redis服务器
+systemctl stop redis.service     <span class="token comment" spellcheck="true"># 停止redis服务器</span>
 
-systemctl restart redis.service    # 重新启动redis服务器
+systemctl restart redis.service    <span class="token comment" spellcheck="true"># 重新启动redis服务器</span>
 
-systemctl status redis.service     # 获取redis服务器的运行状态
+systemctl status redis.service     <span class="token comment" spellcheck="true"># 获取redis服务器的运行状态</span>
 
-systemctl enable redis.service    # 开机启动redis服务器
+systemctl <span class="token function">enable</span> redis.service    <span class="token comment" spellcheck="true"># 开机启动redis服务器</span>
 
-systemctl disable redis.service    # 开机禁用redis服务器</code></pre>
+systemctl disable redis.service    <span class="token comment" spellcheck="true"># 开机禁用redis服务器</span></code></pre>
 <h2 id="5-常见问题"><a href="#5-常见问题" class="headerlink" title="5 常见问题"></a>5 常见问题</h2><p><strong>Q1</strong>: 使用其他局域网内机器访问不了？<br><strong>A1</strong>: 一般是防火墙问题，现把<code>6379</code>端口开放，然后重启防火墙即可，操作命令个如下</p>
-<pre><code class="bash">firewall-cmd --permanent --add-port=6379/tcp
+<pre class=" language-bash"><code class="language-bash">firewall-cmd --permanent --add-port<span class="token operator">=</span>6379/tcp
 firewall-cmd --reload</code></pre>
 <p><strong>Q2</strong>: 局域网内其他机器访问<br><strong>A2</strong>: 使用<code>redis-cli</code> 命令</p>
-<pre><code class="bash">redis-cli -h [host] -p [port] -a [password]</code></pre>
+<pre class=" language-bash"><code class="language-bash">redis-cli -h <span class="token punctuation">[</span>host<span class="token punctuation">]</span> -p <span class="token punctuation">[</span>port<span class="token punctuation">]</span> -a <span class="token punctuation">[</span>password<span class="token punctuation">]</span></code></pre>
 
             </div>
             <hr/>
