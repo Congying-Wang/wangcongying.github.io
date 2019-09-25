@@ -4,13 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="CentOS安装Redis, 王聪颖的博客">
-    <meta name="description" content="1 更新yum源sudo yum install epel-release
-sudo yum update
-
-注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险
-
-2 安装Redis数据库并重启sudo yum -">
+    <meta name="keywords" content="CentOS安装Mpich, 王聪颖的博客">
+    <meta name="description" content="0 官方支持在网上找了一堆安装方法，但都以失败告终，所以严格按照官方文档进行安装最后成功部署了，以本文做个笔记，以防日后踩坑
+官方文档：https://www.mpich.org/static/downloads/3.2.1/mpich-3">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +14,7 @@ sudo yum update
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>CentOS安装Redis | 王聪颖的博客</title>
+    <title>CentOS安装Mpich | 王聪颖的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -296,7 +292,7 @@ sudo yum update
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        CentOS安装Redis
+                        CentOS安装Mpich
                     </div>
                 </div>
             </div>
@@ -408,12 +404,8 @@ sudo yum update
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Redis-安装/">
-                                <span class="chip bg-color">Redis 安装</span>
-                            </a>
-                        
-                            <a href="/tags/Redis-开放连接/">
-                                <span class="chip bg-color">Redis 开放连接</span>
+                            <a href="/tags/Mpich-安装/">
+                                <span class="chip bg-color">Mpich 安装</span>
                             </a>
                         
                     </div>
@@ -424,8 +416,8 @@ sudo yum update
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/SRE运维/" class="post-category">
-                                SRE运维
+                            <a href="/categories/并行计算/" class="post-category">
+                                并行计算
                             </a>
                         
                     </div>
@@ -436,7 +428,7 @@ sudo yum update
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-23
+                    2019-09-25
                 </div>
 
                 
@@ -452,49 +444,56 @@ sudo yum update
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-更新yum源"><a href="#1-更新yum源" class="headerlink" title="1 更新yum源"></a>1 更新yum源</h2><pre><code class="bash">sudo yum install epel-release
-sudo yum update</code></pre>
+                <h2 id="0-官方支持"><a href="#0-官方支持" class="headerlink" title="0 官方支持"></a>0 官方支持</h2><p>在网上找了一堆安装方法，但都以失败告终，所以严格<strong>按照官方文档</strong>进行安装最后成功部署了，以本文做个笔记，以防日后踩坑</p>
+<p>官方文档：<a href="https://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1-installguide.pdf" target="_blank" rel="noopener">https://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1-installguide.pdf</a><br>以及入门安装文档: <a href="https://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1-README.txt" target="_blank" rel="noopener">https://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1-README.txt</a></p>
+<p>安装参数：</p>
 <blockquote>
-<p>注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险</p>
+<p>OS: CentOS 7<br>MPI: MPICH 3.2</p>
 </blockquote>
-<h2 id="2-安装Redis数据库并重启"><a href="#2-安装Redis数据库并重启" class="headerlink" title="2 安装Redis数据库并重启"></a>2 安装Redis数据库并重启</h2><pre><code class="bash">sudo yum -y install redis
-sudo systemctl start redis</code></pre>
-<p>此时就可以通过 <code>redis-cli</code> 进入命令行模式客户端了</p>
-<h2 id="3-配置远程访问"><a href="#3-配置远程访问" class="headerlink" title="3 配置远程访问"></a>3 配置远程访问</h2><p>首先修改配置文件<code>/etc/redis.conf</code>，注意这里需要使用<code>root</code>权限</p>
-<ol>
-<li><p>修改连接端口<br>修改前：</p>
-<pre><code class="txt">bind 127.0.0.1</code></pre>
-<p>修改后</p>
-<pre><code class="txt"># bind 127.0.0.1
-bind 0.0.0.0</code></pre>
-<blockquote>
-<p>注：这里有两种方式，一可以直接注释<code>bind 127.0.0.1</code>, 也可以改成<code>bind 0.0.0.0</code></p>
-</blockquote>
+<h2 id="1-安装过程"><a href="#1-安装过程" class="headerlink" title="1 安装过程"></a>1 安装过程</h2><h3 id="1-1-编译器升级"><a href="#1-1-编译器升级" class="headerlink" title="1.1 编译器升级"></a>1.1 编译器升级</h3><p>首先需要安装<code>编译器</code>，推荐使用<code>yum</code>进行安装</p>
+<pre><code class="bash">sudo yum install make                           
+sudo yum install gcc                                 
+sudo yum isntall gcc-c++</code></pre>
+<h3 id="1-2-下载安装包并解压"><a href="#1-2-下载安装包并解压" class="headerlink" title="1.2 下载安装包并解压"></a>1.2 下载安装包并解压</h3><ol>
+<li>从<a href="https://www.mpich.org/downloads/" target="_blank" rel="noopener">官网</a>上找到要下载的安装包，我这边用的是<code>mpich-3.2.1 (stable release)</code></li>
+</ol>
+<pre><code class="bash">wget http://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1.tar.gz</code></pre>
+<ol start="2">
+<li><p>解压</p>
+<pre><code class="bash">tar xzf mpich-3.2.1.tar.gz</code></pre>
 </li>
-<li><p>配置连接密码<br>修改前：</p>
-<pre><code class="txt">#requirepass foobared</code></pre>
-<p>修改后</p>
-<pre><code class="txt">requirepass [你的密码]</code></pre>
+<li><p>创建安装目录<br>官方建议在<code>/home/[USERNAME 用户名]/</code>（即 <code>~/</code>目录）下创建 <code>mpich-install</code>目录，如下</p>
+<pre><code class="bash">mkdir ~/mpich-install</code></pre>
 </li>
 </ol>
-<p>然后保存，重启redis 服务</p>
-<pre><code class="bash">sudo systemctl restart redis</code></pre>
-<h2 id="4-常见Redis服务命令"><a href="#4-常见Redis服务命令" class="headerlink" title="4 常见Redis服务命令"></a>4 常见Redis服务命令</h2><pre><code class="bash">systemctl start redis.service     # 启动redis服务器
-
-systemctl stop redis.service     # 停止redis服务器
-
-systemctl restart redis.service    # 重新启动redis服务器
-
-systemctl status redis.service     # 获取redis服务器的运行状态
-
-systemctl enable redis.service    # 开机启动redis服务器
-
-systemctl disable redis.service    # 开机禁用redis服务器</code></pre>
-<h2 id="5-常见问题"><a href="#5-常见问题" class="headerlink" title="5 常见问题"></a>5 常见问题</h2><p><strong>Q1</strong>: 使用其他局域网内机器访问不了？<br><strong>A1</strong>: 一般是防火墙问题，现把<code>6379</code>端口开放，然后重启防火墙即可，操作命令个如下</p>
-<pre><code class="bash">firewall-cmd --permanent --add-port=6379/tcp
-firewall-cmd --reload</code></pre>
-<p><strong>Q2</strong>: 局域网内其他机器访问<br><strong>A2</strong>: 使用<code>redis-cli</code> 命令</p>
-<pre><code class="bash">redis-cli -h [host] -p [port] -a [password]</code></pre>
+<h3 id="1-3-配置安装"><a href="#1-3-配置安装" class="headerlink" title="1.3 配置安装"></a>1.3 配置安装</h3><ol>
+<li><p>进入下载mpich解压的目录, <strong>注意：以下操作均在下载目录下进行，并非上一步创建的安装路径</strong></p>
+</li>
+<li><p>运行<code>configure</code> 命令进行安装</p>
+<pre><code class="bash">./configure --prefix=~/mpich-install 2&gt;&amp;1 | tee c.txt</code></pre>
+<p><a href="https://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1-README.txt" target="_blank" rel="noopener">官方文档</a> 中给出了出错的解决方法，报错建议当第一手资料参考</p>
+</li>
+<li><p>make 生成</p>
+<pre><code class="bash">make 2&gt;&amp;1 | tee m.txt</code></pre>
+<p>这时间应该比较长</p>
+</li>
+<li><p>install 安装</p>
+<pre><code class="bash">make install 2&gt;&amp;1 | tee mi.txt</code></pre>
+</li>
+</ol>
+<h3 id="1-4-环境变量配置"><a href="#1-4-环境变量配置" class="headerlink" title="1.4 环境变量配置"></a>1.4 环境变量配置</h3><p>到这一步基本上已经安装好了，但是会发现<code>mpicc</code>、<code>mpiexec</code>等指令依旧无法使用，那是因为没有配置环境变量</p>
+<ol>
+<li><p>打开<code>~/.bashrc</code>环境变量文件，加入下面变量</p>
+<pre><code class="bash">export PATH=/home/[USERNAME]/mpich-install/bin:$PATH</code></pre>
+<p>注意：这里的路径是<strong>安装路径</strong></p>
+</li>
+<li><p>然后使用下面命令让环境变量生效</p>
+<pre><code>source ~/.bashrc</code></pre></li>
+</ol>
+<h2 id="2-测试"><a href="#2-测试" class="headerlink" title="2 测试"></a>2 测试</h2><p>现在<code>mpich</code>已经部署好了，可以直接用了，官方给出了测试程序，在解压缩下的<code>examples</code> 目录</p>
+<pre><code class="bash">cd ./examples
+mpiexec -n 8 ./cpi</code></pre>
+<p>输出结果：<br><img src="/blog_img/installMpichOnCentOS/mpichInstallRes.png" alt="mpichInstallRes"></p>
 
             </div>
             <hr/>
@@ -657,9 +656,9 @@ firewall-cmd --reload</code></pre>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《CentOS安装Redis》
+                    《CentOS安装Mpich》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/23/installRedisOnCentOS/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/25/installMpichOnCentOS/" property="cc:attributionName"
                rel="cc:attributionURL">
                 王聪颖
             </a> 采用
@@ -700,7 +699,7 @@ firewall-cmd --reload</code></pre>
         repo: 'wangcongying.github.io',
         owner: 'wangcongying',
         admin: "wangcongying",
-        id: '2019-09-23T17-43-25',
+        id: '2019-09-25T14-25-13',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -721,9 +720,10 @@ firewall-cmd --reload</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/09/25/installMpichOnCentOS/">
                     <div class="card-image">
@@ -742,9 +742,9 @@ firewall-cmd --reload</code></pre>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -757,6 +757,7 @@ firewall-cmd --reload</code></pre>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -775,32 +776,36 @@ firewall-cmd --reload</code></pre>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/20/distinguishBetweenFinalAndConstOnDart/">
+                <a href="/2019/09/23/installRedisOnCentOS/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Dart 中 final 和 const 区别">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="CentOS安装Redis">
                         
-                        <span class="card-title">Dart 中 final 和 const 区别</span>
+                        <span class="card-title">CentOS安装Redis</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            用final修饰的变量，必须在定义时将其初始化，其值在初始化后不可改变；const用来定义常量。
-它们的区别在于，const比final更加严格。final只是要求变量在初始化后值不变，但通过final，我们无法在编译时（运行之前）知道这个
+                            1 更新yum源sudo yum install epel-release
+sudo yum update
+
+注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险
+
+2 安装Redis数据库并重启sudo yum -
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-20
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-23
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Flutter-开发/" class="post-category">
-                                    Flutter 开发
+                            <a href="/categories/SRE运维/" class="post-category">
+                                    SRE运维
                                 </a>
                             
                             
@@ -810,12 +815,12 @@ firewall-cmd --reload</code></pre>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Dart/">
-                        <span class="chip bg-color">Dart</span>
+                    <a href="/tags/Redis-安装/">
+                        <span class="chip bg-color">Redis 安装</span>
                     </a>
                     
-                    <a href="/tags/Flutter/">
-                        <span class="chip bg-color">Flutter</span>
+                    <a href="/tags/Redis-开放连接/">
+                        <span class="chip bg-color">Redis 开放连接</span>
                     </a>
                     
                 </div>
