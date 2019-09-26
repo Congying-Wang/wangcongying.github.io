@@ -4,9 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Dart 中 final 和 const 区别, 王聪颖的博客">
-    <meta name="description" content="用final修饰的变量，必须在定义时将其初始化，其值在初始化后不可改变；const用来定义常量。
-它们的区别在于，const比final更加严格。final只是要求变量在初始化后值不变，但通过final，我们无法在编译时（运行之前）知道这个">
+    <meta name="keywords" content="梯度下降总结, 王聪颖的博客">
+    <meta name="description" content="梯度下降总结 | 王聪颖的博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Dart 中 final 和 const 区别 | 王聪颖的博客</title>
+    <title>梯度下降总结 | 王聪颖的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -286,13 +285,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Dart 中 final 和 const 区别
+                        梯度下降总结
                     </div>
                 </div>
             </div>
@@ -404,8 +403,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Dart/">
-                                <span class="chip bg-color">Dart</span>
+                            <a href="/tags/最优化算法/">
+                                <span class="chip bg-color">最优化算法</span>
                             </a>
                         
                     </div>
@@ -416,8 +415,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Flutter-开发/" class="post-category">
-                                Flutter 开发
+                            <a href="/categories/机器学习/" class="post-category">
+                                机器学习
                             </a>
                         
                     </div>
@@ -428,7 +427,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-20
+                    2019-09-26
                 </div>
 
                 
@@ -444,81 +443,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>用<code>final</code>修饰的变量，必须在定义时将其初始化，其值在初始化后不可改变；<br><code>const</code>用来定义常量。</p>
-<p>它们的区别在于，<code>const</code>比<code>final</code>更加严格。<code>final</code>只是要求变量在初始化后值不变，但通过<code>final</code>，我们无法在编译时（运行之前）知道这个变量的值；而<code>const</code>所修饰的是编译时常量，我们在编译时就已经知道了它的值，显然，它的值也是不可改变的。</p>
-<p>下面先用简单的例子说明一下区别，再通过代码理解”<code>const</code>所修饰的是编译时常量”这句话：</p>
-<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p><strong>final</strong>：只能被设一次值，在声明处赋值，值和普通变量的设值一样，可以是对象、字符串、数字等，用于修饰值的表达式不变的变量；</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">final</span> name <span class="token operator">=</span> <span class="token string">'Bob'</span><span class="token punctuation">;</span>   
-<span class="token comment" spellcheck="true">// name = 'job'; //运行出错，因为final修饰的变量不能调用其setter方法，即：不能设值</span></code></pre>
-<p><strong>const</strong>：只能被设一次值，在声明处赋值，且值必须为编译时常量；用于修饰常量。</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">const</span> bar <span class="token operator">=</span> <span class="token number">1000000</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// 定义常量值</span>
-<span class="token comment" spellcheck="true">// bar =13;   // 出现异常，const修饰的变量不能调用setter方法，即：不能设值，只能在声明处设值</span>
-<span class="token keyword">const</span> atm <span class="token operator">=</span> <span class="token number">1.01325</span> <span class="token operator">*</span> bar<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 值的表达式中的变量必须是编译时常量（bar）;</span>
-
-var c <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>        
-
-<span class="token comment" spellcheck="true">//  atm = 1 * c;  //出错，因为c不是一个编译时常量，即：非const修饰的变量（只有const修饰的变量才是编译时常量）</span></code></pre>
-<p><strong>const还可以用来声明常量值:</strong></p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// [] 创建一个空列表.</span>
-<span class="token comment" spellcheck="true">// const [] 创建一个空的不可变列表 (EIA).</span>
-var foo <span class="token operator">=</span> <span class="token keyword">const</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// foo 目前是一个 EIA.</span>
-<span class="token keyword">final</span> bar <span class="token operator">=</span> <span class="token keyword">const</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// bar 永远是一个 EIA.</span>
-<span class="token keyword">const</span> baz <span class="token operator">=</span> <span class="token keyword">const</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// baz 是一个编译时常量 EIA.</span>
-
-<span class="token comment" spellcheck="true">//你可以改变 非final, 非const 修饰的变量,</span>
-<span class="token comment" spellcheck="true">// 即使它的值为编译时常量值.</span>
-foo <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// 不能改变final和const修饰的变量的值.</span>
-<span class="token comment" spellcheck="true">// bar = []; // 未处理的异常.</span>
-<span class="token comment" spellcheck="true">// baz = []; // 未处理的异常.</span></code></pre>
-<h2 id="高级使用"><a href="#高级使用" class="headerlink" title="高级使用"></a>高级使用</h2><p>当为final修饰的值赋一个包含成员变量或方法的对象时：</p>
-<ol>
-<li>对象成员值能被修改，对于能够添加成员的类（如List、Map）则可以添加或删除成员</li>
-<li>变量本身实例不能被修改</li>
-</ol>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Point</span><span class="token punctuation">{</span>
-  var x<span class="token punctuation">,</span>y<span class="token punctuation">;</span>
-  <span class="token function">Point</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>x<span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">{</span>
-
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-   <span class="token keyword">final</span>  p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-   <span class="token comment" spellcheck="true">// p = new Point(3,4);   //出错，final修饰的变量不能调用setter方法；</span>
-      p<span class="token punctuation">.</span>x<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 正常执行，修改的是变量的属性值，而不是变量引用的对象；</span>
-      <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">''</span>p<span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 打印 2</span>
-
-
-  var foo <span class="token operator">=</span> <span class="token keyword">const</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
-    foo <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  
-    <span class="token comment" spellcheck="true">/*此部分代码的重点在于var foo , 一个正常变量可以随意赋值或更改，重点不在const [],
-      所以不要纠结const []是不可变的。[]和[1,2,1]是不同的对象*/</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>   
-
-
- <span class="token keyword">final</span> baz <span class="token operator">=</span>  <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
- <span class="token comment" spellcheck="true">// baz=[1,2,3,4]; //出错 此调用修改了变量的实例 即：[1] 和[1,2,3,4]是不同的对象</span>
-    baz<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//正常执行，只修改了变量引用对象的成员变量的值</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>baz<span class="token punctuation">)</span><span class="token punctuation">;</span> 
-
- <span class="token keyword">final</span> bad <span class="token operator">=</span>  <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//List&lt;int></span>
-    bad<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//正常执行，向变量引用对象添加成员</span>
-    bad<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-    <span class="token function">print</span><span class="token punctuation">(</span>bad<span class="token punctuation">)</span>
-
- <span class="token keyword">final</span> Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> cache <span class="token operator">=</span> <span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//Map</span>
-   cache<span class="token punctuation">[</span><span class="token string">'name1'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'1213'</span><span class="token punctuation">;</span>
-   cache<span class="token punctuation">[</span><span class="token string">'name2'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'1313'</span><span class="token punctuation">;</span>
-   <span class="token function">print</span><span class="token punctuation">(</span>cache<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ol>
-<li><a href="http://www.voidcn.com/article/p-eqqxibed-bqr.html" target="_blank" rel="noopener">http://www.voidcn.com/article/p-eqqxibed-bqr.html</a></li>
-<li><a href="https://my.oschina.net/jthmath/blog/419232" target="_blank" rel="noopener">https://my.oschina.net/jthmath/blog/419232</a></li>
-<li><a href="http://dart.goodev.org/guides/language/language-tour" target="_blank" rel="noopener">http://dart.goodev.org/guides/language/language-tour</a></li>
-</ol>
-
+                
             </div>
             <hr/>
 
@@ -680,9 +605,9 @@ foo <span class="token operator">=</span> <span class="token punctuation">[</spa
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Dart 中 final 和 const 区别》
+                    《梯度下降总结》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/20/distinguishBetweenFinalAndConstOnDart/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/26/summaryOfGradientDescent/" property="cc:attributionName"
                rel="cc:attributionURL">
                 王聪颖
             </a> 采用
@@ -723,7 +648,7 @@ foo <span class="token operator">=</span> <span class="token punctuation">[</spa
         repo: 'wangcongying.github.io',
         owner: 'Congying-Wang',
         admin: "Congying-Wang",
-        id: '2019-09-20T18-42-23',
+        id: '2019-09-26T18-10-58',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -744,51 +669,48 @@ foo <span class="token operator">=</span> <span class="token punctuation">[</spa
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/09/23/installRedisOnCentOS/">
+                <a href="/2019/09/26/summaryOfGradientDescent/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="CentOS安装Redis">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="梯度下降总结">
                         
-                        <span class="card-title">CentOS安装Redis</span>
+                        <span class="card-title">梯度下降总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1 更新yum源sudo yum install epel-release
-sudo yum update
-
-注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险
-
-2 安装Redis数据库并重启sudo yum -
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/SRE运维/" class="post-category">
-                                    SRE运维
+                            <a href="/categories/机器学习/" class="post-category">
+                                    机器学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/最优化算法/">
+                        <span class="chip bg-color">最优化算法</span>
                     </a>
                     
                 </div>
@@ -799,47 +721,51 @@ sudo yum update
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/20/distinguishBetweenFinalAndConstOnDart/">
+                <a href="/2019/09/25/hexoMateryProblems/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Dart 中 final 和 const 区别">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Hexo Matery 常见问题及解决">
                         
-                        <span class="card-title">Dart 中 final 和 const 区别</span>
+                        <span class="card-title">Hexo Matery 常见问题及解决</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            用final修饰的变量，必须在定义时将其初始化，其值在初始化后不可改变；const用来定义常量。
-它们的区别在于，const比final更加严格。final只是要求变量在初始化后值不变，但通过final，我们无法在编译时（运行之前）知道这个
+                            0 前言本文章非 Hexo + Matery Theme 教程，详细教程见blinkfox hexo-theme-matery，主要记录一些使用中的问题，希望能帮到进来的同学，避免踩坑。
+1 常见问题1.1 代码高亮
+在配置了代码高亮后，代
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-20
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-25
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Flutter-开发/" class="post-category">
-                                    Flutter 开发
+                            <a href="/categories/其他/" class="post-category">
+                                    其他
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Dart/">
-                        <span class="chip bg-color">Dart</span>
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/博客/">
+                        <span class="chip bg-color">博客</span>
                     </a>
                     
                 </div>
