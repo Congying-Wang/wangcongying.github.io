@@ -4,9 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="CentOS安装Mpich, 王聪颖的博客">
-    <meta name="description" content="0 官方支持在网上找了一堆安装方法，但都以失败告终，所以严格按照官方文档进行安装最后成功部署了，以本文做个笔记，以防日后踩坑
-官方文档：https://www.mpich.org/static/downloads/3.2.1/mpich-3">
+    <meta name="keywords" content="Hexo Matery 常见问题及解决, 王聪颖的博客">
+    <meta name="description" content="0 前言本文章非 Hexo + Matery Theme 教程，详细教程见blinkfox hexo-theme-matery，主要记录一些使用中的问题，希望能帮到进来的同学，避免踩坑。
+1 常见问题1.1 代码高亮
+在配置了代码高亮后，代">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>CentOS安装Mpich | 王聪颖的博客</title>
+    <title>Hexo Matery 常见问题及解决 | 王聪颖的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -286,13 +287,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        CentOS安装Mpich
+                        Hexo Matery 常见问题及解决
                     </div>
                 </div>
             </div>
@@ -404,8 +405,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Mpich-安装/">
-                                <span class="chip bg-color">Mpich 安装</span>
+                            <a href="/tags/Hexo/">
+                                <span class="chip bg-color">Hexo</span>
+                            </a>
+                        
+                            <a href="/tags/博客/">
+                                <span class="chip bg-color">博客</span>
                             </a>
                         
                     </div>
@@ -416,8 +421,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/并行计算/" class="post-category">
-                                并行计算
+                            <a href="/categories/其他/" class="post-category">
+                                其他
                             </a>
                         
                     </div>
@@ -444,82 +449,43 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="0-官方支持"><a href="#0-官方支持" class="headerlink" title="0 官方支持"></a>0 官方支持</h2><p>在网上找了一堆安装方法，但都以失败告终，所以严格<strong>按照官方文档</strong>进行安装最后成功部署了，以本文做个笔记，以防日后踩坑</p>
-<p>官方文档：<a href="https://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1-installguide.pdf" target="_blank" rel="noopener">https://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1-installguide.pdf</a><br>以及入门安装文档: <a href="https://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1-README.txt" target="_blank" rel="noopener">https://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1-README.txt</a></p>
-<p>安装参数：</p>
-<blockquote>
-<p>OS: CentOS 7<br>MPI: MPICH 3.2</p>
-</blockquote>
-<h2 id="1-安装过程"><a href="#1-安装过程" class="headerlink" title="1 安装过程"></a>1 安装过程</h2><h3 id="1-1-编译器升级"><a href="#1-1-编译器升级" class="headerlink" title="1.1 编译器升级"></a>1.1 编译器升级</h3><p>首先需要安装<code>编译器</code>，推荐使用<code>yum</code>进行安装</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> <span class="token function">make</span>                           
-<span class="token function">sudo</span> yum <span class="token function">install</span> gcc                                 
-<span class="token function">sudo</span> yum isntall gcc-c++</code></pre>
-<h3 id="1-2-下载安装包并解压"><a href="#1-2-下载安装包并解压" class="headerlink" title="1.2 下载安装包并解压"></a>1.2 下载安装包并解压</h3><ol>
-<li>从<a href="https://www.mpich.org/downloads/" target="_blank" rel="noopener">官网</a>上找到要下载的安装包，我这边用的是<code>mpich-3.2.1 (stable release)</code></li>
+                <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h2><p>本文章非 <code>Hexo + Matery Theme</code> 教程，详细教程见<a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md" target="_blank" rel="noopener">blinkfox hexo-theme-matery</a>，主要记录一些使用中的问题，希望能帮到进来的同学，避免踩坑。</p>
+<h2 id="1-常见问题"><a href="#1-常见问题" class="headerlink" title="1 常见问题"></a>1 常见问题</h2><h3 id="1-1-代码高亮"><a href="#1-1-代码高亮" class="headerlink" title="1.1 代码高亮"></a>1.1 代码高亮</h3><ol>
+<li>在配置了代码高亮后，代码出现无高亮并且布局混乱?<br>首先使用<code>npm</code>安装<code>hexo-prism-plugin</code></li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">wget</span> http://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1.tar.gz</code></pre>
-<ol start="2">
-<li><p>解压</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">tar</span> xzf mpich-3.2.1.tar.gz</code></pre>
-</li>
-<li><p>创建安装目录<br>官方建议在<code>/home/[USERNAME 用户名]/</code>（即 <code>~/</code>目录）下创建 <code>mpich-install</code>目录，如下</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">mkdir</span> ~/mpich-install</code></pre>
-</li>
-</ol>
-<h3 id="1-3-配置安装"><a href="#1-3-配置安装" class="headerlink" title="1.3 配置安装"></a>1.3 配置安装</h3><ol>
-<li><p>进入下载mpich解压的目录, <strong>注意：以下操作均在下载目录下进行，并非上一步创建的安装路径</strong></p>
-</li>
-<li><p>运行<code>configure</code> 命令进行安装</p>
-<pre class=" language-bash"><code class="language-bash">./configure --prefix<span class="token operator">=</span>~/mpich-install 2<span class="token operator">></span><span class="token operator">&amp;</span>1 <span class="token operator">|</span> <span class="token function">tee</span> c.txt</code></pre>
-<p><a href="https://www.mpich.org/static/downloads/3.2.1/mpich-3.2.1-README.txt" target="_blank" rel="noopener">官方文档</a> 中给出了出错的解决方法，报错建议当第一手资料参考</p>
-</li>
-<li><p>make 生成</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">make</span> 2<span class="token operator">></span><span class="token operator">&amp;</span>1 <span class="token operator">|</span> <span class="token function">tee</span> m.txt</code></pre>
-<p>这时间应该比较长</p>
-</li>
-<li><p>install 安装</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">make</span> <span class="token function">install</span> 2<span class="token operator">></span><span class="token operator">&amp;</span>1 <span class="token operator">|</span> <span class="token function">tee</span> mi.txt</code></pre>
-</li>
-</ol>
-<h3 id="1-4-环境变量配置"><a href="#1-4-环境变量配置" class="headerlink" title="1.4 环境变量配置"></a>1.4 环境变量配置</h3><p>到这一步基本上已经安装好了，但是会发现<code>mpicc</code>、<code>mpiexec</code>等指令依旧无法使用，那是因为没有配置环境变量</p>
-<ol>
-<li><p>打开<code>~/.bashrc</code>环境变量文件，加入下面变量</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">export</span> PATH<span class="token operator">=</span>/home/<span class="token punctuation">[</span>USERNAME<span class="token punctuation">]</span>/mpich-install/bin:<span class="token variable">$PATH</span></code></pre>
-<p>注意：这里的路径是<strong>安装路径</strong></p>
-</li>
-<li><p>然后使用下面命令让环境变量生效</p>
-<pre><code>source ~/.bashrc</code></pre></li>
-</ol>
-<h2 id="2-测试"><a href="#2-测试" class="headerlink" title="2 测试"></a>2 测试</h2><ol>
-<li><p>现在<code>mpich</code>已经部署好了，可以直接用了，官方给出了测试程序，在解压缩下的<code>examples</code> 目录</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> ./examples
-mpiexec -n 8 ./cpi</code></pre>
-<p>输出结果：<br><img src="/blog_img/installMpichOnCentOS/mpichInstallRes.png" alt="试例输出结果"></p>
-</li>
-<li><p>自测程序<br>编辑<code>hello.c</code>文件</p>
-</li>
-</ol>
-<pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;mpi.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;math.h></span></span>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> i -S hexo-prism-plugin</code></pre>
+<p>然后，修改 Hexo 根目录下 <code>_config.yml</code> 文件中 <code>highlight.enable</code> 的值为 <code>false</code>，并新增 <code>prism</code> 插件相关的配置，主要配置如下：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">highlight</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">line_number</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">auto_detect</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">tab_replace</span><span class="token punctuation">:</span>
 
-<span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-  <span class="token keyword">int</span> myid<span class="token punctuation">,</span> numprocs<span class="token punctuation">;</span>
-  <span class="token keyword">int</span> namelen<span class="token punctuation">;</span>
-  <span class="token keyword">char</span> processor_name<span class="token punctuation">[</span>MPI_MAX_PROCESSOR_NAME<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-  <span class="token function">MPI_Init</span> <span class="token punctuation">(</span><span class="token operator">&amp;</span>argc<span class="token punctuation">,</span> <span class="token operator">&amp;</span>argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">MPI_Comm_rank</span> <span class="token punctuation">(</span>MPI_COMM_WORLD<span class="token punctuation">,</span> <span class="token operator">&amp;</span>myid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">MPI_Comm_size</span> <span class="token punctuation">(</span>MPI_COMM_WORLD<span class="token punctuation">,</span> <span class="token operator">&amp;</span>numprocs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">MPI_Get_processor_name</span> <span class="token punctuation">(</span>processor_name<span class="token punctuation">,</span> <span class="token operator">&amp;</span>namelen<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">fprintf</span> <span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"Hello World! Process %d of %d on %s\n"</span><span class="token punctuation">,</span> myid<span class="token punctuation">,</span> numprocs<span class="token punctuation">,</span> processor_name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">MPI_Finalize</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<p>使用以下命令运行</p>
-<pre class=" language-bash"><code class="language-bash">mpicc -o hello hello.c        <span class="token comment" spellcheck="true"># 编译 如果`c++`使用`mpicxx`</span>
-mpirun -np 4 ./hello</code></pre>
+<span class="token key atrule">prism_plugin</span><span class="token punctuation">:</span>
+  <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token string">'preprocess'</span>    <span class="token comment" spellcheck="true"># realtime/preprocess</span>
+  <span class="token key atrule">theme</span><span class="token punctuation">:</span> <span class="token string">'tomorrow'</span>
+  <span class="token key atrule">line_number</span><span class="token punctuation">:</span> <span class="token boolean important">false    </span><span class="token comment" spellcheck="true"># default false</span>
+  custom_css<span class="token punctuation">:</span></code></pre>
+<h3 id="1-2-Gitalk"><a href="#1-2-Gitalk" class="headerlink" title="1.2 Gitalk"></a>1.2 Gitalk</h3><ol>
+<li><code>Gitalk</code> 配置了无效<br>多半是配置的问题，我的问题主要是<code>owen</code>和<code>admin</code>写错了，配置解释如下<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># the Gitalk config，default disabled</span>
+<span class="token comment" spellcheck="true"># Gitalk 评论模块的配置，默认为不激活</span>
+<span class="token key atrule">gitalk</span><span class="token punctuation">:</span>
+<span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+<span class="token key atrule">owner</span><span class="token punctuation">:</span> 
+<span class="token key atrule">repo</span><span class="token punctuation">:</span> 
+<span class="token key atrule">oauth</span><span class="token punctuation">:</span>
+ <span class="token key atrule">clientId</span><span class="token punctuation">:</span> 
+ <span class="token key atrule">clientSecret</span><span class="token punctuation">:</span>
+<span class="token key atrule">admin</span><span class="token punctuation">:</span> </code></pre>
+</li>
+</ol>
+<ul>
+<li><code>enable</code>: <code>gitalk</code> 是否激活</li>
+<li><code>owner</code>: 需要填写你<code>Github</code>的用户名，比如我的<code>https://github.com/Congying-Wang/wangcongying.github.io</code>，这里就填写<code>Congying-Wang</code></li>
+<li><code>repo</code>: 需要填写你这个仓库的名称，比如我的<code>https://github.com/Congying-Wang/wangcongying.github.io</code>，这里就填写 <code>wangcongying.github.io</code></li>
+<li><code>oauth</code>: 这里的<code>clientId</code> 以及 <code>clientSecret</code> 是需要进行创建<code>OAuth APP</code>获取，创建路径: <a href="https://github.com/settings/applications/new，填写格式以及获取路径如下" target="_blank" rel="noopener">https://github.com/settings/applications/new，填写格式以及获取路径如下</a><br><img src="gitalk_id_aply.png" alt="申请填写示范"><br><img src="gitalk_id_pass.png" alt="clientId, clientSecret 获取"></li>
+<li><code>admin</code>: 同样需要填写你<code>Github</code>的用户名</li>
+</ul>
 
             </div>
             <hr/>
@@ -682,9 +648,9 @@ mpirun -np 4 ./hello</code></pre>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《CentOS安装Mpich》
+                    《Hexo Matery 常见问题及解决》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/25/installMpichOnCentOS/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/25/hexoMateryProblems/" property="cc:attributionName"
                rel="cc:attributionURL">
                 王聪颖
             </a> 采用
@@ -725,7 +691,7 @@ mpirun -np 4 ./hello</code></pre>
         repo: 'wangcongying.github.io',
         owner: 'Congying-Wang',
         admin: "Congying-Wang",
-        id: '2019-09-25T14-25-13',
+        id: '2019-09-25T19-17-30',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -746,9 +712,10 @@ mpirun -np 4 ./hello</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/09/25/hexoMateryProblems/">
                     <div class="card-image">
@@ -768,9 +735,9 @@ mpirun -np 4 ./hello</code></pre>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -783,6 +750,7 @@ mpirun -np 4 ./hello</code></pre>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -805,36 +773,32 @@ mpirun -np 4 ./hello</code></pre>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/23/installRedisOnCentOS/">
+                <a href="/2019/09/25/installMpichOnCentOS/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="CentOS安装Redis">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="CentOS安装Mpich">
                         
-                        <span class="card-title">CentOS安装Redis</span>
+                        <span class="card-title">CentOS安装Mpich</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1 更新yum源sudo yum install epel-release
-sudo yum update
-
-注：update 过程中切勿粗暴终止，可能会有造成命令失效从而重装系统的风险
-
-2 安装Redis数据库并重启sudo yum -
+                            0 官方支持在网上找了一堆安装方法，但都以失败告终，所以严格按照官方文档进行安装最后成功部署了，以本文做个笔记，以防日后踩坑
+官方文档：https://www.mpich.org/static/downloads/3.2.1/mpich-3
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-23
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-25
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/SRE运维/" class="post-category">
-                                    SRE运维
+                            <a href="/categories/并行计算/" class="post-category">
+                                    并行计算
                                 </a>
                             
                             
@@ -844,12 +808,8 @@ sudo yum update
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis-安装/">
-                        <span class="chip bg-color">Redis 安装</span>
-                    </a>
-                    
-                    <a href="/tags/Redis-开放连接/">
-                        <span class="chip bg-color">Redis 开放连接</span>
+                    <a href="/tags/Mpich-安装/">
+                        <span class="chip bg-color">Mpich 安装</span>
                     </a>
                     
                 </div>
