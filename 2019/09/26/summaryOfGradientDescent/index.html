@@ -470,8 +470,8 @@
 <p>在前面导数和偏导数的定义中，均是沿坐标轴正方向讨论函数的变化率。那么当我们讨论函数<strong>沿任意方向</strong>的变化率时，也就引出了方向导数的定义，即：某一点在某一<strong>趋近方向</strong>上的<strong>导数值</strong>。特就是说：我们不仅要知道函数在坐标轴正方向上的变化率（即偏导数），而且还要设法求得函数在其他特定方向上的变化率。而方向导数就是函数在其他特定方向上的变化率。</p>
 <p>例题：<br>设二元函数$f(x, y) = x^2 + y^2$, 分别计算这个函数在点$(1,2)$沿方向$w = \{3,-4\}$与方向$u=\{1,0\}$ 的方向导数</p>
 <p><strong>解</strong>：由于$w$不是单位向量，所以将其单位化：$v = w^0 = \frac{w}{|w|} = \{\frac {3}{5}, -\frac{4}{5}\}$</p>
-<p>$$<br>\begin{split}<br>\therefore f(x_0 + tv_1, y_0 + tv_2) - f(x_0,y_0) &amp;= f(1 + \frac{3}{5}t, 2 - \frac{4}{5}t) - f(1,2) \<br>&amp;=[(1+\frac{3}{5}t)^2 + (2-\frac{4}{5})^2] - (1^2+2^2) \<br>&amp;=t^2-2t<br>\end{split}<br>$$</p>
-<p>$$<br>\begin{split}<br>\therefore \left. \frac{\partial f}{\partial w} \right |_{(1,2)} &amp;= \lim_{t \to 0} \frac{t^2-2t}{t} = -2 \<br>\left. \frac{\partial f}{\partial u} \right |_{(1,2)} &amp;=\lim_{t \to 0} \frac{f(1+t, 2) - f(1,2)}{t} = \lim_{t \to 0} \frac{t^2+2t}{t} = 2<br>\end{split}<br>$$</p>
+<p>$$<br>\begin{split}<br>\therefore f(x_0 + tv_1, y_0 + tv_2) - f(x_0,y_0) &amp;= f(1 + \frac{3}{5}t, 2 - \frac{4}{5}t) - f(1,2) \\\<br>&amp;=[(1+\frac{3}{5}t)^2 + (2-\frac{4}{5})^2] - (1^2+2^2) \\\<br>&amp;=t^2-2t<br>\end{split}<br>$$</p>
+<p>$$<br>\begin{split}<br>\therefore \left. \frac{\partial f}{\partial w} \right |_{(1,2)} &amp;= \lim_{t \to 0} \frac{t^2-2t}{t} = -2 \\\<br>\left. \frac{\partial f}{\partial u} \right |_{(1,2)} &amp;=\lim_{t \to 0} \frac{f(1+t, 2) - f(1,2)}{t} = \lim_{t \to 0} \frac{t^2+2t}{t} = 2<br>\end{split}<br>$$</p>
 <h3 id="1-4-梯度"><a href="#1-4-梯度" class="headerlink" title="1.4 梯度"></a>1.4 梯度</h3><p>梯度的定义如下：</p>
 <p>$$<br>\nabla f(x_0, x_1, \ldots, x_n) = \left( \frac{\partial f}{\partial x_0}, \frac{\partial f}{\partial x_1}, \ldots, \frac{\partial f}{\partial x_n}\right)<br>$$</p>
 <blockquote>
