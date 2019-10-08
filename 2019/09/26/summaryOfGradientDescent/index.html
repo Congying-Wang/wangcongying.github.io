@@ -570,19 +570,19 @@
 <h3 id="3-1-批量梯度下降法（Batch-Gradient-Descent-BGD）"><a href="#3-1-批量梯度下降法（Batch-Gradient-Descent-BGD）" class="headerlink" title="3.1 批量梯度下降法（Batch Gradient Descent, BGD）"></a>3.1 批量梯度下降法（Batch Gradient Descent, BGD）</h3><p>批量梯度下降法也称作为<code>全量梯度下降</code>, 是梯度下降法最常用的形式，从名字就可以看出这个框架每次使用全量的训练集样本来更新模型参数，其公式为：</p>
 <p>$$<br>\theta_i = \theta_i - \alpha \frac{1}{m} \sum_{j = 0}^{m}  (h_\theta(x_0^j, x_1^j, \ldots, x_n^j) - y^j)x_i^j<br>$$<br>由于我们有m个样本，这里求梯度的时候就用了所有m个样本的梯度数据。</p>
 <p>实现代码如下：</p>
-<pre class=" language-py"><code class="language-py">for i in range(epochs):
-    params_grad = evaluate_gradient(loss_function,data,params)
-    params = params - learning_rate * params_grad</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>epochs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    params_grad <span class="token operator">=</span> evaluate_gradient<span class="token punctuation">(</span>loss_function<span class="token punctuation">,</span>data<span class="token punctuation">,</span>params<span class="token punctuation">)</span>
+    params <span class="token operator">=</span> params <span class="token operator">-</span> learning_rate <span class="token operator">*</span> params_grad</code></pre>
 <p><code>epochs</code> 是用户输入的最大迭代次数。通过上诉代码可以看出，每次使用全部训练集样本计算损失函数<code>loss_function</code>的梯度<code>params_grad</code>，然后使用学习速率<code>learning_rate</code>朝着梯度相反方向去更新模型的每个参数<code>params</code>。一般各现有的一些机器学习库都提供了梯度计算<code>api</code>。如果想自己亲手写代码计算，那么需要在程序调试过程中验证梯度计算是否正确，具体验证方法可以参见<a href="http://cs231n.github.io/neural-networks-3/" target="_blank" rel="noopener">这里</a>。</p>
 <p>全量梯度下降每次学习都使用整个训练集，因此其优点在于每次更新都会朝着正确的方向进行，最后能够保证收敛于极值点(凸函数收敛于全局极值点，非凸函数可能会收敛于局部极值点)，但是其缺点在于每次学习时间过长，并且如果训练集很大以至于需要消耗大量的内存，并且全量梯度下降不能进行在线模型参数更新。</p>
 <h3 id="3-2-随机梯度下降法（Stochastic-Gradient-Descent-SGD）"><a href="#3-2-随机梯度下降法（Stochastic-Gradient-Descent-SGD）" class="headerlink" title="3.2 随机梯度下降法（Stochastic Gradient Descent, SGD）"></a>3.2 随机梯度下降法（Stochastic Gradient Descent, SGD）</h3><p><code>随机梯度下降法</code>，其实和<code>批量梯度下降法</code>原理类似，区别在与求梯度时没有用所有的m个样本的数据，而是仅仅选取一个样本j来求梯度。对应的更新公式是：</p>
 <p>$$<br>\theta_i = \theta_i - \alpha (h_\theta(x_0^j, x_1^j, \ldots, x_n^j) - y^j)x_i^j<br>$$</p>
 <p>实现代码如下：</p>
-<pre class=" language-py"><code class="language-py">for i in range(epochs):
-    np.random.shuffle(data)
-    for example in data:
-        params_grad = evaluate_gradient(loss_function,example,params)
-        params = params - learning_rate * params_grad</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>epochs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> example <span class="token keyword">in</span> data<span class="token punctuation">:</span>
+        params_grad <span class="token operator">=</span> evaluate_gradient<span class="token punctuation">(</span>loss_function<span class="token punctuation">,</span>example<span class="token punctuation">,</span>params<span class="token punctuation">)</span>
+        params <span class="token operator">=</span> params <span class="token operator">-</span> learning_rate <span class="token operator">*</span> params_grad</code></pre>
 <p><code>批量梯度下降算法</code>每次都会使用<strong>全部训练样本</strong>，因此这些计算是冗余的，因为每次都使用完全相同的样本集。而<code>随机梯度下降算法</code>每次只随机选择一个样本来更新模型参数，因此每次的学习是非常快速的，并且可以进行在线更新。</p>
 <p>随机梯度下降最大的缺点在于每次更新可能并不会按照正确的方向进行，因此可以带来优化波动(扰动)，如下图：<br><img src="Stogra.png" alt="SGD优化波动"></p>
 <p>不过从另一个方面来看，随机梯度下降所带来的波动有个好处就是，对于类似盆地区域（即很多局部极小值点）那么这个波动的特点可能会使得优化的方向从当前的局部极小值点跳到另一个更好的局部极小值点，这样便可能对于非凸函数，最终收敛于一个较好的局部极值点，甚至全局极值点。</p>
@@ -592,11 +592,11 @@
 <h3 id="3-3-小批量梯度下降法（Mini-batch-Gradient-Descent-MBGD）"><a href="#3-3-小批量梯度下降法（Mini-batch-Gradient-Descent-MBGD）" class="headerlink" title="3.3 小批量梯度下降法（Mini-batch Gradient Descent, MBGD）"></a>3.3 小批量梯度下降法（Mini-batch Gradient Descent, MBGD）</h3><p>小批量梯度下降法是批量梯度下降法和随机梯度下降法的折衷，也就是对于$m$个样本，我们采用$x$个子样本来迭代，$1&lt;x&lt;m$。一般可以取$x=10$，当然根据样本的数据，可以调整这个$x$的值。对应的更新公式是：</p>
 <p>$$<br>\theta_i = \theta_i - \alpha \frac{1}{m} \sum_{j = t}^{t+x-1}  (h_\theta(x_0^j, x_1^j, \ldots, x_n^j) - y^j)x_i^j<br>$$</p>
 <p>实现代码如下：</p>
-<pre class=" language-py"><code class="language-py">for i in range(epochs):
-    np.random.shuffle(data)
-    for batch in get_batches(data, batch_size=50):
-        params_grad = evaluate_gradient(loss_function,batch,params)
-        params = params - learning_rate * params_grad</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>epochs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> batch <span class="token keyword">in</span> get_batches<span class="token punctuation">(</span>data<span class="token punctuation">,</span> batch_size<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        params_grad <span class="token operator">=</span> evaluate_gradient<span class="token punctuation">(</span>loss_function<span class="token punctuation">,</span>batch<span class="token punctuation">,</span>params<span class="token punctuation">)</span>
+        params <span class="token operator">=</span> params <span class="token operator">-</span> learning_rate <span class="token operator">*</span> params_grad</code></pre>
 <p>相对于随机梯度下降，<code>Mini-batch梯度下降</code>降低了<strong>收敛波动性</strong>，即降低了<strong>参数更新的方差</strong>，使得更新<strong>更加稳定</strong>。相对于`全量梯度下降·，其提高了每次<strong>学习的速度</strong>。并且其不用担心内存瓶颈从而可以利用矩阵运算进行高效计算。实践中可以进行多次试验，选择一个更新速度与更次次数都较适合的样本数。</p>
 <p><code>Mini-batch梯度下降</code>虽然可以保证收敛性。<code>Mini-batch梯度下降</code>常用于神经网络中。</p>
 <h3 id="3-4-面临的挑战"><a href="#3-4-面临的挑战" class="headerlink" title="3.4 面临的挑战"></a>3.4 面临的挑战</h3><p>虽然梯度下降算法效果很好，并且广泛使用，但同时其也存在一些挑战与问题需要解决：</p>
