@@ -517,13 +517,13 @@
 </li>
 <li><p><strong>算法过程</strong>:</p>
 <ol>
-<li><p>确定当前位置的损失函数的梯度，对于$\theta_i$,其梯度表达式: $\frac{\partial J( \theta_0 , \theta_1, \ldots , \theta_n)}{\partial \theta_i}$</p>
+<li>确定当前位置的损失函数的梯度，对于$\theta_i$,其梯度表达式: $\frac{\partial J( \theta_0 , \theta_1, \ldots , \theta_n)}{\partial \theta_i}$</li>
+<li>用步长乘以损失函数的梯度，得到当前位置下降的距离，即$\alpha \frac{\partial J( \theta_0 , \theta_1, \ldots , \theta_n)}{\partial \theta_i}$对应于前面登山例子中的某一步。</li>
+<li>确定是否所有的$\theta_i$,梯度下降的距离都小于$\epsilon$，如果小于$\epsilon$则算法终止，当前所有的$\theta_i, (i=0,1,…n)$即为最终结果。否则进入步骤4.</li>
+<li>更新所有的$\theta$，对于$\theta_i$，其更新表达式如下。更新完毕后继续转入步骤1.<br> $$<br> \theta_i = \theta_i - \alpha \frac{\partial J( \theta_0 , \theta_1, \ldots , \theta_n)}{\partial \theta_i}<br> $$</li>
+</ol>
 </li>
-<li><p>用步长乘以损失函数的梯度，得到当前位置下降的距离，即$\alpha \frac{\partial J( \theta_0 , \theta_1, \ldots , \theta_n)}{\partial \theta_i}$对应于前面登山例子中的某一步。</p>
-</li>
-<li><p>确定是否所有的$\theta_i$,梯度下降的距离都小于$\epsilon$，如果小于$\epsilon$则算法终止，当前所有的$\theta_i, (i=0,1,…n)$即为最终结果。否则进入步骤4.</p>
-</li>
-<li><p>更新所有的$\theta$，对于$\theta_i$，其更新表达式如下。更新完毕后继续转入步骤1.<br> $$<br> \theta_i = \theta_i - \alpha \frac{\partial J( \theta_0 , \theta_1, \ldots , \theta_n)}{\partial \theta_i}<br> $$</p>
+</ol>
 <p>下面用线性回归的例子来具体描述梯度下降。假设我们的样本是<br>$$<br>\begin{split}<br>&amp; (x_1^0, x_2^0, \ldots, x_n^0, y^0), \\\<br>&amp; (x_1^1, x_2^1, \ldots, x_n^1, y^1), \\\<br>&amp; \cdots \\\<br>&amp; (x_1^m, x_2^m, \ldots, x_n^m, y^m)<br>\end{split}<br>$$</p>
 <p>损失函数如前面先决条件所述：<br>$$<br>J( \theta_0 , \theta_1, \ldots , \theta_n) = \frac{1}{2m} \sum_{j = 0}^{m}  (h_\theta(x_0^j, x_1^j, \ldots, x_i^j) - y^j)^2<br>$$</p>
 <p>则在算法过程步骤1中对于$\theta_i$ 的偏导数计算如下：<br>$$<br>\frac{\partial J( \theta_0 , \theta_1, \ldots , \theta_n)}{\partial \theta_i} = \frac{1}{m} \sum_{j = 0}^{m}  (h_\theta(x_0^j, x_1^j, \ldots, x_i^j) - y^j)x_i^j<br>$$</p>
@@ -531,10 +531,6 @@
 <p>$$<br>\theta_i = \theta_i - \alpha \frac{1}{m} \sum_{j = 0}^{m}  (h_\theta(x_0^j, x_1^j, \ldots, x_i^j) - y^j)x_i^j<br>$$</p>
 <p>从这个例子可以看出当前点的梯度方向是由所有的样本决定的，加  $\frac{1}{m}$ 是为了好理解。由于步长也为常数，他们的乘机也为常数，所以这里$  \alpha \frac{1}{m}$可以用一个常数表示。</p>
 <p>在下面第2.4节会详细讲到的梯度下降法的变种，他们主要的区别就是对样本的采用方法不同。这里我们采用的是用<strong>所有样本</strong>。</p>
-</li>
-</ol>
-</li>
-</ol>
 <h4 id="2-3-2-梯度下降法的矩阵方式描述"><a href="#2-3-2-梯度下降法的矩阵方式描述" class="headerlink" title="2.3.2 梯度下降法的矩阵方式描述"></a>2.3.2 梯度下降法的矩阵方式描述</h4><p>这一部分主要讲解梯度下降法的矩阵方式表述，相对于3.3.1的代数法，要求有一定的矩阵分析的基础知识，尤其是矩阵求导的知识。</p>
 <p>传送门：<a href="https://en.wikipedia.org/wiki/Matrix_calculus" target="_blank" rel="noopener">矩阵微分</a>，这里面有用到所有的矩阵求导微分公式，如果需要深入理解矩阵求导建议参考张贤达的<strong>《矩阵分析与应用》</strong>一书。</p>
 <ol>
