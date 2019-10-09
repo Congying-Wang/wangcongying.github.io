@@ -520,7 +520,7 @@
 <li>确定当前位置的损失函数的梯度，对于$\theta_i$,其梯度表达式: $\frac{\partial J( \theta_0 , \theta_1, \ldots , \theta_n)}{\partial \theta_i}$</li>
 <li>用步长乘以损失函数的梯度，得到当前位置下降的距离，即$\alpha \frac{\partial J( \theta_0 , \theta_1, \ldots , \theta_n)}{\partial \theta_i}$对应于前面登山例子中的某一步。</li>
 <li>确定是否所有的$\theta_i$,梯度下降的距离都小于$\epsilon$，如果小于$\epsilon$则算法终止，当前所有的$\theta_i, (i=0,1,…n)$即为最终结果。否则进入步骤4.</li>
-<li>更新所有的$\theta$，对于$\theta_i$，其更新表达式如下。更新完毕后继续转入步骤1.<br> $$<br> \theta_i = \theta_i - \alpha \frac{\partial J( \theta_0 , \theta_1, \ldots , \theta_n)}{\partial \theta_i}<br> $$</li>
+<li>更新所有的$\theta$，对于$\theta_i$，其更新表达式如下。更新完毕后继续转入步骤1.<br> $$<br> \theta_i \leftarrow \theta_i - \alpha \frac{\partial J( \theta_0 , \theta_1, \ldots , \theta_n)}{\partial \theta_i}<br> $$</li>
 </ol>
 </li>
 </ol>
@@ -528,7 +528,7 @@
 <p>损失函数如前面先决条件所述：<br>$$<br>J( \theta_0 , \theta_1, \ldots , \theta_n) = \frac{1}{2m} \sum_{j = 0}^{m}  (h_\theta(x_0^j, x_1^j, \ldots, x_n^j) - y^j)^2<br>$$</p>
 <p>则在算法过程步骤1中对于$\theta_i$ 的偏导数计算如下：<br>$$<br>\frac{\partial J( \theta_0 , \theta_1, \ldots , \theta_n)}{\partial \theta_i} = \frac{1}{m} \sum_{j = 0}^{m}  (h_\theta(x_0^j, x_1^j, \ldots, x_n^j) - y^j)x_i^j<br>$$</p>
 <p>由于样本中没有$x_0^j$, 上式中令所有的$x_0^j = 1$为1.<br>步骤4中$\theta_i$的更新表达式如下：</p>
-<p>$$<br>\theta_i = \theta_i - \alpha \frac{1}{m} \sum_{j = 0}^{m}  (h_\theta(x_0^j, x_1^j, \ldots, x_n^j) - y^j)x_i^j<br>$$</p>
+<p>$$<br>\theta_i \leftarrow \theta_i - \alpha \frac{1}{m} \sum_{j = 0}^{m}  (h_\theta(x_0^j, x_1^j, \ldots, x_n^j) - y^j)x_i^j<br>$$</p>
 <p>从这个例子可以看出当前点的梯度方向是由所有的样本决定的，加  $\frac{1}{m}$ 是为了好理解。由于步长也为常数，他们的乘机也为常数，所以这里$  \alpha \frac{1}{m}$可以用一个常数表示。</p>
 <p>在下面第2.4节会详细讲到的梯度下降法的变种，他们主要的区别就是对样本的采用方法不同。这里我们采用的是用<strong>所有样本</strong>。</p>
 <h4 id="2-3-2-梯度下降法的矩阵方式描述"><a href="#2-3-2-梯度下降法的矩阵方式描述" class="headerlink" title="2.3.2 梯度下降法的矩阵方式描述"></a>2.3.2 梯度下降法的矩阵方式描述</h4><p>这一部分主要讲解梯度下降法的矩阵方式表述，相对于3.3.1的代数法，要求有一定的矩阵分析的基础知识，尤其是矩阵求导的知识。</p>
@@ -545,13 +545,13 @@
 <li>确定当前位置的损失函数的梯度，对于$\theta$向量,其梯度表达式为：$\frac{\partial J(\theta)}{\partial \theta}$</li>
 <li>用步长乘以损失函数的梯度，得到当前位置下降的距离，即$\alpha \frac{\partial J(\theta)}{\partial \theta}$对应于前面登山例子中的某一步.</li>
 <li>确定$\theta$向量里面的每个值,梯度下降的距离都小于$\epsilon$，如果小于$\epsilon$则算法终止，当前$\theta$向量即为最终结果。否则进入步骤4. </li>
-<li>更新$\theta$向量，其更新表达式如下。更新完毕后继续转入步骤1.<br> $$<br> \theta = \theta - \alpha \frac{\partial J(\theta)}{\partial \theta}<br> $$</li>
+<li>更新$\theta$向量，其更新表达式如下。更新完毕后继续转入步骤1.<br> $$<br> \theta \leftarrow \theta - \alpha \frac{\partial J(\theta)}{\partial \theta}<br> $$</li>
 </ol>
 </li>
 </ol>
 <p>还是用线性回归的例子来描述具体的算法过程。<br>损失函数对于$\theta$向量的偏导数计算如下：<br>$$<br>\frac{\partial J(\theta)}{\partial \theta} = \mathbf{X}^T(\mathbf{X}\theta - Y)<br>$$</p>
 <p>步骤4中$\theta$向量的更新表达式如下：</p>
-<p>$$<br>\theta = \theta - \alpha \mathbf{X}^T(\mathbf{X}\theta - Y)<br>$$</p>
+<p>$$<br>\theta \leftarrow \theta - \alpha \mathbf{X}^T(\mathbf{X}\theta - Y)<br>$$</p>
 <p>对于2.3.1的代数法，可以看到矩阵法要简洁很多。这里面用到了矩阵求导链式法则，和两个矩阵求导的公式。</p>
 <p>这里面用到了矩阵求导链式法则，和两个个矩阵求导的公式。</p>
 <p>公式1:<br>$$<br>\frac{\partial (\mathbf{x}^T\mathbf{x})}{\partial \mathbf{x}} = 2\mathbf{x}<br>$$<br>其中$\mathbf{x}$为向量。</p>
@@ -568,7 +568,7 @@
 </ol>
 <h2 id="3-三大梯度下降优化框架"><a href="#3-三大梯度下降优化框架" class="headerlink" title="3 三大梯度下降优化框架"></a>3 三大梯度下降优化框架</h2><p>有三种梯度下降算法框架，它们不同之处在于每次学习(更新模型参数)使用的<strong>样本个数</strong>或者每次更新使用<strong>不同的样本</strong>会导致每次学习的<strong>准确性</strong>和<strong>学习时间</strong>不同， 下面一一介绍。</p>
 <h3 id="3-1-批量梯度下降法（Batch-Gradient-Descent-BGD）"><a href="#3-1-批量梯度下降法（Batch-Gradient-Descent-BGD）" class="headerlink" title="3.1 批量梯度下降法（Batch Gradient Descent, BGD）"></a>3.1 批量梯度下降法（Batch Gradient Descent, BGD）</h3><p>批量梯度下降法也称作为<code>全量梯度下降</code>, 是梯度下降法最常用的形式，从名字就可以看出这个框架每次使用全量的训练集样本来更新模型参数，其公式为：</p>
-<p>$$<br>\theta_i = \theta_i - \alpha \frac{1}{m} \sum_{j = 0}^{m}  (h_\theta(x_0^j, x_1^j, \ldots, x_n^j) - y^j)x_i^j<br>$$<br>由于我们有m个样本，这里求梯度的时候就用了所有m个样本的梯度数据。</p>
+<p>$$<br>\theta_i \leftarrow \theta_i - \alpha \frac{1}{m} \sum_{j = 0}^{m}  (h_\theta(x_0^j, x_1^j, \ldots, x_n^j) - y^j)x_i^j<br>$$<br>由于我们有m个样本，这里求梯度的时候就用了所有m个样本的梯度数据。</p>
 <p>实现代码如下：</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>epochs<span class="token punctuation">)</span><span class="token punctuation">:</span>
     params_grad <span class="token operator">=</span> evaluate_gradient<span class="token punctuation">(</span>loss_function<span class="token punctuation">,</span>data<span class="token punctuation">,</span>params<span class="token punctuation">)</span>
@@ -576,7 +576,7 @@
 <p><code>epochs</code> 是用户输入的最大迭代次数。通过上诉代码可以看出，每次使用全部训练集样本计算损失函数<code>loss_function</code>的梯度<code>params_grad</code>，然后使用学习速率<code>learning_rate</code>朝着梯度相反方向去更新模型的每个参数<code>params</code>。一般各现有的一些机器学习库都提供了梯度计算<code>api</code>。如果想自己亲手写代码计算，那么需要在程序调试过程中验证梯度计算是否正确，具体验证方法可以参见<a href="http://cs231n.github.io/neural-networks-3/" target="_blank" rel="noopener">这里</a>。</p>
 <p>全量梯度下降每次学习都使用整个训练集，因此其优点在于每次更新都会朝着正确的方向进行，最后能够保证收敛于极值点(凸函数收敛于全局极值点，非凸函数可能会收敛于局部极值点)，但是其缺点在于每次学习时间过长，并且如果训练集很大以至于需要消耗大量的内存，并且全量梯度下降不能进行在线模型参数更新。</p>
 <h3 id="3-2-随机梯度下降法（Stochastic-Gradient-Descent-SGD）"><a href="#3-2-随机梯度下降法（Stochastic-Gradient-Descent-SGD）" class="headerlink" title="3.2 随机梯度下降法（Stochastic Gradient Descent, SGD）"></a>3.2 随机梯度下降法（Stochastic Gradient Descent, SGD）</h3><p><code>随机梯度下降法</code>，其实和<code>批量梯度下降法</code>原理类似，区别在与求梯度时没有用所有的m个样本的数据，而是仅仅选取一个样本j来求梯度。对应的更新公式是：</p>
-<p>$$<br>\theta_i = \theta_i - \alpha (h_\theta(x_0^j, x_1^j, \ldots, x_n^j) - y^j)x_i^j<br>$$</p>
+<p>$$<br>\theta_i \leftarrow \theta_i - \alpha (h_\theta(x_0^j, x_1^j, \ldots, x_n^j) - y^j)x_i^j<br>$$</p>
 <p>实现代码如下：</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>epochs<span class="token punctuation">)</span><span class="token punctuation">:</span>
     np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
@@ -590,7 +590,7 @@
 <p>随机梯度下降法，和3.1的批量梯度下降法是两个极端，一个采用所有数据来梯度下降，一个用一个样本来梯度下降。自然各自的优缺点都非常突出。对于训练速度来说，随机梯度下降法由于每次仅仅采用一个样本来迭代，训练速度很快，而批量梯度下降法在样本量很大的时候，训练速度不能让人满意。对于准确度来说，随机梯度下降法用于仅仅用一个样本决定梯度方向，导致解很有可能不是最优。对于收敛速度来说，由于随机梯度下降法一次迭代一个样本，导致迭代方向变化很大，不能很快的收敛到局部最优解。</p>
 <p>那么，有没有一个中庸的办法能够结合两种方法的优点呢？有！这就是3.3的小批量梯度下降法。</p>
 <h3 id="3-3-小批量梯度下降法（Mini-batch-Gradient-Descent-MBGD）"><a href="#3-3-小批量梯度下降法（Mini-batch-Gradient-Descent-MBGD）" class="headerlink" title="3.3 小批量梯度下降法（Mini-batch Gradient Descent, MBGD）"></a>3.3 小批量梯度下降法（Mini-batch Gradient Descent, MBGD）</h3><p>小批量梯度下降法是批量梯度下降法和随机梯度下降法的折衷，也就是对于$m$个样本，我们采用$x$个子样本来迭代，$1&lt;x&lt;m$。一般可以取$x=10$，当然根据样本的数据，可以调整这个$x$的值。对应的更新公式是：</p>
-<p>$$<br>\theta_i = \theta_i - \alpha \frac{1}{m} \sum_{j = t}^{t+x-1}  (h_\theta(x_0^j, x_1^j, \ldots, x_n^j) - y^j)x_i^j<br>$$</p>
+<p>$$<br>\theta_i \leftarrow \theta_i - \alpha \frac{1}{m} \sum_{j = t}^{t+x-1}  (h_\theta(x_0^j, x_1^j, \ldots, x_n^j) - y^j)x_i^j<br>$$</p>
 <p>实现代码如下：</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>epochs<span class="token punctuation">)</span><span class="token punctuation">:</span>
     np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
@@ -607,7 +607,11 @@
 <li>对于非凸目标函数，容易陷入那些次优的局部极值点中，如在神经网络中。<a href="http://arxiv.org/abs/1406.2572" target="_blank" rel="noopener">Dauphin</a>指出更严重的问题不是局部极值点，而是鞍点，这些鞍点通常被相同误差的平稳段包围，这使SGD很难逃脱，因为在所有维度上梯度都接近于零。</li>
 </ol>
 <h2 id="4-梯度下降优化算法"><a href="#4-梯度下降优化算法" class="headerlink" title="4 梯度下降优化算法"></a>4 梯度下降优化算法</h2><p>下面将讨论一些在深度学习社区中经常使用用来解决上诉问题的一些梯度优化方法，不过并不包括在高维数据中不可行的算法，如<a href="https://en.wikipedia.org/wiki/Newton%27s_method_in_optimization" target="_blank" rel="noopener">牛顿法</a>。</p>
-<h3 id="4-1-Momentum"><a href="#4-1-Momentum" class="headerlink" title="4.1 Momentum"></a>4.1 Momentum</h3><p>如果在峡谷地区(某些方向较另一些方向上陡峭得多，常见于局部极值点), SGD会在这些地方附近振荡，从而导致收敛速度慢。这种情况下，动量(Momentum)便可以解决。动量在参数更新项中加上一次更新量(即动量项),即：</p>
+<h3 id="4-1-Momentum"><a href="#4-1-Momentum" class="headerlink" title="4.1 Momentum"></a>4.1 Momentum</h3><p>如果在峡谷地区(某些方向较另一些方向上陡峭得多，常见于局部极值点), SGD会在这些地方附近振荡，从而导致收敛速度慢。这种情况下，动量(Momentum)便可以解决。动量在参数更新项中加上一次更新量(即动量项),即：<br>$$<br>\begin{split}<br>v_t &amp;\leftarrow \gamma v_{t-1} + \alpha \nabla_{\theta}J(\theta) \\\<br>\theta &amp; \leftarrow \theta - v_t<br>\end{split}<br>$$</p>
+<p>其中动量项超参数$\gamma &lt; 1$一般是小于等于0.9。</p>
+<p>下面两个对比图将体现动量的作用</p>
+<p><img src="without_momentum.gif" alt="无动量"><br><img src="with_momentum.gif" alt="加上动量"></p>
+<p>加上动量项就像从山顶滚下一个球，求往下滚的时候累积了前面的动量(动量不断增加)，因此速度变得越来越快，直到到达终点。同理，在更新模型参数时，对于那些当前的梯度方向与上一次梯度方向相同的参数，那么进行加强，即这些方向上更快了；对于那些当前的梯度方向与上一次梯度方向不同的参数，那么进行削减，即这些方向上减慢了。因此可以获得更快的收敛速度与减少振荡。</p>
 <h3 id="4-2-Nesterov-accelerated-gradient-NAG"><a href="#4-2-Nesterov-accelerated-gradient-NAG" class="headerlink" title="4.2 Nesterov accelerated gradient (NAG)"></a>4.2 Nesterov accelerated gradient (NAG)</h3><h3 id="4-3-Adagrad"><a href="#4-3-Adagrad" class="headerlink" title="4.3 Adagrad"></a>4.3 Adagrad</h3><h3 id="4-4-Adadelta"><a href="#4-4-Adadelta" class="headerlink" title="4.4 Adadelta"></a>4.4 Adadelta</h3><h3 id="4-5-RMSprop"><a href="#4-5-RMSprop" class="headerlink" title="4.5 RMSprop"></a>4.5 RMSprop</h3><h3 id="4-6-Adam"><a href="#4-6-Adam" class="headerlink" title="4.6 Adam"></a>4.6 Adam</h3><h3 id="4-7-AdaMax"><a href="#4-7-AdaMax" class="headerlink" title="4.7 AdaMax"></a>4.7 AdaMax</h3><h3 id="4-8-Nadam"><a href="#4-8-Nadam" class="headerlink" title="4.8 Nadam"></a>4.8 Nadam</h3><h3 id="4-9-AMSGrad"><a href="#4-9-AMSGrad" class="headerlink" title="4.9 AMSGrad"></a>4.9 AMSGrad</h3><h3 id="4-10-算法可视化比较"><a href="#4-10-算法可视化比较" class="headerlink" title="4.10 算法可视化比较"></a>4.10 算法可视化比较</h3><h3 id="4-11-算法选择"><a href="#4-11-算法选择" class="headerlink" title="4.11 算法选择"></a>4.11 算法选择</h3><h2 id="5-并行与分布式SGD"><a href="#5-并行与分布式SGD" class="headerlink" title="5 并行与分布式SGD"></a>5 并行与分布式SGD</h2><h3 id="5-1-Hogwild"><a href="#5-1-Hogwild" class="headerlink" title="5.1 Hogwild"></a>5.1 Hogwild</h3><h3 id="5-2-Downpour-SGD"><a href="#5-2-Downpour-SGD" class="headerlink" title="5.2 Downpour SGD"></a>5.2 Downpour SGD</h3><h3 id="5-3-Delay-tolerant-Algorithms-for-SGD"><a href="#5-3-Delay-tolerant-Algorithms-for-SGD" class="headerlink" title="5.3 Delay-tolerant Algorithms for SGD"></a>5.3 Delay-tolerant Algorithms for SGD</h3><h3 id="5-4-TensorFlow"><a href="#5-4-TensorFlow" class="headerlink" title="5.4 TensorFlow"></a>5.4 TensorFlow</h3><h3 id="5-5-Elastic-Averaging-SGD"><a href="#5-5-Elastic-Averaging-SGD" class="headerlink" title="5.5 Elastic Averaging SGD"></a>5.5 Elastic Averaging SGD</h3><h2 id="6-更多SGD优化策略"><a href="#6-更多SGD优化策略" class="headerlink" title="6 更多SGD优化策略"></a>6 更多SGD优化策略</h2><h3 id="6-1-Shuffling-and-Curriculum-Learning"><a href="#6-1-Shuffling-and-Curriculum-Learning" class="headerlink" title="6.1 Shuffling and Curriculum Learning"></a>6.1 Shuffling and Curriculum Learning</h3><h3 id="6-2-Batch-normalization"><a href="#6-2-Batch-normalization" class="headerlink" title="6.2 Batch normalization"></a>6.2 Batch normalization</h3><h3 id="6-3-Early-stopping"><a href="#6-3-Early-stopping" class="headerlink" title="6.3 Early stopping"></a>6.3 Early stopping</h3><h3 id="6-4-Gradient-noise"><a href="#6-4-Gradient-noise" class="headerlink" title="6.4 Gradient noise"></a>6.4 Gradient noise</h3><h2 id="7-梯度下降法和其他无约束优化算法的比较"><a href="#7-梯度下降法和其他无约束优化算法的比较" class="headerlink" title="7 梯度下降法和其他无约束优化算法的比较"></a>7 梯度下降法和其他无约束优化算法的比较</h2><h2 id="8-总结"><a href="#8-总结" class="headerlink" title="8 总结"></a>8 总结</h2><h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ol>
 <li><a href="http://ruder.io/optimizing-gradient-descent/index.html" target="_blank" rel="noopener">An overview of gradient descent optimization algorithms</a></li>
 <li><a href="https://www.cnblogs.com/pinard/p/5970503.html" target="_blank" rel="noopener">刘建平Pinard - 梯度下降（Gradient Descent）小结</a></li>
