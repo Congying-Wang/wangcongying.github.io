@@ -607,7 +607,7 @@
 <li>对于非凸目标函数，容易陷入那些次优的局部极值点中，如在神经网络中。<a href="http://arxiv.org/abs/1406.2572" target="_blank" rel="noopener">Dauphin</a>指出更严重的问题不是局部极值点，而是鞍点，这些鞍点通常被相同误差的平稳段包围，这使SGD很难逃脱，因为在所有维度上梯度都接近于零。</li>
 </ol>
 <h2 id="4-梯度下降优化算法"><a href="#4-梯度下降优化算法" class="headerlink" title="4 梯度下降优化算法"></a>4 梯度下降优化算法</h2><p>下面将讨论一些在深度学习社区中经常使用用来解决上诉问题的一些梯度优化方法，不过并不包括在高维数据中不可行的算法，如<a href="https://en.wikipedia.org/wiki/Newton%27s_method_in_optimization" target="_blank" rel="noopener">牛顿法</a>。</p>
-<h3 id="4-1-Momentum"><a href="#4-1-Momentum" class="headerlink" title="4.1 Momentum"></a>4.1 Momentum</h3><p>如果在峡谷地区(某些方向较另一些方向上陡峭得多，常见于局部极值点), SGD会在这些地方附近振荡，从而导致收敛速度慢。这种情况下，动量(Momentum)便可以解决。动量在参数更新项中加上一次更新量(即动量项),即：<br>$$<br>\begin{split}<br>v_t &amp;\leftarrow \gamma v_{t-1} + \alpha \nabla_{\theta}J(\theta) \\\<br>\theta &amp; \leftarrow \theta - v_t<br>\end{split}<br>$$</p>
+<h3 id="4-1-Momentum"><a href="#4-1-Momentum" class="headerlink" title="4.1 Momentum"></a>4.1 Momentum</h3><p>如果在峡谷地区(某些方向较另一些方向上陡峭得多，常见于局部极值点), SGD会在这些地方附近振荡，从而导致收敛速度慢。这种情况下，动量(Momentum)便可以解决。动量在参数更新项中加上一次更新量(即动量项),即：<br>$$<br>\begin{split}<br>v_t &amp;\leftarrow \beta v_{t-1} + \alpha \nabla_{\theta}J(\theta) \\\<br>\theta_t &amp; \leftarrow \theta_{t-1} - v_t<br>\end{split}<br>$$</p>
 <p>其中动量项超参数$\gamma &lt; 1$一般是小于等于0.9。</p>
 <p>下面两个对比图将体现动量的作用</p>
 <p><img src="without_momentum.gif" alt="无动量"><br><img src="with_momentum.gif" alt="加上动量"></p>
@@ -862,15 +862,18 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="梯度下降最优化算法——Momentum">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="最优化算法之Momentum">
                         
-                        <span class="card-title">梯度下降最优化算法——Momentum</span>
+                        <span class="card-title">最优化算法之Momentum</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            1 Momentum
+Momentum 中文为：动量法
+
+虽然随机梯度下降仍然是非常受欢迎的优化方法，但其学习过程有时会很慢，并且有的时候对于比较的复杂的模型，我们很难得到global minima， 当然他们的梯度在这些地方也是0，所以就
                         
                     </div>
                     <div class="publish-info">
