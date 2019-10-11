@@ -534,6 +534,7 @@ Momentum 中文为：动量法
 <p>$$<br>v_t \leftarrow \beta v_{t-1} + (1-\beta)(\frac{1}{1-\beta} \alpha \nabla_{\theta}(\theta))<br>$$</p>
 <p>由指数加权移动平均的形式可得，速度变量 $v_t$ 实际上对序列<br>$$<br>\left \{ \frac{\alpha \nabla^{t-i}_{\theta}(\theta)}{1-\beta}, i=0,1,\ldots, \frac{1}{1-\beta} -1 \right \}<br>$$</p>
 <p>做了指数加权移动平均。换句话说，相比于小批量随机梯度下降，动量法在每个时间步的自变量更新量近似于将前者对应的最近$\frac{1}{1-\beta}$ 个时间步的更新量做了指数加权移动平均后再除以$1-\beta$, 所以，在动量法中，自变量在各个方向上的移动幅度不仅取决当前梯度，还取决于过去的各个梯度在各个方向上是否一致。</p>
+<h2 id="4-算法过程"><a href="#4-算法过程" class="headerlink" title="4 算法过程"></a>4 算法过程</h2><p><img src="momentum-algorithm.png" alt="使用动量的随机梯度下降伪代码"></p>
 <h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ol>
 <li><a href="https://raw.githubusercontent.com/JDwangmo/deepLearningBook/master/book/deeplearning-%E5%B8%A6%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE.pdf" target="_blank" rel="noopener">Deep learning - Ian Goodfellow, Yoshua Bengio, Aaron Courville</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/34240246" target="_blank" rel="noopener">优化算法之Gradient descent with momentum</a></li>
