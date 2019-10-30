@@ -33,8 +33,8 @@ conda config --set show_channel_urls yes</code></pre>
         <category>工具</category>
       </categories>
       <tags>
-        <tag>pip</tag>
-        <tag>conda</tag>
+        <tag>Pip</tag>
+        <tag>Conda</tag>
       </tags>
   </entry>
   <entry>
