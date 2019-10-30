@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>SolutionofPipandCondaSlowlyInstall</title>
+    <title>pip conda 安装速度慢解决方法</title>
     <url>/2019/10/30/SolutionofPipandCondaSlowlyInstall/</url>
     <content><![CDATA[<h2 id="1-pip-提速"><a href="#1-pip-提速" class="headerlink" title="1 pip 提速"></a>1 pip 提速</h2><h3 id="1-1-临时提速"><a href="#1-1-临时提速" class="headerlink" title="1.1 临时提速"></a>1.1 临时提速</h3><p>在<code>pip</code>命令中添加参数 <code>-i</code> 和<code>镜像</code><br>常用镜像如下：</p>
 <ul>
