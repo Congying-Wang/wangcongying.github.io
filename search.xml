@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>SummaryofMachineLearningPerformanceEvaluationIndicators</title>
+    <title>机器学习性能评价指标汇总</title>
     <url>/2019/10/30/SummaryofMachineLearningPerformanceEvaluationIndicators/</url>
     <content><![CDATA[<h1 id="1-分类"><a href="#1-分类" class="headerlink" title="1 分类"></a>1 分类</h1><h2 id="1-1-混淆矩阵"><a href="#1-1-混淆矩阵" class="headerlink" title="1.1 混淆矩阵"></a>1.1 混淆矩阵</h2><ul>
 <li>True Positive(真正, TP)：将正类预测为正类数.</li>
