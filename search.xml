@@ -1,6 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Latex 常用数学符号和语法索引表</title>
+    <url>/2019/10/30/IndexofLatexCommonCodeandCommand/</url>
+    <content><![CDATA[<h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h2><p>由于经常使用<code>Latex</code>编写数学公式，查找复制也比较麻烦，所以做么一个索引表，方便使用</p>
+<p>本文持续更新</p>
+<p>推荐非常好用的 手写字符识别 web 程序：<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">http://detexify.kirelabs.org/classify.html</a> 效果如图所示：<br><img src="latex-classify.png" alt></p>
+<p><strong>主要参考文档：</strong></p>
+<ol>
+<li><a href="http://mohu.org/info/symbols/symbols.htm" target="_blank" rel="noopener">http://mohu.org/info/symbols/symbols.htm</a></li>
+</ol>
+<h2 id="常用微分"><a href="#常用微分" class="headerlink" title="常用微分"></a>常用微分</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\nabla</code></td>
+<td>$\nabla$</td>
+</tr>
+<tr>
+<td>\partial x</td>
+<td>$\partial x$</td>
+</tr>
+<tr>
+<td>\mathrm{d}x</td>
+<td>$\mathrm{d}x$</td>
+</tr>
+<tr>
+<td>\dot x</td>
+<td>$\dot x$</td>
+</tr>
+<tr>
+<td>\ddot y</td>
+<td>$\ddot y$</td>
+</tr>
+</tbody></table>
+<h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\sin\theta</td>
+<td>$\sin\theta$</td>
+</tr>
+<tr>
+<td>\cos\theta</td>
+<td>$\cos\theta$</td>
+</tr>
+<tr>
+<td>\tan\theta</td>
+<td>$\tan\theta$</td>
+</tr>
+<tr>
+<td>\max H</td>
+<td>$\max H$</td>
+</tr>
+<tr>
+<td>\min L</td>
+<td>$\min L$</td>
+</tr>
+<tr>
+<td>\exp t</td>
+<td>$\exp t$</td>
+</tr>
+<tr>
+<td>\ln X</td>
+<td>$\ln X$</td>
+</tr>
+<tr>
+<td>\lg X</td>
+<td>$\lg X$</td>
+</tr>
+<tr>
+<td>\log X</td>
+<td>$\log X$</td>
+</tr>
+<tr>
+<td>\log_\alpha X</td>
+<td>$    \log_\alpha X$</td>
+</tr>
+<tr>
+<td>\arg x</td>
+<td>$\arg x$</td>
+</tr>
+<tr>
+<td>\dim x</td>
+<td>$\dim x$</td>
+</tr>
+</tbody></table>
+<h2 id="常用希腊字母"><a href="#常用希腊字母" class="headerlink" title="常用希腊字母"></a>常用希腊字母</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\alpha \beta \gamma \delta \epsilon \zeta \eta\theta</td>
+<td>$\alpha \beta \gamma \delta \epsilon \zeta \eta\theta$</td>
+</tr>
+<tr>
+<td>\iota \kappa\varkappa \lambda \mu \nu \xi \omicron\pi</td>
+<td>$\iota \kappa\varkappa \lambda \mu \nu \xi \omicron\pi$</td>
+</tr>
+<tr>
+<td>\rho \sigma \tau \upsilon \phi \chi \psi\omega</td>
+<td>$\rho \sigma \tau \upsilon \phi \chi \psi\omega$</td>
+</tr>
+</tbody></table>
+<h2 id="常用积分求和公式混合"><a href="#常用积分求和公式混合" class="headerlink" title="常用积分求和公式混合"></a>常用积分求和公式混合</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\sum_{k=1}^N k^2</code></td>
+<td>$\sum_{k=1}^N k^2$</td>
+</tr>
+<tr>
+<td><code>\prod_{i=1}^N x_i</code></td>
+<td>$\prod_{i=1}^N x_i$</td>
+</tr>
+<tr>
+<td><code>\coprod_{i=1}^N x_i</code></td>
+<td>$\coprod_{i=1}^N x_i$</td>
+</tr>
+<tr>
+<td><code>\lim_{n \to \infty}x_n</code></td>
+<td>$\lim_{n \to \infty}x_n$</td>
+</tr>
+<tr>
+<td><code>\int_{-N}^{N} e^x\, dx</code></td>
+<td>$\int_{-N}^{N} e^x\, dx$</td>
+</tr>
+<tr>
+<td><code>\iint_{D}^{W} \, dx\,dy</code></td>
+<td>$    \iint_{D}^{W} \, dx\,dy$</td>
+</tr>
+<tr>
+<td><code>\iiint_{E}^{V} \, dx\,dy\,dz</code></td>
+<td>$\iiint_{E}^{V} \, dx\,dy\,dz$</td>
+</tr>
+<tr>
+<td><code>\iiiint_{F}^{U} \, dx\,dy\,dz\,dt</code></td>
+<td>$\iiiint_{F}^{U} \, dx\,dy\,dz\,dt$</td>
+</tr>
+<tr>
+<td><code>\oint_{C} x^3\, dx + 4y^2\, dy</code></td>
+<td>$\oint_{C} x^3\, dx + 4y^2\, dy$</td>
+</tr>
+<tr>
+<td><code>\bigcap_1^{n} p</code></td>
+<td>$\bigcap_1^{n} p$</td>
+</tr>
+<tr>
+<td><code>\bigcup_1^{k} p</code></td>
+<td>$\bigcup_1^{k} p$</td>
+</tr>
+</tbody></table>
+<h2 id="常用矩阵混合"><a href="#常用矩阵混合" class="headerlink" title="常用矩阵混合"></a>常用矩阵混合</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\begin{matrix}x &amp; y \\ z &amp; v \end{matrix}</code></td>
+<td>$\begin{matrix}x &amp; y \\ z &amp; v \end{matrix}$</td>
+</tr>
+<tr>
+<td><code>\begin{vmatrix} x &amp; y \\z &amp; v \end{vmatrix}</code></td>
+<td>$\begin{vmatrix} x &amp; y \\z &amp; v \end{vmatrix}$</td>
+</tr>
+<tr>
+<td><code>\begin{Vmatrix} x &amp; y \\ z &amp; v \end{Vmatrix}</code></td>
+<td>$\begin{Vmatrix} x &amp; y \\ z &amp; v \end{Vmatrix}$</td>
+</tr>
+<tr>
+<td><code>\begin{bmatrix} 0      &amp; \cdots &amp; 0      \\ \vdots &amp; \ddots &amp; \vdots \\ 0      &amp; \cdots &amp; 0 \end{bmatrix}</code></td>
+<td>$\begin{bmatrix} 0      &amp; \cdots &amp; 0      \\ \vdots &amp; \ddots &amp; \vdots \\ 0      &amp; \cdots &amp; 0 \end{bmatrix}$</td>
+</tr>
+<tr>
+<td><code>\begin{Bmatrix} x &amp; y \\ z &amp; v \end{Bmatrix}</code></td>
+<td>$\begin{Bmatrix} x &amp; y \\ z &amp; v \end{Bmatrix}$</td>
+</tr>
+<tr>
+<td><code>\begin{pmatrix} x &amp; y \\ z &amp; v \end{pmatrix}</code></td>
+<td>$\begin{pmatrix} x &amp; y \\ z &amp; v \end{pmatrix}$</td>
+</tr>
+<tr>
+<td><code>\bigl( \begin{smallmatrix} a&amp;b\\ c&amp;d \end{smallmatrix} \bigr)</code></td>
+<td>$\bigl( \begin{smallmatrix} a&amp;b\\ c&amp;d \end{smallmatrix} \bigr)$</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>pip conda 安装速度慢解决方法</title>
     <url>/2019/10/30/SolutionofPipandCondaSlowlyInstall/</url>
     <content><![CDATA[<h2 id="1-pip-提速"><a href="#1-pip-提速" class="headerlink" title="1 pip 提速"></a>1 pip 提速</h2><h3 id="1-1-临时提速"><a href="#1-1-临时提速" class="headerlink" title="1.1 临时提速"></a>1.1 临时提速</h3><p>在<code>pip</code>命令中添加参数 <code>-i</code> 和<code>镜像</code><br>常用镜像如下：</p>

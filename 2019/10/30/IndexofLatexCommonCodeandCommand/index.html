@@ -4,11 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="pip conda 安装速度慢解决方法, 王聪颖的博客">
-    <meta name="description" content="1 pip 提速1.1 临时提速在pip命令中添加参数 -i 和镜像常用镜像如下：
-
-清华：https://pypi.tuna.tsinghua.edu.cn/simple
-阿里云：http://mirrors.aliyun.com/pyp">
+    <meta name="keywords" content="Latex 常用数学符号和语法索引表, 王聪颖的博客">
+    <meta name="description" content="0 前言由于经常使用Latex编写数学公式，查找复制也比较麻烦，所以做么一个索引表，方便使用
+本文持续更新
+推荐非常好用的 手写字符识别 web 程序：http://detexify.kirelabs.org/classify.html 效">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>pip conda 安装速度慢解决方法 | 王聪颖的博客</title>
+    <title>Latex 常用数学符号和语法索引表 | 王聪颖的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -288,13 +287,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        pip conda 安装速度慢解决方法
+                        Latex 常用数学符号和语法索引表
                     </div>
                 </div>
             </div>
@@ -406,12 +405,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Pip/">
-                                <span class="chip bg-color">Pip</span>
-                            </a>
-                        
-                            <a href="/tags/Conda/">
-                                <span class="chip bg-color">Conda</span>
+                            <a href="/tags/Latex/">
+                                <span class="chip bg-color">Latex</span>
                             </a>
                         
                     </div>
@@ -450,31 +445,205 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-pip-提速"><a href="#1-pip-提速" class="headerlink" title="1 pip 提速"></a>1 pip 提速</h2><h3 id="1-1-临时提速"><a href="#1-1-临时提速" class="headerlink" title="1.1 临时提速"></a>1.1 临时提速</h3><p>在<code>pip</code>命令中添加参数 <code>-i</code> 和<code>镜像</code><br>常用镜像如下：</p>
-<ul>
-<li>清华：<a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a></li>
-<li>阿里云：<a href="http://mirrors.aliyun.com/pypi/simple/" target="_blank" rel="noopener">http://mirrors.aliyun.com/pypi/simple/</a></li>
-<li>中国科技大学 <a href="https://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.mirrors.ustc.edu.cn/simple/</a></li>
-<li>华中理工大学：<a href="http://pypi.hustunique.com/" target="_blank" rel="noopener">http://pypi.hustunique.com/</a></li>
-<li>山东理工大学：<a href="http://pypi.sdutlinux.org/" target="_blank" rel="noopener">http://pypi.sdutlinux.org/</a> </li>
-<li>豆瓣：<a href="http://pypi.douban.com/simple/" target="_blank" rel="noopener">http://pypi.douban.com/simple/</a></li>
-</ul>
-<p>使用：<br>假设使用清华镜像下载<code>tensorflow</code></p>
-<pre class=" language-shell"><code class="language-shell">pip install tensorflow -i https://pypi.tuna.tsinghua.edu.cn/simple pyspider</code></pre>
-<h3 id="1-2-设置配置文件，永久提速"><a href="#1-2-设置配置文件，永久提速" class="headerlink" title="1.2 设置配置文件，永久提速"></a>1.2 设置配置文件，永久提速</h3><p>修改 <code>~/.pip/pip.conf</code>(没有就创建一个文件夹及文件。文件夹要加“.”，表示是隐藏文件夹)<br>内容如下：</p>
-<pre class=" language-py"><code class="language-py">[global]
-index-url = https://pypi.tuna.tsinghua.edu.cn/simple</code></pre>
-<p>亲测速度大幅度提升</p>
-<h2 id="2-conda-提速"><a href="#2-conda-提速" class="headerlink" title="2 conda 提速"></a>2 conda 提速</h2><p>终端直接运行一下命令</p>
-<pre class=" language-shell"><code class="language-shell"># 添加 Anaconda 的 TUNA 镜像
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-# TUNA 的 help 中镜像地址加有引号，需要去掉
-
-# 设置搜索时显示通道地址
-conda config --set show_channel_urls yes</code></pre>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ol>
-<li><a href="http://www.cnblogs.com/dahu-daqing/p/6911414.html" target="_blank" rel="noopener">pip/conda国内镜像–安装包提速</a></li>
+                <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h2><p>由于经常使用<code>Latex</code>编写数学公式，查找复制也比较麻烦，所以做么一个索引表，方便使用</p>
+<p>本文持续更新</p>
+<p>推荐非常好用的 手写字符识别 web 程序：<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">http://detexify.kirelabs.org/classify.html</a> 效果如图所示：<br><img src="latex-classify.png" alt></p>
+<p><strong>主要参考文档：</strong></p>
+<ol>
+<li><a href="http://mohu.org/info/symbols/symbols.htm" target="_blank" rel="noopener">http://mohu.org/info/symbols/symbols.htm</a></li>
 </ol>
+<h2 id="常用微分"><a href="#常用微分" class="headerlink" title="常用微分"></a>常用微分</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\nabla</code></td>
+<td>$\nabla$</td>
+</tr>
+<tr>
+<td>\partial x</td>
+<td>$\partial x$</td>
+</tr>
+<tr>
+<td>\mathrm{d}x</td>
+<td>$\mathrm{d}x$</td>
+</tr>
+<tr>
+<td>\dot x</td>
+<td>$\dot x$</td>
+</tr>
+<tr>
+<td>\ddot y</td>
+<td>$\ddot y$</td>
+</tr>
+</tbody></table>
+<h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\sin\theta</td>
+<td>$\sin\theta$</td>
+</tr>
+<tr>
+<td>\cos\theta</td>
+<td>$\cos\theta$</td>
+</tr>
+<tr>
+<td>\tan\theta</td>
+<td>$\tan\theta$</td>
+</tr>
+<tr>
+<td>\max H</td>
+<td>$\max H$</td>
+</tr>
+<tr>
+<td>\min L</td>
+<td>$\min L$</td>
+</tr>
+<tr>
+<td>\exp t</td>
+<td>$\exp t$</td>
+</tr>
+<tr>
+<td>\ln X</td>
+<td>$\ln X$</td>
+</tr>
+<tr>
+<td>\lg X</td>
+<td>$\lg X$</td>
+</tr>
+<tr>
+<td>\log X</td>
+<td>$\log X$</td>
+</tr>
+<tr>
+<td>\log_\alpha X</td>
+<td>$    \log_\alpha X$</td>
+</tr>
+<tr>
+<td>\arg x</td>
+<td>$\arg x$</td>
+</tr>
+<tr>
+<td>\dim x</td>
+<td>$\dim x$</td>
+</tr>
+</tbody></table>
+<h2 id="常用希腊字母"><a href="#常用希腊字母" class="headerlink" title="常用希腊字母"></a>常用希腊字母</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\alpha \beta \gamma \delta \epsilon \zeta \eta\theta</td>
+<td>$\alpha \beta \gamma \delta \epsilon \zeta \eta\theta$</td>
+</tr>
+<tr>
+<td>\iota \kappa\varkappa \lambda \mu \nu \xi \omicron\pi</td>
+<td>$\iota \kappa\varkappa \lambda \mu \nu \xi \omicron\pi$</td>
+</tr>
+<tr>
+<td>\rho \sigma \tau \upsilon \phi \chi \psi\omega</td>
+<td>$\rho \sigma \tau \upsilon \phi \chi \psi\omega$</td>
+</tr>
+</tbody></table>
+<h2 id="常用积分求和公式混合"><a href="#常用积分求和公式混合" class="headerlink" title="常用积分求和公式混合"></a>常用积分求和公式混合</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\sum_{k=1}^N k^2</code></td>
+<td>$\sum_{k=1}^N k^2$</td>
+</tr>
+<tr>
+<td><code>\prod_{i=1}^N x_i</code></td>
+<td>$\prod_{i=1}^N x_i$</td>
+</tr>
+<tr>
+<td><code>\coprod_{i=1}^N x_i</code></td>
+<td>$\coprod_{i=1}^N x_i$</td>
+</tr>
+<tr>
+<td><code>\lim_{n \to \infty}x_n</code></td>
+<td>$\lim_{n \to \infty}x_n$</td>
+</tr>
+<tr>
+<td><code>\int_{-N}^{N} e^x\, dx</code></td>
+<td>$\int_{-N}^{N} e^x\, dx$</td>
+</tr>
+<tr>
+<td><code>\iint_{D}^{W} \, dx\,dy</code></td>
+<td>$    \iint_{D}^{W} \, dx\,dy$</td>
+</tr>
+<tr>
+<td><code>\iiint_{E}^{V} \, dx\,dy\,dz</code></td>
+<td>$\iiint_{E}^{V} \, dx\,dy\,dz$</td>
+</tr>
+<tr>
+<td><code>\iiiint_{F}^{U} \, dx\,dy\,dz\,dt</code></td>
+<td>$\iiiint_{F}^{U} \, dx\,dy\,dz\,dt$</td>
+</tr>
+<tr>
+<td><code>\oint_{C} x^3\, dx + 4y^2\, dy</code></td>
+<td>$\oint_{C} x^3\, dx + 4y^2\, dy$</td>
+</tr>
+<tr>
+<td><code>\bigcap_1^{n} p</code></td>
+<td>$\bigcap_1^{n} p$</td>
+</tr>
+<tr>
+<td><code>\bigcup_1^{k} p</code></td>
+<td>$\bigcup_1^{k} p$</td>
+</tr>
+</tbody></table>
+<h2 id="常用矩阵混合"><a href="#常用矩阵混合" class="headerlink" title="常用矩阵混合"></a>常用矩阵混合</h2><table>
+<thead>
+<tr>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\begin{matrix}x &amp; y \\ z &amp; v \end{matrix}</code></td>
+<td>$\begin{matrix}x &amp; y \\ z &amp; v \end{matrix}$</td>
+</tr>
+<tr>
+<td><code>\begin{vmatrix} x &amp; y \\z &amp; v \end{vmatrix}</code></td>
+<td>$\begin{vmatrix} x &amp; y \\z &amp; v \end{vmatrix}$</td>
+</tr>
+<tr>
+<td><code>\begin{Vmatrix} x &amp; y \\ z &amp; v \end{Vmatrix}</code></td>
+<td>$\begin{Vmatrix} x &amp; y \\ z &amp; v \end{Vmatrix}$</td>
+</tr>
+<tr>
+<td><code>\begin{bmatrix} 0      &amp; \cdots &amp; 0      \\ \vdots &amp; \ddots &amp; \vdots \\ 0      &amp; \cdots &amp; 0 \end{bmatrix}</code></td>
+<td>$\begin{bmatrix} 0      &amp; \cdots &amp; 0      \\ \vdots &amp; \ddots &amp; \vdots \\ 0      &amp; \cdots &amp; 0 \end{bmatrix}$</td>
+</tr>
+<tr>
+<td><code>\begin{Bmatrix} x &amp; y \\ z &amp; v \end{Bmatrix}</code></td>
+<td>$\begin{Bmatrix} x &amp; y \\ z &amp; v \end{Bmatrix}$</td>
+</tr>
+<tr>
+<td><code>\begin{pmatrix} x &amp; y \\ z &amp; v \end{pmatrix}</code></td>
+<td>$\begin{pmatrix} x &amp; y \\ z &amp; v \end{pmatrix}$</td>
+</tr>
+<tr>
+<td><code>\bigl( \begin{smallmatrix} a&amp;b\\ c&amp;d \end{smallmatrix} \bigr)</code></td>
+<td>$\bigl( \begin{smallmatrix} a&amp;b\\ c&amp;d \end{smallmatrix} \bigr)$</td>
+</tr>
+</tbody></table>
 
             </div>
             <hr/>
@@ -637,9 +806,9 @@ conda config --set show_channel_urls yes</code></pre>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《pip conda 安装速度慢解决方法》
+                    《Latex 常用数学符号和语法索引表》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/10/30/SolutionofPipandCondaSlowlyInstall/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/10/30/IndexofLatexCommonCodeandCommand/" property="cc:attributionName"
                rel="cc:attributionURL">
                 王聪颖
             </a> 采用
@@ -680,7 +849,7 @@ conda config --set show_channel_urls yes</code></pre>
         repo: 'wangcongying.github.io',
         owner: 'Congying-Wang',
         admin: "Congying-Wang",
-        id: '2019-10-30T16-46-55',
+        id: '2019-10-30T17-58-01',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -701,9 +870,10 @@ conda config --set show_channel_urls yes</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/10/30/IndexofLatexCommonCodeandCommand/">
                     <div class="card-image">
@@ -723,9 +893,9 @@ conda config --set show_channel_urls yes</code></pre>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -738,6 +908,7 @@ conda config --set show_channel_urls yes</code></pre>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -756,22 +927,22 @@ conda config --set show_channel_urls yes</code></pre>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/10/30/SummaryofMachineLearningPerformanceEvaluationIndicators/">
+                <a href="/2019/10/30/SolutionofPipandCondaSlowlyInstall/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="机器学习性能评价指标汇总">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="pip conda 安装速度慢解决方法">
                         
-                        <span class="card-title">机器学习性能评价指标汇总</span>
+                        <span class="card-title">pip conda 安装速度慢解决方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1 分类1.1 混淆矩阵
-True Positive(真正, TP)：将正类预测为正类数.
-True Negative(真负 , TN)：将负类预测为负类数.
-False Positive(假正, FP)：将负类预测为正类数 → 误报 (T
+                            1 pip 提速1.1 临时提速在pip命令中添加参数 -i 和镜像常用镜像如下：
+
+清华：https://pypi.tuna.tsinghua.edu.cn/simple
+阿里云：http://mirrors.aliyun.com/pyp
                         
                     </div>
                     <div class="publish-info">
@@ -782,8 +953,8 @@ False Positive(假正, FP)：将负类预测为正类数 → 误报 (T
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/人工智能/" class="post-category">
-                                    人工智能
+                            <a href="/categories/工具/" class="post-category">
+                                    工具
                                 </a>
                             
                             
@@ -793,8 +964,12 @@ False Positive(假正, FP)：将负类预测为正类数 → 误报 (T
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/最优化算法/">
-                        <span class="chip bg-color">最优化算法</span>
+                    <a href="/tags/Pip/">
+                        <span class="chip bg-color">Pip</span>
+                    </a>
+                    
+                    <a href="/tags/Conda/">
+                        <span class="chip bg-color">Conda</span>
                     </a>
                     
                 </div>
