@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SCL 管理 CentOS 软件</title>
+    <url>/2019/11/08/ManageCentosPackageswithSCL/</url>
+    <content><![CDATA[<h2 id="1-SCL-介绍"><a href="#1-SCL-介绍" class="headerlink" title="1 SCL 介绍"></a>1 SCL 介绍</h2><p>在管理一些机器的时候，各种软件环境的安全切换是比较麻烦的问题，有时候环境的来回切换会导致系统紊乱，为了解决这个问题，红帽提供了软件环境管理工具<code>SCL</code>(Software Collections) </p>
+<p>项目主页：<a href="https://www.softwarecollections.org/en/" target="_blank" rel="noopener">Software Collections</a></p>
+<p>其中包含的软件集：<a href="https://www.softwarecollections.org/en/scls/" target="_blank" rel="noopener">Directory - Software Collections</a></p>
+<p>下面将以安装<code>python36</code>来作为示例</p>
+<h2 id="2-SCL-安装和使用"><a href="#2-SCL-安装和使用" class="headerlink" title="2 SCL 安装和使用"></a>2 SCL 安装和使用</h2><h3 id="2-1-SCL-安装"><a href="#2-1-SCL-安装" class="headerlink" title="2.1 SCL 安装"></a>2.1 SCL 安装</h3><p>使用<code>yum</code>命令安装<code>SCL</code></p>
+<pre><code>[username@centos ~] yum install centos-release-scl</code></pre><h3 id="2-2-安装需要的软件包"><a href="#2-2-安装需要的软件包" class="headerlink" title="2.2 安装需要的软件包"></a>2.2 安装需要的软件包</h3><p>示例安装<code>python36</code></p>
+<pre><code>[username@centos ~] yum install rh-python36</code></pre><p>激活<code>python36</code> 软件环境</p>
+<pre><code>[username@centos ~] scl enable rh-python36 bash</code></pre><p>当然也可以安装其他软件包，只要是<code>rh-</code>开头的都是被<code>SCL</code>工具管理环境，我们可以使用下面的命令来查看支持的环境，当然也可以去<a href="https://www.softwarecollections.org/en/scls/" target="_blank" rel="noopener">官网软件集</a>查看</p>
+<pre><code>[username@centos ~] yum list  rh-*</code></pre><h3 id="2-3-设置默认环境"><a href="#2-3-设置默认环境" class="headerlink" title="2.3 设置默认环境"></a>2.3 设置默认环境</h3><p>在实际工作中，为了避免每次输入命令激活环境，我们都会将其写入环境变量来默认激活，可以将激活环境的 bash 加入 <code>~/.bashrc</code> 或者 <code>~/.bash_profile</code> 中, 将下列命令追加在文件最后</p>
+<pre><code>source scl_source enable rh-python36</code></pre>]]></content>
+      <categories>
+        <category>SRE 运维</category>
+      </categories>
+      <tags>
+        <tag>SCL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Latex 常用数学符号和语法索引表</title>
     <url>/2019/10/30/IndexofLatexCommonCodeandCommand/</url>
     <content><![CDATA[<h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h2><p>由于经常使用<code>Latex</code>编写数学公式，查找复制也比较麻烦，所以做么一个索引表，方便使用</p>
