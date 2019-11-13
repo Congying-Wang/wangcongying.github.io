@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>MapReduce常见问题与解决-PipeMapRed.waitOutputThreads</title>
+    <url>/2019/11/13/MapReduceError-PipeMapRedWaitOutputThreadsSubprocessFailedwithCodeX/</url>
+    <content><![CDATA[<h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1 问题描述"></a>1 问题描述</h2><p>在Map阶段错误日志为：</p>
+<pre><code>Error: java.lang.RuntimeException: PipeMapRed.waitOutputThreads(): subprocess failed with code 1 at 
+org.apache.hadoop.streaming.PipeMapRed.waitOutputThreads(PipeMapRed.java:322) at 
+org.apache.hadoop.streaming.PipeMapRed.mapRedFinished(PipeMapRed.java:537) at 
+org.apache.hadoop.streaming.PipeMapper.close(PipeMapper.java:132) at 
+org.apache.hadoop.mapred.MapRunner.run(MapRunner.java:75) at 
+org.apache.hadoop.streaming.PipeMapRunner.run(PipeMapRunner.java:34) at 
+org.apache.hadoop.mapred.MapTask.runOldMapper(MapTask.java:459) at 
+org.apache.hadoop.mapred.MapTask.run(MapTask.java:345) at 
+org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:170) at 
+java.security.AccessController.doPrivileged(Native Method) at javax.security.auth.Subject.doAs(Subject.java:415) at 
+org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1657) at 
+org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:164)</code></pre><h2 id="2-问题原因及解决"><a href="#2-问题原因及解决" class="headerlink" title="2 问题原因及解决"></a>2 问题原因及解决</h2><p>解决此类原因主是 Streaming 程序退出异常，序要依靠错误日志来查看详细原因，下面给出部分错误码</p>
+<h3 id="2-1-subprocess-failed-with-code-1"><a href="#2-1-subprocess-failed-with-code-1" class="headerlink" title="2.1 subprocess failed with code 1"></a>2.1 subprocess failed with code <code>1</code></h3><p><strong>原因定位</strong>: </p>
+<blockquote>
+<p>map或reduce返回<code>1</code>，<code>MapReduce</code>框架会将应用程序的返回值收集，subprocess failed with code 1表示程序返回的就是1。详细出错原因需结合Task Logs和程序源码定位。</p>
+</blockquote>
+<h3 id="2-2-subprocess-failed-with-code-126"><a href="#2-2-subprocess-failed-with-code-126" class="headerlink" title="2.2 subprocess failed with code 126"></a>2.2 subprocess failed with code <code>126</code></h3><p><strong>原因定位</strong>: </p>
+<blockquote>
+<p>一般是由于map/reduce中调用的程序无可执行权限导致</p>
+</blockquote>
+<h3 id="2-3-subprocess-failed-with-code-127"><a href="#2-3-subprocess-failed-with-code-127" class="headerlink" title="2.3 subprocess failed with code 127"></a>2.3 subprocess failed with code <code>127</code></h3><p><strong>原因定位</strong>:</p>
+<blockquote>
+<p>一般是由于map/reduce脚本未上传导致，请使用-file 上传map/reduce程序</p>
+</blockquote>
+<h3 id="2-4-subprocess-failed-with-code-137"><a href="#2-4-subprocess-failed-with-code-137" class="headerlink" title="2.4 subprocess failed with code 137"></a>2.4 subprocess failed with code <code>137</code></h3><p><strong>原因定位</strong>:</p>
+<blockquote>
+<p>map或reduce程序超出平台内存限制被limit杀掉，一般的平台都会有一个默认内存限制，例如配置内存限制为800MB（137-128=9, 对应信号为SIGKILL）发生这种情况后一般登录到这台计算节点上看dmesg都能看到类似： killer: killing process….提示 ps：在新的haoop版本中，如果单个程序运行占用cpu的时间超过12小时，也会被kill返回137.</p>
+</blockquote>
+<h3 id="2-5-subprocess-failed-with-code-139"><a href="#2-5-subprocess-failed-with-code-139" class="headerlink" title="2.5 subprocess failed with code 139"></a>2.5 subprocess failed with code <code>139</code></h3><p><strong>原因定位</strong>:</p>
+<blockquote>
+<p>代码有问题，进行本地数据测试</p>
+</blockquote>
+<h3 id="2-6-subprocess-failed-with-code-141"><a href="#2-6-subprocess-failed-with-code-141" class="headerlink" title="2.6 subprocess failed with code 141"></a>2.6 subprocess failed with code <code>141</code></h3><p><strong>原因定位</strong>:</p>
+<blockquote>
+<p>map或reduce异常退出，平台继续向管道推送数据，因管道异常出错(141-128=13， 信号13代表着SIGPIPE错误，即管道错误)根本原因还是程序异常退出导致。详细出错原因需结合Task Logs和程序源码定位。</p>
+</blockquote>
+<h3 id="2-7-subprocess-failed-with-code-255"><a href="#2-7-subprocess-failed-with-code-255" class="headerlink" title="2.7 subprocess failed with code 255"></a>2.7 subprocess failed with code <code>255</code></h3><p><strong>原因定位</strong>:</p>
+<blockquote>
+<p>map或reduce异常退出返回值-1，详细出错原因需结合Task Logs和程序源码定位</p>
+</blockquote>
+<h3 id="2-8-其他返回值"><a href="#2-8-其他返回值" class="headerlink" title="2.8 其他返回值"></a>2.8 其他返回值</h3><p>公式：</p>
+<blockquote>
+<p>错误码-128 = linux返回码 </p>
+<p>//比如 返回错误码是 137， 那么它对应的linux返回码就是 9</p>
+</blockquote>
+<p>然后查看<code>linux kill -l</code>信号含义，对应检查程序</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="https://hadoop.apache.org/docs/r1.2.1/streaming.html" target="_blank" rel="noopener">Hadoop Streaming Doc</a></p>
+]]></content>
+      <categories>
+        <category>大数据</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
+        <tag>MapReduce</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SCL 管理 CentOS 软件</title>
     <url>/2019/11/08/ManageCentosPackageswithSCL/</url>
     <content><![CDATA[<h2 id="1-SCL-介绍"><a href="#1-SCL-介绍" class="headerlink" title="1 SCL 介绍"></a>1 SCL 介绍</h2><p>在管理一些机器的时候，各种软件环境的安全切换是比较麻烦的问题，有时候环境的来回切换会导致系统紊乱，为了解决这个问题，红帽提供了软件环境管理工具<code>SCL</code>(Software Collections) </p>
