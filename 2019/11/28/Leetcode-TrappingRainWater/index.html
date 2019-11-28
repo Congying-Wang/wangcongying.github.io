@@ -479,19 +479,19 @@
     当前索引入栈
 返回面积</code></pre>
 <p>源码：</p>
-<pre class=" language-py"><code class="language-py">class Solution:
-    def trap(self, height: List[int]) -> int:
-        stack = list()
-        res = 0
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">trap</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> height<span class="token punctuation">:</span> List<span class="token punctuation">[</span>int<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> int<span class="token punctuation">:</span>
+        stack <span class="token operator">=</span> list<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        res <span class="token operator">=</span> <span class="token number">0</span>
 
-        for i in range(len(height)):
-            while stack and height[stack[-1]] < height[i]:
-                curr = stack.pop()
-                if not stack: break
-                res += (min(height[stack[-1]], height[i]) - height[curr]) * (i - stack[-1] - 1)
-            stack.append(i)
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>height<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">while</span> stack <span class="token operator">and</span> height<span class="token punctuation">[</span>stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                curr <span class="token operator">=</span> stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token keyword">if</span> <span class="token operator">not</span> stack<span class="token punctuation">:</span> <span class="token keyword">break</span>
+                res <span class="token operator">+=</span> <span class="token punctuation">(</span>min<span class="token punctuation">(</span>height<span class="token punctuation">[</span>stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> height<span class="token punctuation">[</span>curr<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>i <span class="token operator">-</span> stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
 
-        return res</code></pre>
+        <span class="token keyword">return</span> res</code></pre>
 <h3 id="2-2-双指针"><a href="#2-2-双指针" class="headerlink" title="2.2 双指针"></a>2.2 双指针</h3><h4 id="2-2-1-思路"><a href="#2-2-1-思路" class="headerlink" title="2.2.1 思路"></a>2.2.1 思路</h4><p><strong>复杂度</strong></p>
 <blockquote>
 <p>时间复杂度是 $O(n)$</p>
