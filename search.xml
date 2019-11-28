@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>微观经济·现代方法笔记——市场(未完结)</title>
+    <url>/2019/11/19/ME-TheMarket/</url>
+    <content><![CDATA[<p>本文为学习《微观经济学——现代观点》时做的知识点笔记，主要参考原文书籍，随时更新。</p>
+<h2 id="1-建立模型"><a href="#1-建立模型" class="headerlink" title="1 建立模型"></a>1 建立模型</h2><blockquote>
+<p>建立模型: $Constructing<del>a</del>Model$</p>
+</blockquote>
+<p>作者使用大学城的住房市场来贯穿本章知识点，在这个城市中，有两种类型的住房：</p>
+<ul>
+<li>邻近大学城住房</li>
+<li>离大学城远的住房</li>
+</ul>
+<p>在文中主要考察<strong>内城区</strong>的住房市场，外城区主要是人们在内城区找不到住房才去的地方，主要想知道<strong>价格</strong>$(price)$在其中有多大的作用以及价格的的决定因素。</p>
+<ol>
+<li><p>外生变量$(Exogenous~Variable)$</p>
+<blockquote>
+<p>解释：外城区的住房价格</p>
+<p>主要是因为外城区价格决定因素并没有在这个模型中讨论的因素中，（原文：外城区住房价格已由不被这个模型所讨论的因素决定了）</p>
+</blockquote>
+</li>
+<li><p>内生变量$(Endogenous~Variable)$</p>
+<blockquote>
+<p>解释：内城区的住房价格</p>
+<p>内城区的住房价格决定因素是本模型所要讨论的</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="2-最优化与均衡"><a href="#2-最优化与均衡" class="headerlink" title="2 最优化与均衡"></a>2 最优化与均衡</h2><blockquote>
+<p>最优化与均衡: $Optimization<del>and</del>Equilibrium$</p>
+</blockquote>
+<p>经济学家在研究行为的时候，会利用一个框架$(framework)$的协助分析，大多数框架中会有以下两个原则$(principle)$</p>
+<ol>
+<li><p>最优化原理$(The<del>optimization</del>principle)$</p>
+<blockquote>
+<p>人们会选择支付的起的最佳消费方式</p>
+</blockquote>
+</li>
+<li><p>均衡原理$(The<del>Equilibrium</del>Principle)$</p>
+<blockquote>
+<p>价格会自行调整，知道供给数量和需求数量相等</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>经济学</category>
+      </categories>
+      <tags>
+        <tag>Market</tag>
+        <tag>Microeconomics</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MapReduce常见问题与解决-PipeMapRed.waitOutputThreads</title>
     <url>/2019/11/13/MapReduceError-PipeMapRedWaitOutputThreadsSubprocessFailedwithCodeX/</url>
     <content><![CDATA[<h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1 问题描述"></a>1 问题描述</h2><p>在Map阶段错误日志为：</p>
@@ -583,7 +635,7 @@ conda config --set show_channel_urls yes</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>梯度下降概述</title>
+    <title>梯度下降概述（未完结）</title>
     <url>/2019/09/26/summaryOfGradientDescent/</url>
     <content><![CDATA[<h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h2><p>在求解机器学习算法的模型参数，即无约束优化问题时，梯度下降算法是机器学习中使用非常广泛的算法之一。几乎当前每一个机器学习库或者深度学习库都会包括梯度下降算法的不同变种实现。它们就像一个黑盒优化器，很难得到它们优缺点的实际解释。</p>
 <p>本文将对<code>梯度</code>、<code>梯度下降</code>等基础知识点、<code>三大梯度下降法框架</code>、<code>梯度下降优化算法</code>以及目前工业上使用的<code>并行分布式优化算法</code>进行讲解。</p>

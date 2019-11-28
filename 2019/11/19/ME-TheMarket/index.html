@@ -4,11 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="最优化算法之Momentum, 王聪颖的博客">
-    <meta name="description" content="1 Momentum
-Momentum 中文为：动量法
+    <meta name="keywords" content="微观经济·现代方法笔记——市场(未完结), 王聪颖的博客">
+    <meta name="description" content="本文为学习《微观经济学——现代观点》时做的知识点笔记，主要参考原文书籍，随时更新。
+1 建立模型
+建立模型: $ConstructingaModel$
 
-虽然随机梯度下降仍然是非常受欢迎的优化方法，但其学习过程有时会很慢，并且有的时候对于比较的复杂的模型，我们很难得到global minima， 当然他们的梯度在这些地方也是0，所以就">
+作者使用大学城的住房市场来贯穿本章知识点，在这个城市中，有两种类型的住房：
+
+邻近大学">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +19,7 @@ Momentum 中文为：动量法
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>最优化算法之Momentum | 王聪颖的博客</title>
+    <title>微观经济·现代方法笔记——市场(未完结) | 王聪颖的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -294,7 +297,7 @@ Momentum 中文为：动量法
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        最优化算法之Momentum
+                        微观经济·现代方法笔记——市场(未完结)
                     </div>
                 </div>
             </div>
@@ -406,8 +409,12 @@ Momentum 中文为：动量法
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/最优化算法/">
-                                <span class="chip bg-color">最优化算法</span>
+                            <a href="/tags/Market/">
+                                <span class="chip bg-color">Market</span>
+                            </a>
+                        
+                            <a href="/tags/Microeconomics/">
+                                <span class="chip bg-color">Microeconomics</span>
                             </a>
                         
                     </div>
@@ -418,8 +425,8 @@ Momentum 中文为：动量法
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/人工智能/" class="post-category">
-                                人工智能
+                            <a href="/categories/经济学/" class="post-category">
+                                经济学
                             </a>
                         
                     </div>
@@ -430,7 +437,7 @@ Momentum 中文为：动量法
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-08
+                    2019-11-19
                 </div>
 
                 
@@ -446,99 +453,45 @@ Momentum 中文为：动量法
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-Momentum"><a href="#1-Momentum" class="headerlink" title="1 Momentum"></a>1 Momentum</h2><blockquote>
-<p>Momentum 中文为：动量法</p>
+                <p>本文为学习《微观经济学——现代观点》时做的知识点笔记，主要参考原文书籍，随时更新。</p>
+<h2 id="1-建立模型"><a href="#1-建立模型" class="headerlink" title="1 建立模型"></a>1 建立模型</h2><blockquote>
+<p>建立模型: $Constructing<del>a</del>Model$</p>
 </blockquote>
-<p>虽然随机梯度下降仍然是非常受欢迎的优化方法，但其学习过程有时会很慢，并且有的时候对于比较的复杂的模型，我们很难得到<code>global minima</code>， 当然他们的梯度在这些地方也是0，所以就再也不会更新参数值，一直卡在这些伪最优解上，如下图所示：</p>
-<p><img src="GD-momentum-problems.jpg" alt="三种伪最优解"></p>
-<p>这三种伪最优解为：</p>
+<p>作者使用大学城的住房市场来贯穿本章知识点，在这个城市中，有两种类型的住房：</p>
+<ul>
+<li>邻近大学城住房</li>
+<li>离大学城远的住房</li>
+</ul>
+<p>在文中主要考察<strong>内城区</strong>的住房市场，外城区主要是人们在内城区找不到住房才去的地方，主要想知道<strong>价格</strong>$(price)$在其中有多大的作用以及价格的的决定因素。</p>
 <ol>
-<li><strong>plateau</strong>: 稳定的水平</li>
-<li><strong>saddle point</strong>: 鞍点</li>
-<li><strong>local minima</strong>: 局部最小点</li>
-</ol>
-<p>为了解决这个问题，Polyak 想到使用物理学中的惯性来解决，如下图所示：</p>
-<p><img src="GD-momentum-physical.jpg" alt="实际情况"></p>
-<p>上面是物理中的一种现象，我们可以想象，把一个小球放在这种实际的轨道上，这个小球并不会在上面我们说的梯度为0的地方就停止下来。因为在实际中的事物都是有惯性的，也就是momentum。那我们如果想要解决上面的问题，很自然的就会想能不能也给我们的gradient descent加上一个冲量呢？让他在这些梯度等于0的地方也能够像现实生活中的那样，去冲出这些伪最优解。</p>
-<p>下面给出<code>动量法</code>的参数更新公式：</p>
-<p>$$<br>\begin{split}<br>v_t &amp; \leftarrow \beta v_{t-1} + \alpha \nabla_{\theta} J(\theta) \\\<br>\theta_t &amp; \leftarrow \theta_{t-1} -v_t<br>\end{split}<br>$$</p>
-<p>其中，动量超参数 $\beta$ 满足 $0 \le \beta &lt; 1$ 。当 $\beta = 0$ 时，动量法等价于小批量随机梯度下降。</p>
-<p>这是比较直观的理解<code>动量法</code>，网上还有从数学角度也就是<code>指数移动平均</code>来理解 <code>动量法</code>，下文中将对其进行讲解</p>
-<h2 id="2-指数加权移动平均"><a href="#2-指数加权移动平均" class="headerlink" title="2 指数加权移动平均"></a>2 指数加权移动平均</h2><p>在介绍<code>指数加权移动平均</code>之前先介绍一下<code>简单的移动平均法</code>以及<code>加权移动平均法</code></p>
-<h3 id="2-1-简单移动平均法"><a href="#2-1-简单移动平均法" class="headerlink" title="2.1 简单移动平均法"></a>2.1 简单移动平均法</h3><p><code>简单移动平均法</code> 顾名思义，就是$t$前$N$个状态下值的平均值作为第$t$状态下的值，其公式如下：</p>
-<p>$$<br>F_{t} = \frac{(x_t+x_{t-1}+ x_{t-2}+\ldots + x_{t-(N-1)})}{N} = \frac{1}{N} \sum_{i = t-N+1}^{t} x_i<br>$$<br>公式解释如下：</p>
-<ul>
-<li>$F_{t}$: 第$t$个状态下的预测值</li>
-<li>$N$: 需要计算的移动状态个数</li>
-<li>$x_i, (i=t, t-1, \ldots , t-N+1)$: 第$i$状态下的值</li>
-</ul>
-<p>其优缺点为：</p>
-<ol>
-<li><p><strong>优点</strong>: </p>
-<ul>
-<li>计算量少</li>
-<li>移动平均线能较好的反应时间序列的趋势以及变化</li>
-</ul>
-</li>
-<li><p><strong>缺点</strong>:</p>
-<ul>
-<li>计算移动平均必须具有$N$个过去观察值，当需要预测大量的数值时，就必须存储大量数据</li>
-<li>$N$个过去观察值中每一个权数都相等，而早于$(t-N+1)$期的观察值的权数等于0，而实际上往往是最新观察值包含更多信息，因具有更大的权重。</li>
-</ul>
-</li>
-</ol>
-<h3 id="2-2-加权移动平均法"><a href="#2-2-加权移动平均法" class="headerlink" title="2.2 加权移动平均法"></a>2.2 加权移动平均法</h3><p>为了解决<code>简单移动平均法</code> 中的第二个缺点中的权重问题，就有了<code>加权移动平均法</code>， 其公式为：</p>
-<p>$$<br>F_{t} = \frac{(w_t x_t+x_{t-1}+ w_{t-2} x_{t-2}+\ldots + w_{t-(N-1)} x_{t-(N-1)})}{N} = \frac{1}{N} \sum_{i = t-N+1}^{t} w_i x_i<br>$$</p>
-<p>其中$w_i$ 是第 $i$ 状态下的权值。</p>
-<p>在运用加权平均时，权重的选择是一个应该注意的问题，经验法和试算法使选择权重最简单的方法。一般而言，最近期的数据最能预测未来的情况。因而权重应大一些。</p>
-<p>其优缺点为：</p>
-<ol>
-<li><p><strong>优点</strong>:</p>
-<ul>
-<li>使用加权移动平均法能平滑掉突然波动对预测结果的影响</li>
-</ul>
-</li>
-<li><p><strong>缺点</strong>:</p>
-<ul>
-<li>加大移动平均法的期数会使平滑波动效果更好，但会使预测值对数据实际变动更不敏感, 也就是图像会往右移动，有时延</li>
-<li>移动平均值并不能总是很好的反应出趋势。由于是平均值，预测值总是停留在过去的水平上而无法预计会导致将来更高或更低的波动。</li>
-<li>移动平均法要大量的过去数据记录</li>
-<li>需要不断修改平均值，以之作为预测值。</li>
-</ul>
-</li>
-</ol>
-<h3 id="2-3-指数加权移动平均法"><a href="#2-3-指数加权移动平均法" class="headerlink" title="2.3 指数加权移动平均法"></a>2.3 指数加权移动平均法</h3><p>指数平滑法是对加权移动平均法的改进，它是将前期预测值和前期实际值分别确定不同的权数(二者权数和为1)。只需要三个数据，所有预测方法中，指数平滑法采用较多，常用语短期预测，指数平滑法有很多种，有一次指数平滑预测、二次指数平滑预测以及三次指数平滑预测。在这里这说一次指数平滑预测。</p>
-<p>给定超参数 $0 \le \beta &lt; 1$，利用前一期的预测值 $F_{t-1}$ 以及当前时间步另一变量 $x_t$ 的线性组合：</p>
-<p>$$<br>F_t \leftarrow \beta F_{t-1} + (1-\beta)x_t<br>$$</p>
-<p>选择合适的 $\beta$ 值。实际需求稳定，选取较小的 $\beta$ 值，反之选取较大的 $\beta$ 值。</p>
-<p>为了便于理解，可以参考吴恩达老师的 slides， </p>
+<li><p>外生变量$(Exogenous~Variable)$</p>
 <blockquote>
-<p>注：其中温度符号用错了</p>
+<p>解释：外城区的住房价格</p>
+<p>主要是因为外城区价格决定因素并没有在这个模型中讨论的因素中，（原文：外城区住房价格已由不被这个模型所讨论的因素决定了）</p>
 </blockquote>
-<p><img src="GD-exm-ag.jpg" alt></p>
-<p>其实这里的曲线就是当 $v_0=0$作为移动平均的初始值，然后将对应的实际的温度值带入递归式子中，然后得出的曲线。其实从上面也可以看出来 $\beta$ 的选择尤为的重要。这个温度的例子$\beta=0.9$。可以看出曲线要平坦一点，这是因为你平均了几天的温度，所以这个曲线波动更小，更加平坦，缺点就是曲线会失去时效性，在图中的表现就是曲线会向右移动，那因为现在要平均的温度值更多，要平均更多的值，指数加权平均公式在温度变化的时，能更加适应缓慢一些，所以会出现一定的延迟。</p>
-<p><img src="GD-exm-ag-2.jpg" alt></p>
-<ul>
-<li>$\beta = 0.9$的时候，曲线会更加平缓(稳定性高)，但是趋势曲线会向右移动(时效性差)</li>
-<li>$\beta = 0.5$的时候，由于只平均了两天的温度，平均的数据太少了，得到的曲线会有更多的噪声也就是(稳定性差)更有可能出现异常值，但是趋势曲线能够更加适应拟合你的原始数据，也就是趋势曲线的(时效性高)</li>
-</ul>
-<p>可以看到$\beta$的值直接决定了平均的天数，下面将使用公式进行推导</p>
-<p>我们可以对其进行展开：</p>
-<p>$$<br>\begin{split}<br>F_t &amp; = \beta F_{t-1} + (1-\beta) x_t \\\<br>&amp;= \beta^2 F_{t-2} + (1-\beta)\beta x_{t-1} + (1-\beta) x_t \\\<br>&amp;= \beta^3 F_{t-3} + (1-\beta)\beta^2 x_{t-2} + (1-\beta)\beta x_{t-1} + (1-\beta) x_t \\\<br>&amp;= \ldots<br>\end{split}<br>$$</p>
-<p>令$n = \frac{1}{1-\beta}$, 那么$(1-\frac{1}{n})^n = \beta^{\frac{1}{1-\beta}}$</p>
-<p>因为<br>$$<br>\lim_{n \to \infty }(1-\frac{1}{n})^n = \exp(-1)<br>$$</p>
-<p>所以当$\beta \to 1$ 时，$\beta^{\frac{1}{1-\beta}} = \exp(-1)$, 如$0.95^20 \approx \exp(-1)$， 如果把 $\exp(−1)$ 当作一个比较小的数，我们可以在近似中忽略所有含 $\beta^{\frac{1}{1-\beta}}$ 和比 $\beta^{\frac{1}{1-\beta}}$ 更高阶的系数的项。例如，当 $\beta=0.95$ 时，</p>
-<p>$$<br>\begin{split}<br>F_t &amp;= (1-\beta)(\beta^0 x_t + \beta^1 x_{t-1} + \ldots + \beta^19x_{t-19} + \ldots) \\\<br>&amp;= 0.05\sum_{i=0}^{19} 0.95^i x_{t-i}<br>\end{split}<br>$$</p>
-<p>因此，在实际中，我们常常将 $F_t$ 看作是对最近 $\frac{1}{1-\beta}$个时间步的 $x_t$ 值的加权平均。例如，当 $\beta=0.95$ 时， $F_t$ 可以被看作对最近$20$个时间步值的加权平均；当 $\beta=0.9$ 时， $F_t$ 可以看作是对最近$10$个时间步值的加权平均。而且，离当前时间步 $t$ 越近的 $x_t$ 值获得的权重越大（越接近1）。</p>
-<h2 id="3-由指数加权移动平均理解动量法"><a href="#3-由指数加权移动平均理解动量法" class="headerlink" title="3 由指数加权移动平均理解动量法"></a>3 由指数加权移动平均理解动量法</h2><p>现在，我们对动量法的速度变量做变形：</p>
-<p>$$<br>v_t \leftarrow \beta v_{t-1} + (1-\beta)(\frac{1}{1-\beta} \alpha \nabla_{\theta}(\theta))<br>$$</p>
-<p>由指数加权移动平均的形式可得，速度变量 $v_t$ 实际上对序列<br>$$<br>\left \{ \frac{\alpha \nabla^{t-i}_{\theta}(\theta)}{1-\beta}, i=0,1,\ldots, \frac{1}{1-\beta} -1 \right \}<br>$$</p>
-<p>做了指数加权移动平均。换句话说，相比于小批量随机梯度下降，动量法在每个时间步的自变量更新量近似于将前者对应的最近$\frac{1}{1-\beta}$ 个时间步的更新量做了指数加权移动平均后再除以$1-\beta$, 所以，在动量法中，自变量在各个方向上的移动幅度不仅取决当前梯度，还取决于过去的各个梯度在各个方向上是否一致。</p>
-<h2 id="4-算法过程"><a href="#4-算法过程" class="headerlink" title="4 算法过程"></a>4 算法过程</h2><p><img src="momentum-algorithm.png" alt="使用动量的随机梯度下降伪代码"></p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ol>
-<li><a href="https://raw.githubusercontent.com/JDwangmo/deepLearningBook/master/book/deeplearning-%E5%B8%A6%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE.pdf" target="_blank" rel="noopener">Deep learning - Ian Goodfellow, Yoshua Bengio, Aaron Courville</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/34240246" target="_blank" rel="noopener">优化算法之Gradient descent with momentum</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/32335746" target="_blank" rel="noopener">优化算法之指数移动加权平均</a></li>
+</li>
+<li><p>内生变量$(Endogenous~Variable)$</p>
+<blockquote>
+<p>解释：内城区的住房价格</p>
+<p>内城区的住房价格决定因素是本模型所要讨论的</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="2-最优化与均衡"><a href="#2-最优化与均衡" class="headerlink" title="2 最优化与均衡"></a>2 最优化与均衡</h2><blockquote>
+<p>最优化与均衡: $Optimization<del>and</del>Equilibrium$</p>
+</blockquote>
+<p>经济学家在研究行为的时候，会利用一个框架$(framework)$的协助分析，大多数框架中会有以下两个原则$(principle)$</p>
+<ol>
+<li><p>最优化原理$(The<del>optimization</del>principle)$</p>
+<blockquote>
+<p>人们会选择支付的起的最佳消费方式</p>
+</blockquote>
+</li>
+<li><p>均衡原理$(The<del>Equilibrium</del>Principle)$</p>
+<blockquote>
+<p>价格会自行调整，知道供给数量和需求数量相等</p>
+</blockquote>
+</li>
 </ol>
 
             </div>
@@ -702,9 +655,9 @@ Momentum 中文为：动量法
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《最优化算法之Momentum》
+                    《微观经济·现代方法笔记——市场(未完结)》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/10/08/GD-OptimizationAlgorithms-Momentum/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/11/19/ME-TheMarket/" property="cc:attributionName"
                rel="cc:attributionURL">
                 王聪颖
             </a> 采用
@@ -745,7 +698,7 @@ Momentum 中文为：动量法
         repo: 'wangcongying.github.io',
         owner: 'Congying-Wang',
         admin: "Congying-Wang",
-        id: '2019-10-08T22-53-54',
+        id: '2019-11-19T15-32-37',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -766,47 +719,58 @@ Momentum 中文为：动量法
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/10/08/newtonsMethod/">
+                <a href="/2019/11/19/ME-TheMarket/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="牛顿法理解">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="微观经济·现代方法笔记——市场(未完结)">
                         
-                        <span class="card-title">牛顿法理解</span>
+                        <span class="card-title">微观经济·现代方法笔记——市场(未完结)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1. 牛顿法牛顿法(Newton&#39;s method)是一种近似求解方程的方法，它使用函数$f(x)$的泰勒级数的前面几项来寻找方程$f(x)=0$的根，后来由于最优化研究兴起后，将其应用在了最优化领域。
-牛顿法和梯度下降法的目标一样
+                            本文为学习《微观经济学——现代观点》时做的知识点笔记，主要参考原文书籍，随时更新。
+1 建立模型
+建立模型: $ConstructingaModel$
+
+作者使用大学城的住房市场来贯穿本章知识点，在这个城市中，有两种类型的住房：
+
+邻近大学
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/人工智能/" class="post-category">
-                                    人工智能
+                            <a href="/categories/经济学/" class="post-category">
+                                    经济学
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/最优化算法/">
-                        <span class="chip bg-color">最优化算法</span>
+                    <a href="/tags/Market/">
+                        <span class="chip bg-color">Market</span>
+                    </a>
+                    
+                    <a href="/tags/Microeconomics/">
+                        <span class="chip bg-color">Microeconomics</span>
                     </a>
                     
                 </div>
@@ -820,32 +784,33 @@ Momentum 中文为：动量法
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/26/summaryOfGradientDescent/">
+                <a href="/2019/11/13/MapReduceError-PipeMapRedWaitOutputThreadsSubprocessFailedwithCodeX/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="梯度下降概述（未完结）">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="MapReduce常见问题与解决-PipeMapRed.waitOutputThreads">
                         
-                        <span class="card-title">梯度下降概述（未完结）</span>
+                        <span class="card-title">MapReduce常见问题与解决-PipeMapRed.waitOutputThreads</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            0 前言在求解机器学习算法的模型参数，即无约束优化问题时，梯度下降算法是机器学习中使用非常广泛的算法之一。几乎当前每一个机器学习库或者深度学习库都会包括梯度下降算法的不同变种实现。它们就像一个黑盒优化器，很难得到它们优缺点的实际解释。
-本文
+                            1 问题描述在Map阶段错误日志为：
+Error: java.lang.RuntimeException: PipeMapRed.waitOutputThreads(): subprocess failed with code 1 at 
+
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-26
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/人工智能/" class="post-category">
-                                    人工智能
+                            <a href="/categories/大数据/" class="post-category">
+                                    大数据
                                 </a>
                             
                             
@@ -855,8 +820,12 @@ Momentum 中文为：动量法
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/最优化算法/">
-                        <span class="chip bg-color">最优化算法</span>
+                    <a href="/tags/Hadoop/">
+                        <span class="chip bg-color">Hadoop</span>
+                    </a>
+                    
+                    <a href="/tags/MapReduce/">
+                        <span class="chip bg-color">MapReduce</span>
                     </a>
                     
                 </div>
