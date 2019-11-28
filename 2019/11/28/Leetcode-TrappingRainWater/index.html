@@ -4,14 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="微观经济·现代方法笔记——市场(未完结), 王聪颖的博客">
-    <meta name="description" content="本文为学习《微观经济学——现代观点》时做的知识点笔记，主要参考原文书籍，随时更新。
-1 建立模型
-建立模型: $ConstructingaModel$
+    <meta name="keywords" content="Leetcode-Trapping Rain Water 接雨水, 王聪颖的博客">
+    <meta name="description" content="1 题目描述题目链接：https://leetcode-cn.com/problems/trapping-rain-water/
+给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
 
-作者使用大学城的住房市场来贯穿本章知识点，在这个城市中，有两种类型的住房：
-
-邻近大学">
+示例
+输">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>微观经济·现代方法笔记——市场(未完结) | 王聪颖的博客</title>
+    <title>Leetcode-Trapping Rain Water 接雨水 | 王聪颖的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -291,13 +289,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        微观经济·现代方法笔记——市场(未完结)
+                        Leetcode-Trapping Rain Water 接雨水
                     </div>
                 </div>
             </div>
@@ -409,12 +407,20 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Market/">
-                                <span class="chip bg-color">Market</span>
+                            <a href="/tags/Leetcode/">
+                                <span class="chip bg-color">Leetcode</span>
                             </a>
                         
-                            <a href="/tags/Microeconomics/">
-                                <span class="chip bg-color">Microeconomics</span>
+                            <a href="/tags/Stack/">
+                                <span class="chip bg-color">Stack</span>
+                            </a>
+                        
+                            <a href="/tags/Two-Pointers/">
+                                <span class="chip bg-color">Two Pointers</span>
+                            </a>
+                        
+                            <a href="/tags/Array/">
+                                <span class="chip bg-color">Array</span>
                             </a>
                         
                     </div>
@@ -425,8 +431,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/经济学/" class="post-category">
-                                经济学
+                            <a href="/categories/其他/" class="post-category">
+                                其他
                             </a>
                         
                     </div>
@@ -437,7 +443,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-19
+                    2019-11-28
                 </div>
 
                 
@@ -453,46 +459,85 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>本文为学习《微观经济学——现代观点》时做的知识点笔记，主要参考原文书籍，随时更新。</p>
-<h2 id="1-建立模型"><a href="#1-建立模型" class="headerlink" title="1 建立模型"></a>1 建立模型</h2><blockquote>
-<p>建立模型: $Constructing<del>a</del>Model$</p>
-</blockquote>
-<p>作者使用大学城的住房市场来贯穿本章知识点，在这个城市中，有两种类型的住房：</p>
-<ul>
-<li>邻近大学城住房</li>
-<li>离大学城远的住房</li>
-</ul>
-<p>在文中主要考察<strong>内城区</strong>的住房市场，外城区主要是人们在内城区找不到住房才去的地方，主要想知道<strong>价格</strong>$(price)$在其中有多大的作用以及价格的的决定因素。</p>
-<ol>
-<li><p>外生变量$(Exogenous~Variable)$</p>
+                <h2 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1 题目描述"></a>1 题目描述</h2><p>题目链接：<a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/trapping-rain-water/</a></p>
+<p>给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。</p>
+<p><img src="trw-graph.png" alt></p>
+<p><strong>示例</strong></p>
+<pre><code>输入: [0,1,0,2,1,0,1,3,2,1,2,1]
+输出: 6</code></pre><h2 id="2-思路及解法"><a href="#2-思路及解法" class="headerlink" title="2 思路及解法"></a>2 思路及解法</h2><h3 id="2-1-单调栈"><a href="#2-1-单调栈" class="headerlink" title="2.1 单调栈"></a>2.1 单调栈</h3><h4 id="2-1-1-思路"><a href="#2-1-1-思路" class="headerlink" title="2.1.1 思路"></a>2.1.1 思路</h4><p><strong>复杂度</strong></p>
 <blockquote>
-<p>解释：外城区的住房价格</p>
-<p>主要是因为外城区价格决定因素并没有在这个模型中讨论的因素中，（原文：外城区住房价格已由不被这个模型所讨论的因素决定了）</p>
+<p>时间复杂度是 O(n)</p>
+<p>空间复杂度：O(n)</p>
 </blockquote>
-</li>
-<li><p>内生变量$(Endogenous~Variable)$</p>
+<p>这道题官网将其属于<code>栈</code>解决的范畴，我们先尝试使用其来解决。</p>
+<p>首先我们可以直接从题意中得知只有两边高中间低的时候才能装得下水，对此我们就可以使用一个单调递减栈。将递减的元素存进去（<strong>注意我们栈中存放的是元素的索引</strong>），一旦发现当前的元素大于栈顶元素了，那么就有可能会装的下水，此时我们当前的数字是右边界，栈顶的元素就是坑槽的最低点，栈从顶向下第二个元素就是左边届，然后取左右边界较小的值为装水的绝对水位，然后此高度减去水槽最低点的高度，再乘以左右边界间的距离就是装水量了，然后循环依次往后。</p>
+<h4 id="2-1-2-代码"><a href="#2-1-2-代码" class="headerlink" title="2.1.2 代码"></a>2.1.2 代码</h4><p>伪代码</p>
+<pre class=" language-txt"><code class="language-txt">for 遍历水位数据:
+    while 栈非空并且当前元素大于栈顶元素:
+        取出栈顶索引
+        获取边界计算当前面积
+    当前索引入栈
+返回面积</code></pre>
+<p>源码：</p>
+<pre class=" language-py"><code class="language-py">class Solution:
+    def trap(self, height: List[int]) -> int:
+        stack = list()
+        res = 0
+
+        for i in range(len(height)):
+            while stack and height[stack[-1]] < height[i]:
+                curr = stack.pop()
+                if not stack: break
+                res += (min(height[stack[-1]], height[i]) - height[curr]) * (i - stack[-1] - 1)
+            stack.append(i)
+
+        return res</code></pre>
+<h3 id="2-2-双指针"><a href="#2-2-双指针" class="headerlink" title="2.2 双指针"></a>2.2 双指针</h3><h4 id="2-2-1-思路"><a href="#2-2-1-思路" class="headerlink" title="2.2.1 思路"></a>2.2.1 思路</h4><p><strong>复杂度</strong></p>
 <blockquote>
-<p>解释：内城区的住房价格</p>
-<p>内城区的住房价格决定因素是本模型所要讨论的</p>
+<p>时间复杂度是 O(n)</p>
+<p>空间复杂度：O(1)</p>
 </blockquote>
-</li>
-</ol>
-<h2 id="2-最优化与均衡"><a href="#2-最优化与均衡" class="headerlink" title="2 最优化与均衡"></a>2 最优化与均衡</h2><blockquote>
-<p>最优化与均衡: $Optimization<del>and</del>Equilibrium$</p>
-</blockquote>
-<p>经济学家在研究行为的时候，会利用一个框架$(framework)$的协助分析，大多数框架中会有以下两个原则$(principle)$</p>
-<ol>
-<li><p>最优化原理$(The<del>optimization</del>principle)$</p>
-<blockquote>
-<p>人们会选择支付的起的最佳消费方式</p>
-</blockquote>
-</li>
-<li><p>均衡原理$(The<del>Equilibrium</del>Principle)$</p>
-<blockquote>
-<p>价格会自行调整，知道供给数量和需求数量相等</p>
-</blockquote>
-</li>
-</ol>
+<p>第二种使用<strong>双指针</strong>来解决，可以只遍历一次，因为当前列是由左右两侧最高值的min值决定的。</p>
+<p>当我们发现另外一侧不是最高的，则开始从相反方向开始遍历，比如右侧相比较左侧矮一点，那么就从右向左移。</p>
+<h4 id="2-2-2-代码"><a href="#2-2-2-代码" class="headerlink" title="2.2.2 代码"></a>2.2.2 代码</h4><p>伪代码</p>
+<pre><code>while 左指针 &lt; 右指针：
+    if 左指针所指值 &lt; 右指针所指值:
+        if 左边最大值 大于 当前左指针所指值:
+            面积叠加
+        else
+             更新 左边最大值 
+        左指针++
+    else:
+        if 右边最大值 大于 当前右指针所指值:    
+            面积叠加
+        else
+             更新 右边最大值
+        右指针--
+返回面积</code></pre><p>源码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">trap</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> height<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""
+        :type height: List[int]
+        :rtype: int
+        """</span>
+        left<span class="token punctuation">,</span> right <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>height<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+        left_max<span class="token punctuation">,</span> right_max <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span>
+        res <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">while</span> left <span class="token operator">&lt;</span> right<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> height<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">&lt;</span> height<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> height<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">>=</span> left_max<span class="token punctuation">:</span>
+                    left_max <span class="token operator">=</span> height<span class="token punctuation">[</span>left<span class="token punctuation">]</span>
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    res <span class="token operator">+=</span> left_max <span class="token operator">-</span> height<span class="token punctuation">[</span>left<span class="token punctuation">]</span>
+                left <span class="token operator">+=</span> <span class="token number">1</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> height<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">>=</span> right_max<span class="token punctuation">:</span>
+                    right_max <span class="token operator">=</span> height<span class="token punctuation">[</span>right<span class="token punctuation">]</span>
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    res <span class="token operator">+=</span> right_max <span class="token operator">-</span> height<span class="token punctuation">[</span>right<span class="token punctuation">]</span>
+                right <span class="token operator">-=</span> <span class="token number">1</span>
+
+        <span class="token keyword">return</span> res</code></pre>
 
             </div>
             <hr/>
@@ -655,9 +700,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《微观经济·现代方法笔记——市场(未完结)》
+                    《Leetcode-Trapping Rain Water 接雨水》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/11/19/ME-TheMarket/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/11/28/Leetcode-TrappingRainWater/" property="cc:attributionName"
                rel="cc:attributionURL">
                 王聪颖
             </a> 采用
@@ -698,7 +743,7 @@
         repo: 'wangcongying.github.io',
         owner: 'Congying-Wang',
         admin: "Congying-Wang",
-        id: '2019-11-19T15-32-37',
+        id: '2019-11-28T15-37-28',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -719,9 +764,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/11/28/Leetcode-TrappingRainWater/">
                     <div class="card-image">
@@ -743,9 +789,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -758,6 +804,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -788,33 +835,37 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/13/MapReduceError-PipeMapRedWaitOutputThreadsSubprocessFailedwithCodeX/">
+                <a href="/2019/11/19/ME-TheMarket/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="MapReduce常见问题与解决-PipeMapRed.waitOutputThreads">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="微观经济·现代方法笔记——市场(未完结)">
                         
-                        <span class="card-title">MapReduce常见问题与解决-PipeMapRed.waitOutputThreads</span>
+                        <span class="card-title">微观经济·现代方法笔记——市场(未完结)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            1 问题描述在Map阶段错误日志为：
-Error: java.lang.RuntimeException: PipeMapRed.waitOutputThreads(): subprocess failed with code 1 at 
+                            本文为学习《微观经济学——现代观点》时做的知识点笔记，主要参考原文书籍，随时更新。
+1 建立模型
+建立模型: $ConstructingaModel$
 
+作者使用大学城的住房市场来贯穿本章知识点，在这个城市中，有两种类型的住房：
+
+邻近大学
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-13
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/大数据/" class="post-category">
-                                    大数据
+                            <a href="/categories/经济学/" class="post-category">
+                                    经济学
                                 </a>
                             
                             
@@ -824,12 +875,12 @@ Error: java.lang.RuntimeException: PipeMapRed.waitOutputThreads(): subprocess fa
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hadoop/">
-                        <span class="chip bg-color">Hadoop</span>
+                    <a href="/tags/Market/">
+                        <span class="chip bg-color">Market</span>
                     </a>
                     
-                    <a href="/tags/MapReduce/">
-                        <span class="chip bg-color">MapReduce</span>
+                    <a href="/tags/Microeconomics/">
+                        <span class="chip bg-color">Microeconomics</span>
                     </a>
                     
                 </div>
