@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CentOS Github ping 不通</title>
+    <url>/2020/06/10/CentOS-Github-ping-%E4%B8%8D%E9%80%9A/</url>
+    <content><![CDATA[<ol>
+<li><p>执行命令vi /etc/hosts</p>
+</li>
+<li><p>在hosts文件中加上以下域名解析：</p>
+</li>
+</ol>
+<p>192.30.253.113 github.com<br>192.30.252.131 github.com<br>185.31.16.185 github.global.ssl.fastly.net<br>74.125.237.1 dl-ssl.google.com<br>173.194.127.200 groups.google.com<br>192.30.252.131 github.com<br>185.31.16.185 github.global.ssl.fastly.net<br>74.125.128.95 ajax.googleapis.com</p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>CentOS</tag>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fasttext</title>
+    <url>/2020/04/14/fasttext/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Leetcode-Trapping Rain Water 接雨水</title>
     <url>/2019/11/28/Leetcode-TrappingRainWater/</url>
     <content><![CDATA[<h2 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1 题目描述"></a>1 题目描述</h2><p>题目链接：<a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/trapping-rain-water/</a></p>

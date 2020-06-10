@@ -4,12 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Leetcode-Trapping Rain Water 接雨水, 王聪颖的博客">
-    <meta name="description" content="1 题目描述题目链接：https://leetcode-cn.com/problems/trapping-rain-water/
-给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
-
-示例
-输">
+    <meta name="keywords" content="fasttext, 王聪颖的博客">
+    <meta name="description" content="fasttext | 王聪颖的博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Leetcode-Trapping Rain Water 接雨水 | 王聪颖的博客</title>
+    <title>fasttext | 王聪颖的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -289,13 +285,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Leetcode-Trapping Rain Water 接雨水
+                        fasttext
                     </div>
                 </div>
             </div>
@@ -405,37 +401,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Leetcode/">
-                                <span class="chip bg-color">Leetcode</span>
-                            </a>
-                        
-                            <a href="/tags/Stack/">
-                                <span class="chip bg-color">Stack</span>
-                            </a>
-                        
-                            <a href="/tags/Two-Pointers/">
-                                <span class="chip bg-color">Two Pointers</span>
-                            </a>
-                        
-                            <a href="/tags/Array/">
-                                <span class="chip bg-color">Array</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/其他/" class="post-category">
-                                其他
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -443,7 +414,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-28
+                    2020-04-14
                 </div>
 
                 
@@ -459,86 +430,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1 题目描述"></a>1 题目描述</h2><p>题目链接：<a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/trapping-rain-water/</a></p>
-<p>给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。</p>
-<p><img src="trw-graph.png" alt></p>
-<p><strong>示例</strong></p>
-<pre><code>输入: [0,1,0,2,1,0,1,3,2,1,2,1]
-输出: 6</code></pre><h2 id="2-思路及解法"><a href="#2-思路及解法" class="headerlink" title="2 思路及解法"></a>2 思路及解法</h2><h3 id="2-1-单调栈"><a href="#2-1-单调栈" class="headerlink" title="2.1 单调栈"></a>2.1 单调栈</h3><h4 id="2-1-1-思路"><a href="#2-1-1-思路" class="headerlink" title="2.1.1 思路"></a>2.1.1 思路</h4><p><strong>复杂度</strong></p>
-<blockquote>
-<p>时间复杂度是 $O(n)$</p>
-<p>空间复杂度：$O(n)$</p>
-</blockquote>
-<p>这道题官网将其属于<code>栈</code>解决的范畴，我们先尝试使用其来解决。</p>
-<p>首先我们可以直接从题意中得知只有两边高中间低的时候才能装得下水，对此我们就可以使用一个单调递减栈。将递减的元素存进去（<strong>注意我们栈中存放的是元素的索引</strong>），一旦发现当前的元素大于栈顶元素了，那么就有可能会装的下水，此时我们当前的数字是右边界，栈顶的元素就是坑槽的最低点，栈从顶向下第二个元素就是左边届，然后取左右边界较小的值为装水的绝对水位，然后此高度减去水槽最低点的高度，再乘以左右边界间的距离就是装水量了，然后循环依次往后。</p>
-<h4 id="2-1-2-代码"><a href="#2-1-2-代码" class="headerlink" title="2.1.2 代码"></a>2.1.2 代码</h4><p>伪代码</p>
-<pre class=" language-txt"><code class="language-txt">for 遍历水位数据:
-    while 栈非空并且当前元素大于栈顶元素:
-        取出栈顶索引
-        获取边界计算当前面积
-    当前索引入栈
-返回面积</code></pre>
-<p>源码：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">trap</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> height<span class="token punctuation">:</span> List<span class="token punctuation">[</span>int<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> int<span class="token punctuation">:</span>
-        stack <span class="token operator">=</span> list<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        res <span class="token operator">=</span> <span class="token number">0</span>
-
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>height<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">while</span> stack <span class="token operator">and</span> height<span class="token punctuation">[</span>stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
-                curr <span class="token operator">=</span> stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-                <span class="token keyword">if</span> <span class="token operator">not</span> stack<span class="token punctuation">:</span> <span class="token keyword">break</span>
-                res <span class="token operator">+=</span> <span class="token punctuation">(</span>min<span class="token punctuation">(</span>height<span class="token punctuation">[</span>stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> height<span class="token punctuation">[</span>curr<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>i <span class="token operator">-</span> stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-            stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-
-        <span class="token keyword">return</span> res</code></pre>
-<h3 id="2-2-双指针"><a href="#2-2-双指针" class="headerlink" title="2.2 双指针"></a>2.2 双指针</h3><h4 id="2-2-1-思路"><a href="#2-2-1-思路" class="headerlink" title="2.2.1 思路"></a>2.2.1 思路</h4><p><strong>复杂度</strong></p>
-<blockquote>
-<p>时间复杂度是 $O(n)$</p>
-<p>空间复杂度：$O(1)$</p>
-</blockquote>
-<p>第二种使用<strong>双指针</strong>来解决，可以只遍历一次，因为当前列是由左右两侧最高值的min值决定的。</p>
-<p>当我们发现另外一侧不是最高的，则开始从相反方向开始遍历，比如右侧相比较左侧矮一点，那么就从右向左移。</p>
-<h4 id="2-2-2-代码"><a href="#2-2-2-代码" class="headerlink" title="2.2.2 代码"></a>2.2.2 代码</h4><p>伪代码</p>
-<pre><code>while 左指针 &lt; 右指针：
-    if 左指针所指值 &lt; 右指针所指值:
-        if 左边最大值 大于 当前左指针所指值:
-            面积叠加
-        else
-             更新 左边最大值 
-        左指针++
-    else:
-        if 右边最大值 大于 当前右指针所指值:    
-            面积叠加
-        else
-             更新 右边最大值
-        右指针--
-返回面积</code></pre><p>源码：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">trap</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> height<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""
-        :type height: List[int]
-        :rtype: int
-        """</span>
-        left<span class="token punctuation">,</span> right <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>height<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-        left_max<span class="token punctuation">,</span> right_max <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span>
-        res <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">while</span> left <span class="token operator">&lt;</span> right<span class="token punctuation">:</span>
-            <span class="token keyword">if</span> height<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">&lt;</span> height<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">:</span>
-                <span class="token keyword">if</span> height<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">>=</span> left_max<span class="token punctuation">:</span>
-                    left_max <span class="token operator">=</span> height<span class="token punctuation">[</span>left<span class="token punctuation">]</span>
-                <span class="token keyword">else</span><span class="token punctuation">:</span>
-                    res <span class="token operator">+=</span> left_max <span class="token operator">-</span> height<span class="token punctuation">[</span>left<span class="token punctuation">]</span>
-                left <span class="token operator">+=</span> <span class="token number">1</span>
-            <span class="token keyword">else</span><span class="token punctuation">:</span>
-                <span class="token keyword">if</span> height<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">>=</span> right_max<span class="token punctuation">:</span>
-                    right_max <span class="token operator">=</span> height<span class="token punctuation">[</span>right<span class="token punctuation">]</span>
-                <span class="token keyword">else</span><span class="token punctuation">:</span>
-                    res <span class="token operator">+=</span> right_max <span class="token operator">-</span> height<span class="token punctuation">[</span>right<span class="token punctuation">]</span>
-                right <span class="token operator">-=</span> <span class="token number">1</span>
-
-        <span class="token keyword">return</span> res</code></pre>
-
+                
             </div>
             <hr/>
 
@@ -700,9 +592,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Leetcode-Trapping Rain Water 接雨水》
+                    《fasttext》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/11/28/Leetcode-TrappingRainWater/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/04/14/fasttext/" property="cc:attributionName"
                rel="cc:attributionURL">
                 王聪颖
             </a> 采用
@@ -743,7 +635,7 @@
         repo: 'wangcongying.github.io',
         owner: 'Congying-Wang',
         admin: "Congying-Wang",
-        id: '2019-11-28T15-37-28',
+        id: '2020-04-14T16-47-12',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -768,32 +660,58 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/14/fasttext/">
+                <a href="/2020/06/10/CentOS-Github-ping-不通/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="fasttext">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="CentOS Github ping 不通">
                         
-                        <span class="card-title">fasttext</span>
+                        <span class="card-title">CentOS Github ping 不通</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
+执行命令vi /etc/hosts
+
+在hosts文件中加上以下域名解析：
+
+
+192.30.253.113 github.com192.30.252.131 github.com185.31.16.185 github.global.s
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-14
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-10
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            王聪颖
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/其他/" class="post-category">
+                                    其他
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/CentOS/">
+                        <span class="chip bg-color">CentOS</span>
+                    </a>
+                    
+                    <a href="/tags/Github/">
+                        <span class="chip bg-color">Github</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -805,37 +723,35 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/19/ME-TheMarket/">
+                <a href="/2019/11/28/Leetcode-TrappingRainWater/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="微观经济·现代方法笔记——市场(未完结)">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Leetcode-Trapping Rain Water 接雨水">
                         
-                        <span class="card-title">微观经济·现代方法笔记——市场(未完结)</span>
+                        <span class="card-title">Leetcode-Trapping Rain Water 接雨水</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文为学习《微观经济学——现代观点》时做的知识点笔记，主要参考原文书籍，随时更新。
-1 建立模型
-建立模型: $ConstructingaModel$
+                            1 题目描述题目链接：https://leetcode-cn.com/problems/trapping-rain-water/
+给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
 
-作者使用大学城的住房市场来贯穿本章知识点，在这个城市中，有两种类型的住房：
-
-邻近大学
+示例
+输
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-19
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/经济学/" class="post-category">
-                                    经济学
+                            <a href="/categories/其他/" class="post-category">
+                                    其他
                                 </a>
                             
                             
@@ -845,12 +761,20 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Market/">
-                        <span class="chip bg-color">Market</span>
+                    <a href="/tags/Leetcode/">
+                        <span class="chip bg-color">Leetcode</span>
                     </a>
                     
-                    <a href="/tags/Microeconomics/">
-                        <span class="chip bg-color">Microeconomics</span>
+                    <a href="/tags/Stack/">
+                        <span class="chip bg-color">Stack</span>
+                    </a>
+                    
+                    <a href="/tags/Two-Pointers/">
+                        <span class="chip bg-color">Two Pointers</span>
+                    </a>
+                    
+                    <a href="/tags/Array/">
+                        <span class="chip bg-color">Array</span>
                     </a>
                     
                 </div>
