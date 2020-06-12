@@ -4,8 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="fasttext, 王聪颖的博客">
-    <meta name="description" content="fasttext | 王聪颖的博客">
+    <meta name="keywords" content="CentOS 中编译安装dcmtk, 王聪颖的博客">
+    <meta name="description" content="1 下载源码方法一: Git 源码下载
+https://github.com/DCMTK/dcmtk方法二: Mirror 下载：
+https://git.dcmtk.org/2 进入文件夹cd dcmtk3 常见构建文件夹mkdir bu">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>fasttext | 王聪颖的博客</title>
+    <title>CentOS 中编译安装dcmtk | 王聪颖的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -285,13 +287,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        fasttext
+                        CentOS 中编译安装dcmtk
                     </div>
                 </div>
             </div>
@@ -401,12 +403,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Dcmtk/">
+                                <span class="chip bg-color">Dcmtk</span>
+                            </a>
+                        
+                            <a href="/tags/DICOM/">
+                                <span class="chip bg-color">DICOM</span>
+                            </a>
+                        
+                            <a href="/tags/CentOS/">
+                                <span class="chip bg-color">CentOS</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/医学影像/" class="post-category">
+                                医学影像
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -414,7 +437,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-14
+                    2020-06-12
                 </div>
 
                 
@@ -430,7 +453,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="1-下载源码"><a href="#1-下载源码" class="headerlink" title="1 下载源码"></a>1 下载源码</h2><p>方法一: Git 源码下载</p>
+<pre><code>https://github.com/DCMTK/dcmtk</code></pre><p>方法二: Mirror 下载：</p>
+<pre><code>https://git.dcmtk.org/</code></pre><h2 id="2-进入文件夹"><a href="#2-进入文件夹" class="headerlink" title="2 进入文件夹"></a>2 进入文件夹</h2><pre><code>cd dcmtk</code></pre><h2 id="3-常见构建文件夹"><a href="#3-常见构建文件夹" class="headerlink" title="3 常见构建文件夹"></a>3 常见构建文件夹</h2><pre><code>mkdir build &amp;&amp; cd build</code></pre><h2 id="4-执行cmake的命令进行配置"><a href="#4-执行cmake的命令进行配置" class="headerlink" title="4 执行cmake的命令进行配置"></a>4 执行cmake的命令进行配置</h2><pre><code>cmake ..</code></pre><h2 id="5-安装"><a href="#5-安装" class="headerlink" title="5 安装"></a>5 安装</h2><p>注: 加上 sudo ,不然会报权限不足</p>
+<pre><code>sudo make install</code></pre><h2 id="6-共享动态链接"><a href="#6-共享动态链接" class="headerlink" title="6 共享动态链接"></a>6 共享动态链接</h2><p>注: 一定要执行否则软件执行时报找不到链接</p>
+<pre><code>sudo ldconfig</code></pre><h2 id="7-测试"><a href="#7-测试" class="headerlink" title="7 测试"></a>7 测试</h2><pre><code>storescp</code></pre><p>没有报错，出现如下界面即说明安装成功：</p>
+
             </div>
             <hr/>
 
@@ -592,9 +620,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《fasttext》
+                    《CentOS 中编译安装dcmtk》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/04/14/fasttext/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/06/12/BuildInstallDcmtkinCentOS/" property="cc:attributionName"
                rel="cc:attributionURL">
                 王聪颖
             </a> 采用
@@ -635,7 +663,7 @@
         repo: 'wangcongying.github.io',
         owner: 'Congying-Wang',
         admin: "Congying-Wang",
-        id: '2020-04-14T16-47-12',
+        id: '2020-06-12T16-41-13',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -656,9 +684,70 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/06/12/BuildInstallDcmtkinCentOS/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="CentOS 中编译安装dcmtk">
+                        
+                        <span class="card-title">CentOS 中编译安装dcmtk</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1 下载源码方法一: Git 源码下载
+https://github.com/DCMTK/dcmtk方法二: Mirror 下载：
+https://git.dcmtk.org/2 进入文件夹cd dcmtk3 常见构建文件夹mkdir bu
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/医学影像/" class="post-category">
+                                    医学影像
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Dcmtk/">
+                        <span class="chip bg-color">Dcmtk</span>
+                    </a>
+                    
+                    <a href="/tags/DICOM/">
+                        <span class="chip bg-color">DICOM</span>
+                    </a>
+                    
+                    <a href="/tags/CentOS/">
+                        <span class="chip bg-color">CentOS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/06/10/CentOS-Github-ping-不通/">
                     <div class="card-image">
@@ -682,9 +771,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -710,71 +799,6 @@
                     
                     <a href="/tags/Github/">
                         <span class="chip bg-color">Github</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/11/28/Leetcode-TrappingRainWater/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Leetcode-Trapping Rain Water 接雨水">
-                        
-                        <span class="card-title">Leetcode-Trapping Rain Water 接雨水</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            1 题目描述题目链接：https://leetcode-cn.com/problems/trapping-rain-water/
-给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
-
-示例
-输
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-28
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/其他/" class="post-category">
-                                    其他
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Leetcode/">
-                        <span class="chip bg-color">Leetcode</span>
-                    </a>
-                    
-                    <a href="/tags/Stack/">
-                        <span class="chip bg-color">Stack</span>
-                    </a>
-                    
-                    <a href="/tags/Two-Pointers/">
-                        <span class="chip bg-color">Two Pointers</span>
-                    </a>
-                    
-                    <a href="/tags/Array/">
-                        <span class="chip bg-color">Array</span>
                     </a>
                     
                 </div>
