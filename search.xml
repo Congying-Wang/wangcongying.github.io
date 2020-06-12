@@ -7,15 +7,15 @@
 <pre><code>https://github.com/DCMTK/dcmtk</code></pre><p>方法二: Mirror 下载：</p>
 <pre><code>https://git.dcmtk.org/</code></pre><h2 id="2-进入文件夹"><a href="#2-进入文件夹" class="headerlink" title="2 进入文件夹"></a>2 进入文件夹</h2><pre><code>cd dcmtk</code></pre><h2 id="3-常见构建文件夹"><a href="#3-常见构建文件夹" class="headerlink" title="3 常见构建文件夹"></a>3 常见构建文件夹</h2><pre><code>mkdir build &amp;&amp; cd build</code></pre><h2 id="4-执行cmake的命令进行配置"><a href="#4-执行cmake的命令进行配置" class="headerlink" title="4 执行cmake的命令进行配置"></a>4 执行cmake的命令进行配置</h2><pre><code>cmake ..</code></pre><h2 id="5-安装"><a href="#5-安装" class="headerlink" title="5 安装"></a>5 安装</h2><p>注: 加上 sudo ,不然会报权限不足</p>
 <pre><code>sudo make install</code></pre><h2 id="6-共享动态链接"><a href="#6-共享动态链接" class="headerlink" title="6 共享动态链接"></a>6 共享动态链接</h2><p>注: 一定要执行否则软件执行时报找不到链接</p>
-<pre><code>sudo ldconfig</code></pre><h2 id="7-测试"><a href="#7-测试" class="headerlink" title="7 测试"></a>7 测试</h2><pre><code>storescp</code></pre><p>没有报错，出现如下界面即说明安装成功：</p>
+<pre><code>sudo ldconfig</code></pre><h2 id="7-测试"><a href="#7-测试" class="headerlink" title="7 测试"></a>7 测试</h2><pre><code>storescp</code></pre><p>没有报错，出现如下界面即说明安装成功</p>
 ]]></content>
       <categories>
         <category>医学影像</category>
       </categories>
       <tags>
+        <tag>CentOS</tag>
         <tag>Dcmtk</tag>
         <tag>DICOM</tag>
-        <tag>CentOS</tag>
       </tags>
   </entry>
   <entry>
@@ -33,8 +33,8 @@
         <category>其他</category>
       </categories>
       <tags>
-        <tag>CentOS</tag>
         <tag>Linux</tag>
+        <tag>CentOS</tag>
         <tag>Github</tag>
       </tags>
   </entry>
