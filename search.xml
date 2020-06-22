@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PACS 学习笔记-1 绪论</title>
+    <url>/2020/06/22/pacs-note-introduction/</url>
+    <content><![CDATA[<h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h2><p>最近由于有同学一起聊关于医疗影像的前景与发展，自己对这方向也不熟悉，国内关于这方向的社区也较少，所以自己找了本教材——<em>《PACS: 医学影像存档与通讯系统》</em>，开个个专题来作为学习笔记，如有不正确的地方欢迎指正。</p>
+<p>数字成像技术专用名词对照表：<br>|–|–|–|<br>|名词|全称|翻译|<br>|CT|Computed Tomography|计算机断层扫描|<br>|MRL|Magnetic Resonance Imaging|核磁共振|<br>|XA|X-Ray Angiography| 心血管造影|<br>|US|Ultrasound|超声波扫描|<br>|PET|Positron Emission Tomography|正电子发射断层图像|<br>|SPECT|Single-Photon Emission Tomography|单光子发射计算机断层成像|<br>|CR|Computed Radiography|计算机X射线成像|<br>|DR|Digital Radiography|数字化X射线成像|</p>
+<h2 id="1-PACS-概念的形成、结构和分类"><a href="#1-PACS-概念的形成、结构和分类" class="headerlink" title="1 PACS 概念的形成、结构和分类"></a>1 PACS 概念的形成、结构和分类</h2><h3 id="1-1-PACS-概念"><a href="#1-1-PACS-概念" class="headerlink" title="1.1  PACS 概念"></a>1.1  PACS 概念</h3><p>PACS: 影像归档和通信系统</p>
+<pre><code>P: Picture
+A: Archiving
+C: Communication
+S: System</code></pre><p>PACS 概念：是使用数字成像技术、计算机技术和网络通信技术对医学影像进行数字化管理系统，是专门针对图像管理而设计的包括图像存档和管理、数字化医学影像高速传输、图像的数字化处理和重现、医学图像信息与其他信息集成五个方面的问题。</p>
+<h3 id="1-2-PACS-组成"><a href="#1-2-PACS-组成" class="headerlink" title="1.2  PACS 组成"></a>1.2  PACS 组成</h3><p>PACS 组成：</p>
+<pre><code>医学成像设备
+图像采集计算机
+PACS 控制器
+图像显示工作站
+专用打印机
+专用网关设备
+专用软件</code></pre><h3 id="1-3-PACS-分类"><a href="#1-3-PACS-分类" class="headerlink" title="1.3  PACS 分类"></a>1.3  PACS 分类</h3><p>PACS 分类：</p>
+<ol>
+<li>设备级 PACS</li>
+<li>部门级 PACS</li>
+<li>全院级 PACS</li>
+<li>区域级 PACS</li>
+</ol>
+<h2 id="2-PACS-发展历史"><a href="#2-PACS-发展历史" class="headerlink" title="2 PACS 发展历史"></a>2 PACS 发展历史</h2><p>可分为三个阶段</p>
+<ol>
+<li>20世纪80年代-90年代中期: 计算机自身性能有限，CPU 主频仅几十兆，内存64兆，价格昂贵。</li>
+<li>90年代中期-20世纪末: 随着计算机技术、网络技术发展，特别是计算机性能的大大提高，PACS 用户终端的速度和性能加强了。</li>
+<li>20世纪末-当前: DICOM 3.0 标准已经广泛被接受，RIS、PACS 以及 HIS 全面整合，并用于远程诊断。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>医学影像</category>
+      </categories>
+      <tags>
+        <tag>DICOM</tag>
+        <tag>PACS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS 中编译安装dcmtk</title>
     <url>/2020/06/12/BuildInstallDcmtkinCentOS/</url>
     <content><![CDATA[<h2 id="1-下载源码"><a href="#1-下载源码" class="headerlink" title="1 下载源码"></a>1 下载源码</h2><p>方法一: Git 源码下载</p>
@@ -13,9 +52,9 @@
         <category>医学影像</category>
       </categories>
       <tags>
-        <tag>CentOS</tag>
         <tag>Dcmtk</tag>
         <tag>DICOM</tag>
+        <tag>CentOS</tag>
       </tags>
   </entry>
   <entry>
@@ -33,8 +72,8 @@
         <category>其他</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>CentOS</tag>
+        <tag>Linux</tag>
         <tag>Github</tag>
       </tags>
   </entry>
